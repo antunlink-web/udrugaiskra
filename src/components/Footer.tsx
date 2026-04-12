@@ -1,4 +1,5 @@
 import { Facebook, Instagram, Phone, Mail, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
 
 import logoImg from "@/assets/iskra-logo.png";
 const LOGO_URL = logoImg;
@@ -9,10 +10,10 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-10">
           <div>
-            <a href="https://iskrasvjetlosti.hr/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 mb-4">
+            <Link to="/" className="flex items-center gap-2 mb-4">
               <img src={LOGO_URL} alt="Iskra Svjetlosti" className="h-8 w-8" />
               <span className="font-heading text-lg font-bold text-primary-foreground">Iskra Svjetlosti</span>
-            </a>
+            </Link>
             <p className="text-sm text-primary-foreground/60 leading-relaxed mb-4">
               Udruga za pomoć osobama s intelektualnim poteškoćama iz Splita.
             </p>
@@ -42,11 +43,11 @@ const Footer = () => {
             <h4 className="font-heading text-base font-bold text-primary-foreground mb-4">Stranice</h4>
             <div className="flex flex-col gap-2">
               <a href="#about" className="text-sm text-primary-foreground/60 hover:text-primary transition-colors">O nama</a>
-              <a href="https://iskrasvjetlosti.hr/voditelji-radionica/" target="_blank" rel="noopener noreferrer" className="text-sm text-primary-foreground/60 hover:text-primary transition-colors">Voditelji radionica</a>
+              <Link to="/voditelji-radionica" className="text-sm text-primary-foreground/60 hover:text-primary transition-colors">Voditelji radionica</Link>
               <a href="#workshops" className="text-sm text-primary-foreground/60 hover:text-primary transition-colors">Radionice</a>
-              <a href="https://iskrasvjetlosti.hr/josipove-stanice/" target="_blank" rel="noopener noreferrer" className="text-sm text-primary-foreground/60 hover:text-primary transition-colors">Josipove Stanice</a>
-              <a href="https://iskrasvjetlosti.hr/blog/" target="_blank" rel="noopener noreferrer" className="text-sm text-primary-foreground/60 hover:text-primary transition-colors">Blog</a>
-              <a href="#donate" className="text-sm text-primary-foreground/60 hover:text-primary transition-colors">Doniraj</a>
+              <Link to="/josipove-stanice" className="text-sm text-primary-foreground/60 hover:text-primary transition-colors">Josipove Stanice</Link>
+              <Link to="/blog" className="text-sm text-primary-foreground/60 hover:text-primary transition-colors">Blog</Link>
+              <Link to="/doniraj" className="text-sm text-primary-foreground/60 hover:text-primary transition-colors">Doniraj</Link>
             </div>
           </div>
 
@@ -73,14 +74,6 @@ const Footer = () => {
             <div className="flex flex-col gap-2 text-sm text-primary-foreground/60">
               <p><span className="text-primary-foreground/40">OIB:</span> 40118970568</p>
               <p><span className="text-primary-foreground/40">IBAN:</span> HR5924070001100091899</p>
-              <a
-                href="https://iskrasvjetlosti.hr/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-primary transition-colors mt-1"
-              >
-                iskrasvjetlosti.hr
-              </a>
             </div>
           </div>
         </div>

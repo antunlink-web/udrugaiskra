@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const ABOUT_IMAGE = "https://iskrasvjetlosti.hr/wp-content/uploads/2024/05/IMG_1699-scaled-e1714727578689.jpg";
 
@@ -55,14 +56,12 @@ const AboutSection = () => {
               Naša želja je da nam se pridružite i postanete dio naše zajednice! Potaknite volonterstvo,
               kreativnost i smijeh, jer kad se udružimo, nema granica za ono što možemo postići.
             </p>
-            <a
-              href="https://iskrasvjetlosti.hr/voditelji-radionica/"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/voditelji-radionica"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold text-sm hover:opacity-90 transition-opacity"
             >
               Saznajte više o nama
-            </a>
+            </Link>
           </motion.div>
         </div>
       </div>

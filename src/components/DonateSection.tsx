@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Heart } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const DonateSection = () => {
   return (
@@ -23,15 +24,13 @@ const DonateSection = () => {
             Novac dolazi iz samog srca građana. Pridružite se 700+ donatora koji svaki mjesec
             odvajaju sredstva i osiguravaju nesmetano provođenje programa za naše sudionike.
           </p>
-          <a
-            href="https://iskrasvjetlosti.hr/#donate-form"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to="/doniraj"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary text-primary-foreground font-semibold text-base hover:opacity-90 transition-opacity shadow-lg"
           >
             <Heart size={18} />
             Doniraj sada
-          </a>
+          </Link>
           <p className="text-xs text-muted-foreground mt-6">
             Svaka donacija, koliko god mala, čini razliku. Hvala vam! 🧡
           </p>

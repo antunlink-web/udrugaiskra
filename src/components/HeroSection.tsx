@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Heart } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const HERO_BG = "https://iskrasvjetlosti.hr/wp-content/uploads/2024/05/IMG_1742-1-scaled-e1716298283435.jpg";
 
@@ -47,15 +48,13 @@ const HeroSection = () => {
           >
             Saznajte više
           </a>
-          <a
-            href="https://iskrasvjetlosti.hr/#donate-form"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to="/doniraj"
             className="px-8 py-3.5 rounded-full border-2 border-primary-foreground/40 text-primary-foreground font-semibold text-base hover:bg-primary-foreground/10 transition-colors flex items-center justify-center gap-2"
           >
             <Heart size={18} />
             Doniraj
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>
