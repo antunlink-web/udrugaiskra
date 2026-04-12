@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const LOGO_URL = "https://iskrasvjetlosti.hr/wp-content/uploads/2023/09/cropped-iskra-logo-1.png";
+import logoImg from "@/assets/iskra-logo.png";
+const LOGO_URL = logoImg;
 
 const navLinks = [
   { label: "O nama", href: "#about" },
