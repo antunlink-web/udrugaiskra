@@ -1,6 +1,7 @@
 import { Facebook, Instagram, Phone, Mail, MapPin } from "lucide-react";
 
-const LOGO_URL = "https://iskrasvjetlosti.hr/wp-content/uploads/2023/09/cropped-iskra-logo-1.png";
+import logoImg from "@/assets/iskra-logo.png";
+const LOGO_URL = logoImg;
 
 const Footer = () => {
   return (
