@@ -4,8 +4,8 @@ import { Users, Heart, Palette, Clock } from "lucide-react";
 const stats = [
   { icon: Users, value: "19", label: "štićenika", suffix: "" },
   { icon: Heart, value: "700", label: "donatora", suffix: "+" },
-  { icon: Palette, value: "10", label: "radionica", suffix: "" },
-  { icon: Clock, value: "5000", label: "sati rada", suffix: "+" },
+  { icon: Palette, value: "18", label: "radionica", suffix: "" },
+  { icon: Clock, value: "1000", label: "sati rada", suffix: "+" },
 ];
 
 const StatsSection = () => {
