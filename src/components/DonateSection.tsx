@@ -24,7 +24,7 @@ const DonateSection = () => {
             odvajaju sredstva i osiguravaju nesmetano provođenje programa za naše sudionike.
           </p>
           <a
-            href="https://iskrasvjetlosti.hr/"
+            href="https://iskrasvjetlosti.hr/#donate-form"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary text-primary-foreground font-semibold text-base hover:opacity-90 transition-opacity shadow-lg"
