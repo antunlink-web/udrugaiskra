@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import logo from "@/assets/logo.png";
+
+const LOGO_URL = "https://iskrasvjetlosti.hr/wp-content/uploads/2023/09/cropped-iskra-logo-1.png";
 
 const navLinks = [
   { label: "O nama", href: "#about" },
@@ -17,7 +18,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
       <div className="container mx-auto flex items-center justify-between py-3 px-4">
         <a href="#" className="flex items-center gap-2">
-          <img src={logo} alt="Iskra Svjetlosti" className="h-10 w-10" />
+          <img src={LOGO_URL} alt="Iskra Svjetlosti" className="h-10 w-10" />
           <span className="font-heading text-xl text-foreground">Iskra Svjetlosti</span>
         </a>
 

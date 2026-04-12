@@ -1,4 +1,4 @@
-import logo from "@/assets/logo.png";
+const LOGO_URL = "https://iskrasvjetlosti.hr/wp-content/uploads/2023/09/cropped-iskra-logo-1.png";
 
 const Footer = () => {
   return (
@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-10">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <img src={logo} alt="Iskra Svjetlosti" className="h-8 w-8" />
+              <img src={LOGO_URL} alt="Iskra Svjetlosti" className="h-8 w-8" />
               <span className="font-heading text-lg text-primary-foreground">Iskra Svjetlosti</span>
             </div>
             <p className="text-sm text-primary-foreground/60 leading-relaxed">

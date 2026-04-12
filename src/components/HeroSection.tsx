@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
 import { Heart } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
+
+const HERO_BG = "https://iskrasvjetlosti.hr/wp-content/uploads/2024/05/IMG_1742-1-scaled-e1716298283435.jpg";
 
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <img
-        src={heroBg}
-        alt="Kreativne radionice"
+        src={HERO_BG}
+        alt="Članovi udruge Iskra Svjetlosti"
         className="absolute inset-0 w-full h-full object-cover"
         width={1920}
         height={1080}
