@@ -48,7 +48,9 @@ const HeroSection = () => {
             Saznajte više
           </a>
           <a
-            href="#donate"
+            href="https://iskrasvjetlosti.hr/#donate-form"
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-8 py-3.5 rounded-full border-2 border-primary-foreground/40 text-primary-foreground font-semibold text-base hover:bg-primary-foreground/10 transition-colors flex items-center justify-center gap-2"
           >
             <Heart size={18} />
