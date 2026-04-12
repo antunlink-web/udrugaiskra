@@ -45,7 +45,7 @@ export const articles: Article[] = [
       "### 4. \"Liturgija je mjesto istine\"",
       "Liturgija predstavlja posebno mjesto gdje se osjećaj pripadnosti i inkluzije može lako osjetiti. Budući da je otvorena za svakoga, predstavlja važan segment života u kojem se svakome može pružiti osjećaj pripadnosti i dobrodošlice.",
       "### 5. \"Umreženost kao temelj uspjeha\"",
-      "Nadbiskup Đuro Hranić je zaključio: „Činjenica je da nam mnogo toga nedostaje u pastoralu s osobama s invaliditetom. Potrebno je neprestano učiti. Možda je umreženost smjer kojim bismo trebali krenuti. Ne smijemo odustati."",
+      'Nadbiskup Đuro Hranić je zaključio: „Činjenica je da nam mnogo toga nedostaje u pastoralu s osobama s invaliditetom. Potrebno je neprestano učiti. Možda je umreženost smjer kojim bismo trebali krenuti. Ne smijemo odustati."',
       "Ovaj kolokvij nije samo pružio platformu za razmjenu ideja i iskustava, već je potaknuo dublju refleksiju o ulozi Crkve i svakog pojedinca u stvaranju inkluzivnog okruženja.",
     ],
   },
