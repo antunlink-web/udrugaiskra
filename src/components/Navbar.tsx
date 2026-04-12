@@ -7,6 +7,8 @@ const LOGO_URL = "https://iskrasvjetlosti.hr/wp-content/uploads/2023/09/cropped-
 const navLinks = [
   { label: "O nama", href: "#about" },
   { label: "Radionice", href: "#workshops" },
+  { label: "Josipove Stanice", href: "https://iskrasvjetlosti.hr/josipove-stanice/", external: true },
+  { label: "Blog", href: "#blog" },
   { label: "Volonteri", href: "#testimonials" },
   { label: "Kontakt", href: "#contact" },
 ];
@@ -19,7 +21,7 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between py-3 px-4">
         <a href="https://iskrasvjetlosti.hr/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
           <img src={LOGO_URL} alt="Iskra Svjetlosti" className="h-10 w-10" />
-          <span className="font-heading text-xl text-foreground">Iskra Svjetlosti</span>
+          <span className="font-heading text-xl font-bold text-foreground">Iskra Svjetlosti</span>
         </a>
 
         <div className="hidden md:flex items-center gap-8">
@@ -27,6 +29,7 @@ const Navbar = () => {
             <a
               key={link.href}
               href={link.href}
+              {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
               {link.label}
@@ -64,6 +67,7 @@ const Navbar = () => {
                 <a
                   key={link.href}
                   href={link.href}
+                  {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                   onClick={() => setOpen(false)}
                   className="text-base font-medium text-muted-foreground hover:text-foreground"
                 >

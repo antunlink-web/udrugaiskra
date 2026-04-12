@@ -1,4 +1,4 @@
-import { Facebook } from "lucide-react";
+import { Facebook, Instagram, Phone, Mail, MapPin } from "lucide-react";
 
 const LOGO_URL = "https://iskrasvjetlosti.hr/wp-content/uploads/2023/09/cropped-iskra-logo-1.png";
 
@@ -6,46 +6,81 @@ const Footer = () => {
   return (
     <footer id="contact" className="bg-foreground py-14">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-3 gap-10">
+        <div className="grid md:grid-cols-4 gap-10">
           <div>
             <a href="https://iskrasvjetlosti.hr/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 mb-4">
               <img src={LOGO_URL} alt="Iskra Svjetlosti" className="h-8 w-8" />
-              <span className="font-heading text-lg text-primary-foreground">Iskra Svjetlosti</span>
+              <span className="font-heading text-lg font-bold text-primary-foreground">Iskra Svjetlosti</span>
             </a>
             <p className="text-sm text-primary-foreground/60 leading-relaxed mb-4">
               Udruga za pomoć osobama s intelektualnim poteškoćama iz Splita.
             </p>
-            <a
-              href="https://www.facebook.com/Iskra.Svjetlosti.hr/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm text-primary-foreground/60 hover:text-primary transition-colors"
-            >
-              <Facebook size={18} />
-              Facebook
-            </a>
+            <div className="flex items-center gap-3">
+              <a
+                href="https://www.facebook.com/Iskra.Svjetlosti.hr/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-full bg-primary-foreground/10 flex items-center justify-center text-primary-foreground/60 hover:text-primary hover:bg-primary-foreground/20 transition-colors"
+                aria-label="Facebook"
+              >
+                <Facebook size={16} />
+              </a>
+              <a
+                href="https://www.instagram.com/iskrasvjetlosti/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-full bg-primary-foreground/10 flex items-center justify-center text-primary-foreground/60 hover:text-primary hover:bg-primary-foreground/20 transition-colors"
+                aria-label="Instagram"
+              >
+                <Instagram size={16} />
+              </a>
+            </div>
           </div>
 
           <div>
-            <h4 className="font-heading text-base text-primary-foreground mb-4">Linkovi</h4>
+            <h4 className="font-heading text-base font-bold text-primary-foreground mb-4">Stranice</h4>
             <div className="flex flex-col gap-2">
               <a href="#about" className="text-sm text-primary-foreground/60 hover:text-primary transition-colors">O nama</a>
-              <a href="#workshops" className="text-sm text-primary-foreground/60 hover:text-primary transition-colors">Radionice</a>
               <a href="https://iskrasvjetlosti.hr/voditelji-radionica/" target="_blank" rel="noopener noreferrer" className="text-sm text-primary-foreground/60 hover:text-primary transition-colors">Voditelji radionica</a>
+              <a href="#workshops" className="text-sm text-primary-foreground/60 hover:text-primary transition-colors">Radionice</a>
+              <a href="https://iskrasvjetlosti.hr/josipove-stanice/" target="_blank" rel="noopener noreferrer" className="text-sm text-primary-foreground/60 hover:text-primary transition-colors">Josipove Stanice</a>
               <a href="https://iskrasvjetlosti.hr/blog/" target="_blank" rel="noopener noreferrer" className="text-sm text-primary-foreground/60 hover:text-primary transition-colors">Blog</a>
-              <a href="#testimonials" className="text-sm text-primary-foreground/60 hover:text-primary transition-colors">Volonteri</a>
               <a href="#donate" className="text-sm text-primary-foreground/60 hover:text-primary transition-colors">Doniraj</a>
             </div>
           </div>
 
           <div>
-            <h4 className="font-heading text-base text-primary-foreground mb-4">Kontakt</h4>
-            <p className="text-sm text-primary-foreground/60 leading-relaxed">
-              Split, Hrvatska<br />
-              <a href="https://iskrasvjetlosti.hr/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+            <h4 className="font-heading text-base font-bold text-primary-foreground mb-4">Kontakt</h4>
+            <div className="flex flex-col gap-3">
+              <a href="tel:0976653783" className="flex items-center gap-2 text-sm text-primary-foreground/60 hover:text-primary transition-colors">
+                <Phone size={14} />
+                097 6653 783
+              </a>
+              <a href="mailto:info@iskrasvjetlosti.hr" className="flex items-center gap-2 text-sm text-primary-foreground/60 hover:text-primary transition-colors">
+                <Mail size={14} />
+                info@iskrasvjetlosti.hr
+              </a>
+              <div className="flex items-start gap-2 text-sm text-primary-foreground/60">
+                <MapPin size={14} className="mt-0.5 shrink-0" />
+                <span>Put Iza Nove Bolnice 10c,<br />21000, Split</span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="font-heading text-base font-bold text-primary-foreground mb-4">Podaci</h4>
+            <div className="flex flex-col gap-2 text-sm text-primary-foreground/60">
+              <p><span className="text-primary-foreground/40">OIB:</span> 40118970568</p>
+              <p><span className="text-primary-foreground/40">IBAN:</span> HR5924070001100091899</p>
+              <a
+                href="https://iskrasvjetlosti.hr/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-primary transition-colors mt-1"
+              >
                 iskrasvjetlosti.hr
               </a>
-            </p>
+            </div>
           </div>
         </div>
 
