@@ -1,3 +1,5 @@
+import { Facebook } from "lucide-react";
+
 const LOGO_URL = "https://iskrasvjetlosti.hr/wp-content/uploads/2023/09/cropped-iskra-logo-1.png";
 
 const Footer = () => {
@@ -6,13 +8,22 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-10">
           <div>
-            <div className="flex items-center gap-2 mb-4">
+            <a href="https://iskrasvjetlosti.hr/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 mb-4">
               <img src={LOGO_URL} alt="Iskra Svjetlosti" className="h-8 w-8" />
               <span className="font-heading text-lg text-primary-foreground">Iskra Svjetlosti</span>
-            </div>
-            <p className="text-sm text-primary-foreground/60 leading-relaxed">
+            </a>
+            <p className="text-sm text-primary-foreground/60 leading-relaxed mb-4">
               Udruga za pomoć osobama s intelektualnim poteškoćama iz Splita.
             </p>
+            <a
+              href="https://www.facebook.com/Iskra.Svjetlosti.hr/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm text-primary-foreground/60 hover:text-primary transition-colors"
+            >
+              <Facebook size={18} />
+              Facebook
+            </a>
           </div>
 
           <div>
@@ -20,6 +31,8 @@ const Footer = () => {
             <div className="flex flex-col gap-2">
               <a href="#about" className="text-sm text-primary-foreground/60 hover:text-primary transition-colors">O nama</a>
               <a href="#workshops" className="text-sm text-primary-foreground/60 hover:text-primary transition-colors">Radionice</a>
+              <a href="https://iskrasvjetlosti.hr/voditelji-radionica/" target="_blank" rel="noopener noreferrer" className="text-sm text-primary-foreground/60 hover:text-primary transition-colors">Voditelji radionica</a>
+              <a href="https://iskrasvjetlosti.hr/blog/" target="_blank" rel="noopener noreferrer" className="text-sm text-primary-foreground/60 hover:text-primary transition-colors">Blog</a>
               <a href="#testimonials" className="text-sm text-primary-foreground/60 hover:text-primary transition-colors">Volonteri</a>
               <a href="#donate" className="text-sm text-primary-foreground/60 hover:text-primary transition-colors">Doniraj</a>
             </div>
