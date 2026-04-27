@@ -55,7 +55,7 @@ const workshops = [
 
 const WorkshopsSection = () => {
   return (
-    <section id="workshops" className="py-16 md:py-20 bg-background">
+    <section id="workshops" className="py-20 md:py-24 bg-soft">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 max-w-2xl mx-auto">
           <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-secondary mb-3">

@@ -6,7 +6,7 @@ const ABOUT_IMAGE = "https://iskrasvjetlosti.hr/wp-content/uploads/2024/05/IMG_1
 
 const AboutSection = () => {
   return (
-    <section id="about" className="py-16 md:py-24 bg-background relative overflow-hidden">
+    <section id="about" className="py-20 md:py-28 bg-background relative overflow-hidden">
       <div className="container mx-auto px-4 relative">
         <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Image with decorations */}
