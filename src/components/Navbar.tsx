@@ -1,114 +1,139 @@
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Menu, X, Heart } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import logoImg from "@/assets/iskra-logo.png";
-const LOGO_URL = logoImg;
 
 const navLinks = [
-  { label: "O nama", href: "#about", internal: false },
-  { label: "Radionice", href: "#workshops", internal: false },
-  { label: "Josipove Stanice", href: "/josipove-stanice", internal: true },
-  { label: "Blog", href: "/blog", internal: true },
-  { label: "Volonteri", href: "#testimonials", internal: false },
-  { label: "Kontakt", href: "#contact", internal: false },
+  { label: "O nama", href: "/#about", anchor: "about" },
+  { label: "Radionice", href: "/#workshops", anchor: "workshops" },
+  { label: "Josipove Stanice", href: "/josipove-stanice" },
+  { label: "Voditelji", href: "/voditelji-radionica" },
+  { label: "Blog", href: "/blog" },
+  { label: "Volonteri", href: "/#testimonials", anchor: "testimonials" },
+  { label: "Kontakt", href: "/#contact", anchor: "contact" },
 ];
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const handleNavClick = (link: typeof navLinks[0]) => {
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const handleClick = (link: typeof navLinks[0]) => (e: React.MouseEvent) => {
     setOpen(false);
-    if (link.internal) {
-      navigate(link.href);
-      window.scrollTo(0, 0);
+    if (link.anchor) {
+      e.preventDefault();
+      if (location.pathname !== "/") {
+        navigate("/");
+        setTimeout(() => {
+          document.getElementById(link.anchor!)?.scrollIntoView({ behavior: "smooth" });
+        }, 80);
+      } else {
+        document.getElementById(link.anchor)?.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
-      <div className="container mx-auto flex items-center justify-between py-3 px-4">
-        <Link to="/" className="flex items-center gap-2">
-          <img src={LOGO_URL} alt="Iskra Svjetlosti" className="h-10 w-10" />
-          <span className="font-heading text-xl font-bold text-foreground">Iskra Svjetlosti</span>
-        </Link>
-
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) =>
-            link.internal ? (
-              <Link
-                key={link.href}
-                to={link.href}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {link.label}
-              </Link>
-            ) : (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {link.label}
-              </a>
-            )
-          )}
-          <Link
-            to="/doniraj"
-            className="px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity shadow-sm"
-          >
-            Doniraj
+    <nav className="fixed top-0 left-0 right-0 z-50 px-3 pt-3 md:px-6 md:pt-4">
+      <div
+        className={`mx-auto max-w-7xl rounded-full transition-all duration-300 ${
+          scrolled
+            ? "bg-primary/95 backdrop-blur-md shadow-[0_8px_30px_-10px_hsl(215_70%_22%/0.35)]"
+            : "bg-primary/85 backdrop-blur"
+        }`}
+      >
+        <div className="flex items-center justify-between py-2.5 pl-3 pr-2 md:pl-5 md:pr-3">
+          <Link to="/" className="flex items-center gap-2.5 group">
+            <div className="bg-primary-foreground rounded-full p-1.5 shadow-sm">
+              <img src={logoImg} alt="Iskra Svjetlosti" className="h-7 w-7" />
+            </div>
+            <span className="font-heading text-base md:text-lg font-bold text-primary-foreground tracking-tight">
+              Iskra Svjetlosti
+            </span>
           </Link>
-        </div>
 
-        <button
-          className="md:hidden text-foreground"
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
-        >
-          {open ? <X size={24} /> : <Menu size={24} />}
-        </button>
+          <div className="hidden lg:flex items-center gap-1">
+            {navLinks.map((link) =>
+              link.anchor ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={handleClick(link)}
+                  className="px-3 py-2 text-sm font-medium text-primary-foreground/80 hover:text-primary-foreground rounded-full hover:bg-primary-foreground/10 transition-colors"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className="px-3 py-2 text-sm font-medium text-primary-foreground/80 hover:text-primary-foreground rounded-full hover:bg-primary-foreground/10 transition-colors"
+                >
+                  {link.label}
+                </Link>
+              )
+            )}
+          </div>
+
+          <div className="flex items-center gap-2">
+            <Link
+              to="/doniraj"
+              className="btn-donate px-5 py-2.5 text-sm relative"
+            >
+              <Heart size={16} className="fill-current" />
+              <span>Doniraj</span>
+            </Link>
+            <button
+              className="lg:hidden p-2 text-primary-foreground rounded-full hover:bg-primary-foreground/10"
+              onClick={() => setOpen(!open)}
+              aria-label="Toggle menu"
+            >
+              {open ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
+        </div>
       </div>
 
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="md:hidden overflow-hidden bg-background border-b border-border"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            className="lg:hidden mx-auto max-w-7xl mt-2 rounded-3xl bg-card border border-border shadow-xl overflow-hidden"
           >
-            <div className="flex flex-col gap-4 p-6">
+            <div className="flex flex-col p-4">
               {navLinks.map((link) =>
-                link.internal ? (
+                link.anchor ? (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={handleClick(link)}
+                    className="px-4 py-3 text-base font-medium text-foreground hover:bg-accent rounded-xl transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                ) : (
                   <Link
                     key={link.href}
                     to={link.href}
                     onClick={() => setOpen(false)}
-                    className="text-base font-medium text-muted-foreground hover:text-foreground"
+                    className="px-4 py-3 text-base font-medium text-foreground hover:bg-accent rounded-xl transition-colors"
                   >
                     {link.label}
                   </Link>
-                ) : (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setOpen(false)}
-                    className="text-base font-medium text-muted-foreground hover:text-foreground"
-                  >
-                    {link.label}
-                  </a>
                 )
               )}
-              <Link
-                to="/doniraj"
-                onClick={() => setOpen(false)}
-                className="px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm font-semibold text-center"
-              >
-                Doniraj
-              </Link>
             </div>
           </motion.div>
         )}

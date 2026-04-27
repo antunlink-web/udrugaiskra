@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ['Quicksand', 'sans-serif'],
+        heading: ['Fraunces', 'Georgia', 'serif'],
         body: ['Quicksand', 'sans-serif'],
       },
       colors: {
@@ -50,6 +50,11 @@ export default {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+        },
+        cta: {
+          DEFAULT: "hsl(var(--cta))",
+          foreground: "hsl(var(--cta-foreground))",
+          hover: "hsl(var(--cta-hover))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",

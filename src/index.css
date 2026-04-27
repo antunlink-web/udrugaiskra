@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,35 +6,44 @@
 
 @layer base {
   :root {
-    --background: 40 33% 98%;
-    --foreground: 220 20% 15%;
+    /* Light blue NGO palette inspired by SOS DSH / Red Cross LT */
+    --background: 205 60% 98%;
+    --foreground: 215 55% 16%;
 
-    --card: 40 25% 96%;
-    --card-foreground: 220 20% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 215 55% 16%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 15%;
+    --popover-foreground: 215 55% 16%;
 
-    --primary: 35 85% 52%;
-    --primary-foreground: 0 0% 100%;
+    /* Deep navy - primary brand color (used for nav, headings, key surfaces) */
+    --primary: 215 70% 22%;
+    --primary-foreground: 205 100% 98%;
 
-    --secondary: 150 25% 45%;
+    /* Sky blue - secondary accent */
+    --secondary: 200 85% 55%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 40 20% 93%;
-    --muted-foreground: 220 10% 45%;
+    --muted: 205 50% 95%;
+    --muted-foreground: 215 20% 42%;
 
-    --accent: 35 100% 95%;
-    --accent-foreground: 35 85% 35%;
+    /* Soft pale blue used for chips/feature backgrounds */
+    --accent: 200 80% 92%;
+    --accent-foreground: 215 70% 22%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Coral CTA — DONIRAJ button */
+    --cta: 6 85% 64%;
+    --cta-foreground: 0 0% 100%;
+    --cta-hover: 6 80% 58%;
 
-    --border: 35 20% 88%;
-    --input: 35 20% 88%;
-    --ring: 35 85% 52%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --radius: 0.75rem;
+    --border: 205 40% 88%;
+    --input: 205 40% 88%;
+    --ring: 200 85% 55%;
+
+    --radius: 1.25rem;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -45,35 +54,43 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
 
-    --font-heading: 'Quicksand', sans-serif;
+    --font-heading: 'Fraunces', Georgia, serif;
     --font-body: 'Quicksand', sans-serif;
 
-    --gradient-warm: linear-gradient(135deg, hsl(35 85% 52%), hsl(25 90% 55%));
-    --gradient-hero-overlay: linear-gradient(180deg, hsla(220 20% 10% / 0.55) 0%, hsla(220 20% 10% / 0.3) 100%);
-    --shadow-soft: 0 4px 24px -4px hsla(35 85% 52% / 0.15);
-    --shadow-card: 0 8px 32px -8px hsla(220 20% 15% / 0.08);
+    --gradient-sky: linear-gradient(180deg, hsl(205 80% 96%) 0%, hsl(205 60% 98%) 60%, hsl(0 0% 100%) 100%);
+    --gradient-ocean: linear-gradient(135deg, hsl(215 70% 22%), hsl(210 75% 35%) 60%, hsl(200 85% 55%));
+    --gradient-cta: linear-gradient(135deg, hsl(6 85% 64%), hsl(12 90% 60%));
+    --gradient-hero-overlay: linear-gradient(180deg, hsla(215 70% 18% / 0.55) 0%, hsla(215 70% 18% / 0.65) 100%);
+
+    --shadow-soft: 0 10px 40px -12px hsla(215 70% 22% / 0.18);
+    --shadow-card: 0 8px 32px -10px hsla(215 50% 30% / 0.12);
+    --shadow-cta: 0 12px 28px -8px hsla(6 85% 64% / 0.45);
+    --shadow-glow: 0 0 0 6px hsla(6 85% 64% / 0.15);
   }
 
   .dark {
-    --background: 220 20% 10%;
-    --foreground: 40 20% 95%;
-    --card: 220 18% 14%;
-    --card-foreground: 40 20% 95%;
-    --popover: 220 18% 14%;
-    --popover-foreground: 40 20% 95%;
-    --primary: 35 85% 52%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 150 25% 45%;
+    --background: 215 50% 8%;
+    --foreground: 205 50% 96%;
+    --card: 215 45% 12%;
+    --card-foreground: 205 50% 96%;
+    --popover: 215 45% 12%;
+    --popover-foreground: 205 50% 96%;
+    --primary: 200 85% 60%;
+    --primary-foreground: 215 70% 12%;
+    --secondary: 200 85% 55%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 220 15% 18%;
-    --muted-foreground: 220 10% 60%;
-    --accent: 35 40% 20%;
-    --accent-foreground: 35 85% 70%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 220 15% 22%;
-    --input: 220 15% 22%;
-    --ring: 35 85% 52%;
+    --muted: 215 35% 16%;
+    --muted-foreground: 205 25% 70%;
+    --accent: 215 45% 20%;
+    --accent-foreground: 200 85% 75%;
+    --cta: 6 85% 64%;
+    --cta-foreground: 0 0% 100%;
+    --cta-hover: 6 80% 58%;
+    --destructive: 0 62% 40%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 215 35% 20%;
+    --input: 215 35% 20%;
+    --ring: 200 85% 55%;
   }
 }
 
@@ -84,17 +101,61 @@
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
+    letter-spacing: -0.01em;
   }
 }
 
 @layer utilities {
-  .text-gradient-warm {
-    background: var(--gradient-warm);
+  .text-gradient-ocean {
+    background: var(--gradient-ocean);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+  .bg-sky-fade {
+    background: var(--gradient-sky);
+  }
+  .bg-ocean {
+    background: var(--gradient-ocean);
+  }
+
+  /* Donate CTA — pill, coral, glowing */
+  .btn-donate {
+    @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300;
+    background: var(--gradient-cta);
+    color: hsl(var(--cta-foreground));
+    box-shadow: var(--shadow-cta);
+  }
+  .btn-donate:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-cta), var(--shadow-glow);
+    filter: brightness(1.05);
+  }
+
+  .pulse-ring::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    box-shadow: 0 0 0 0 hsla(6 85% 64% / 0.6);
+    animation: pulse-ring 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse-ring {
+    0% { box-shadow: 0 0 0 0 hsla(6 85% 64% / 0.55); }
+    70% { box-shadow: 0 0 0 14px hsla(6 85% 64% / 0); }
+    100% { box-shadow: 0 0 0 0 hsla(6 85% 64% / 0); }
+  }
+
+  .blob-shape {
+    border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%;
+  }
+
+  .story-link {
+    @apply relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-secondary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left;
   }
 }

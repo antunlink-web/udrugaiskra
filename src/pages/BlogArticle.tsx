@@ -23,8 +23,8 @@ const BlogArticle = () => {
 
   return (
     <PageLayout>
-      <article className="py-20 md:py-28">
-        <div className="container mx-auto px-4">
+      <article className="bg-sky-fade pb-20">
+        <div className="container mx-auto px-4 pt-12 md:pt-20">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -33,14 +33,14 @@ const BlogArticle = () => {
           >
             <Link
               to="/blog"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline mb-8"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-secondary hover:text-primary transition-colors mb-8"
             >
               <ArrowLeft size={16} />
               Povratak na blog
             </Link>
 
             <div className="flex items-center gap-3 mb-6">
-              <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary bg-accent px-3 py-1 rounded-full">
+              <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-secondary bg-accent px-3 py-1 rounded-full">
                 <Tag size={12} />
                 {article.category}
               </span>
@@ -50,15 +50,15 @@ const BlogArticle = () => {
               </span>
             </div>
 
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-8 leading-tight">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-semibold text-primary mb-10 leading-[1.1]">
               {article.title}
             </h1>
 
-            <div className="prose prose-lg max-w-none">
+            <div className="bg-card rounded-[2rem] p-8 md:p-12 border border-border/60" style={{ boxShadow: "var(--shadow-card)" }}>
               {article.content.map((paragraph, i) => {
                 if (paragraph.startsWith("### ")) {
                   return (
-                    <h3 key={i} className="text-xl font-heading font-bold text-foreground mt-8 mb-4">
+                    <h3 key={i} className="text-xl md:text-2xl font-heading font-semibold text-primary mt-8 mb-4 first:mt-0">
                       {paragraph.replace("### ", "")}
                     </h3>
                   );
@@ -67,17 +67,17 @@ const BlogArticle = () => {
                   return (
                     <blockquote
                       key={i}
-                      className="border-l-4 border-primary pl-6 my-6 italic text-muted-foreground"
+                      className="border-l-4 border-secondary pl-6 my-6 italic text-primary/80 bg-accent/30 py-3 pr-4 rounded-r-xl"
                     >
                       {paragraph.replace("> ", "")}
                     </blockquote>
                   );
                 }
                 return (
-                  <p key={i} className="text-muted-foreground leading-relaxed mb-4 whitespace-pre-line">
+                  <p key={i} className="text-foreground/80 leading-relaxed mb-4 whitespace-pre-line">
                     {paragraph.split("**").map((part, j) =>
                       j % 2 === 1 ? (
-                        <strong key={j} className="text-foreground font-semibold">
+                        <strong key={j} className="text-primary font-semibold">
                           {part}
                         </strong>
                       ) : (
@@ -89,13 +89,16 @@ const BlogArticle = () => {
               })}
             </div>
 
-            <div className="border-t border-border mt-12 pt-8">
+            <div className="mt-12 flex flex-wrap gap-3">
               <Link
                 to="/blog"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-primary text-primary font-semibold text-sm hover:bg-primary hover:text-primary-foreground transition-colors"
               >
                 <ArrowLeft size={16} />
                 Svi članci
+              </Link>
+              <Link to="/doniraj" className="btn-donate px-6 py-3 text-sm">
+                Podržite nas
               </Link>
             </div>
           </motion.div>
