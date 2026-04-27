@@ -63,18 +63,18 @@ const AboutSection = () => {
                 <path d="M3 18 Q 7 14, 12 16" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
               </svg>
             </h2>
-            <div className="space-y-4 text-muted-foreground leading-relaxed text-[15px]">
+            <div className="space-y-5 text-muted-foreground leading-[1.85] text-[15px]">
               <p>
-                Od 2015. godine stvaramo sigurno, poticajno i uključivo okruženje za djecu
-                i mlade s teškoćama u razvoju i njihove obitelji.
+                Od 2015. godine stvaramo sigurno, poticajno i uključivo okruženje za
+                odrasle osobe s intelektualnim poteškoćama i njihove obitelji.
               </p>
               <p>
                 Kroz kreativne, edukativne i sportske aktivnosti gradimo vještine,
                 samopouzdanje i prijateljstva koja traju.
               </p>
-              <p>
-                Naš cilj je jednostavan — omogućiti svakom djetetu da zablista
-                svojim punim potencijalom.
+              <p className="text-primary font-bold text-base leading-relaxed">
+                Naš cilj je jednostavan — omogućiti svakom korisniku da razvije
+                svoj puni potencijal.
               </p>
             </div>
             <div className="flex flex-wrap gap-3 mt-8">
