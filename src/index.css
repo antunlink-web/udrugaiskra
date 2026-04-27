@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,44 +6,44 @@
 
 @layer base {
   :root {
-    /* Light blue NGO palette inspired by SOS DSH / Red Cross LT */
-    --background: 205 60% 98%;
-    --foreground: 215 55% 16%;
+    /* Light + bright blue NGO palette inspired by reference */
+    --background: 0 0% 100%;
+    --foreground: 220 40% 18%;
 
     --card: 0 0% 100%;
-    --card-foreground: 215 55% 16%;
+    --card-foreground: 220 40% 18%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 215 55% 16%;
+    --popover-foreground: 220 40% 18%;
 
-    /* Deep navy - primary brand color (used for nav, headings, key surfaces) */
-    --primary: 215 70% 22%;
-    --primary-foreground: 205 100% 98%;
+    /* Primary brand — vivid royal blue from reference */
+    --primary: 220 75% 32%;
+    --primary-foreground: 0 0% 100%;
 
-    /* Sky blue - secondary accent */
-    --secondary: 200 85% 55%;
+    /* Secondary — bright sky blue accent */
+    --secondary: 210 95% 55%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 205 50% 95%;
-    --muted-foreground: 215 20% 42%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 18% 45%;
 
-    /* Soft pale blue used for chips/feature backgrounds */
-    --accent: 200 80% 92%;
-    --accent-foreground: 215 70% 22%;
+    /* Soft pale blue chips/feature backgrounds */
+    --accent: 210 90% 95%;
+    --accent-foreground: 220 75% 32%;
 
-    /* Yellow CTA — DONIRAJ button (per reference) */
-    --cta: 42 100% 55%;
-    --cta-foreground: 215 70% 18%;
-    --cta-hover: 38 100% 50%;
+    /* CTA — warm coral/orange (matches reference button) */
+    --cta: 14 90% 60%;
+    --cta-foreground: 0 0% 100%;
+    --cta-hover: 14 95% 55%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 205 40% 88%;
-    --input: 205 40% 88%;
-    --ring: 200 85% 55%;
+    --border: 210 30% 90%;
+    --input: 210 30% 90%;
+    --ring: 210 95% 55%;
 
-    --radius: 1.25rem;
+    --radius: 1rem;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -54,43 +54,42 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
 
-    --font-heading: 'Fraunces', Georgia, serif;
-    --font-body: 'Quicksand', sans-serif;
+    --font-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
 
-    --gradient-sky: linear-gradient(180deg, hsl(205 80% 96%) 0%, hsl(205 60% 98%) 60%, hsl(0 0% 100%) 100%);
-    --gradient-ocean: linear-gradient(135deg, hsl(215 70% 22%), hsl(210 75% 35%) 60%, hsl(200 85% 55%));
-    --gradient-cta: linear-gradient(135deg, hsl(42 100% 58%), hsl(35 100% 52%));
-    --gradient-hero-overlay: linear-gradient(180deg, hsla(215 70% 18% / 0.55) 0%, hsla(215 70% 18% / 0.65) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(220 80% 30%) 0%, hsl(215 85% 42%) 50%, hsl(205 95% 55%) 100%);
+    --gradient-cta: linear-gradient(135deg, hsl(14 90% 62%), hsl(10 95% 55%));
+    --gradient-progress: linear-gradient(90deg, hsl(14 90% 60%), hsl(35 100% 60%));
 
-    --shadow-soft: 0 10px 40px -12px hsla(215 70% 22% / 0.18);
-    --shadow-card: 0 8px 32px -10px hsla(215 50% 30% / 0.12);
-    --shadow-cta: 0 14px 30px -8px hsla(38 100% 50% / 0.5);
-    --shadow-glow: 0 0 0 6px hsla(42 100% 58% / 0.18);
+    --shadow-soft: 0 12px 40px -12px hsla(220 50% 25% / 0.15);
+    --shadow-card: 0 8px 30px -10px hsla(220 40% 25% / 0.10);
+    --shadow-cta: 0 12px 30px -8px hsla(14 90% 55% / 0.45);
+    --shadow-float: 0 24px 60px -20px hsla(220 60% 25% / 0.25);
   }
 
   .dark {
-    --background: 215 50% 8%;
-    --foreground: 205 50% 96%;
-    --card: 215 45% 12%;
-    --card-foreground: 205 50% 96%;
-    --popover: 215 45% 12%;
-    --popover-foreground: 205 50% 96%;
-    --primary: 200 85% 60%;
-    --primary-foreground: 215 70% 12%;
-    --secondary: 200 85% 55%;
+    --background: 220 40% 8%;
+    --foreground: 210 40% 96%;
+    --card: 220 35% 12%;
+    --card-foreground: 210 40% 96%;
+    --popover: 220 35% 12%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 210 95% 60%;
+    --primary-foreground: 220 60% 10%;
+    --secondary: 210 95% 55%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 215 35% 16%;
-    --muted-foreground: 205 25% 70%;
-    --accent: 215 45% 20%;
-    --accent-foreground: 200 85% 75%;
-    --cta: 42 100% 60%;
-    --cta-foreground: 215 70% 12%;
-    --cta-hover: 38 100% 55%;
+    --muted: 220 30% 16%;
+    --muted-foreground: 210 25% 70%;
+    --accent: 220 35% 20%;
+    --accent-foreground: 210 95% 75%;
+    --cta: 14 90% 62%;
+    --cta-foreground: 0 0% 100%;
+    --cta-hover: 14 95% 55%;
     --destructive: 0 62% 40%;
     --destructive-foreground: 0 0% 100%;
-    --border: 215 35% 20%;
-    --input: 215 35% 20%;
-    --ring: 200 85% 55%;
+    --border: 220 30% 20%;
+    --input: 220 30% 20%;
+    --ring: 210 95% 55%;
   }
 }
 
@@ -105,25 +104,20 @@
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
+    font-weight: 800;
   }
 }
 
 @layer utilities {
-  .text-gradient-ocean {
-    background: var(--gradient-ocean);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .bg-hero-gradient {
+    background: var(--gradient-hero);
   }
-  .bg-sky-fade {
-    background: var(--gradient-sky);
-  }
-  .bg-ocean {
-    background: var(--gradient-ocean);
+  .bg-progress-gradient {
+    background: var(--gradient-progress);
   }
 
-  /* Donate CTA — pill, coral, glowing */
+  /* Donate CTA — orange, pill, glowing */
   .btn-donate {
     @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300;
     background: var(--gradient-cta);
@@ -131,24 +125,9 @@
     box-shadow: var(--shadow-cta);
   }
   .btn-donate:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-cta), var(--shadow-glow);
+    transform: translateY(-1px);
+    box-shadow: 0 16px 36px -8px hsla(14 90% 55% / 0.55);
     filter: brightness(1.05);
-  }
-
-  .pulse-ring::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 9999px;
-    box-shadow: 0 0 0 0 hsla(6 85% 64% / 0.6);
-    animation: pulse-ring 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
-
-  @keyframes pulse-ring {
-    0% { box-shadow: 0 0 0 0 hsla(42 100% 58% / 0.55); }
-    70% { box-shadow: 0 0 0 14px hsla(42 100% 58% / 0); }
-    100% { box-shadow: 0 0 0 0 hsla(42 100% 58% / 0); }
   }
 
   .blob-shape {
