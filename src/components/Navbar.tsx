@@ -45,18 +45,21 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 px-3 pt-3 md:px-6 md:pt-4">
       <div
-        className={`mx-auto max-w-7xl rounded-full transition-all duration-300 ${
-          scrolled
-            ? "bg-primary/95 backdrop-blur-md shadow-[0_8px_30px_-10px_hsl(215_70%_22%/0.35)]"
-            : "bg-primary/85 backdrop-blur"
+        className={`mx-auto max-w-7xl rounded-full bg-card transition-all duration-300 ${
+          scrolled ? "shadow-[0_10px_40px_-12px_rgba(20,40,80,0.18)]" : "shadow-[0_6px_20px_-10px_rgba(20,40,80,0.12)]"
         }`}
       >
-        <div className="flex items-center justify-between py-2.5 pl-3 pr-2 md:pl-5 md:pr-3">
+        <div className="flex items-center justify-between py-2 pl-3 pr-2 md:pl-5 md:pr-3">
           <Link to="/" className="flex items-center gap-2.5 group">
-            <img src={logoImg} alt="Iskra Svjetlosti" className="h-10 w-10 rounded-full" />
-            <span className="font-heading text-base md:text-lg font-bold text-primary-foreground tracking-tight">
-              Iskra Svjetlosti
-            </span>
+            <img src={logoImg} alt="Iskra Svjetlosti" className="h-11 w-11 rounded-full" />
+            <div className="leading-tight">
+              <div className="font-heading text-base md:text-[17px] font-extrabold text-primary tracking-tight">
+                Iskra Svjetlosti
+              </div>
+              <div className="text-[9px] md:text-[10px] uppercase tracking-[0.18em] text-muted-foreground font-semibold">
+                Udruga za djecu i mlade
+              </div>
+            </div>
           </Link>
 
           <div className="hidden lg:flex items-center gap-1">
@@ -66,7 +69,7 @@ const Navbar = () => {
                   key={link.href}
                   href={link.href}
                   onClick={handleClick(link)}
-                  className="px-3 py-2 text-sm font-medium text-primary-foreground/80 hover:text-primary-foreground rounded-full hover:bg-primary-foreground/10 transition-colors"
+                  className="px-3.5 py-2 text-sm font-semibold text-foreground/70 hover:text-primary rounded-full hover:bg-accent transition-colors"
                 >
                   {link.label}
                 </a>
@@ -74,7 +77,7 @@ const Navbar = () => {
                 <Link
                   key={link.href}
                   to={link.href}
-                  className="px-3 py-2 text-sm font-medium text-primary-foreground/80 hover:text-primary-foreground rounded-full hover:bg-primary-foreground/10 transition-colors"
+                  className="px-3.5 py-2 text-sm font-semibold text-foreground/70 hover:text-primary rounded-full hover:bg-accent transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -85,13 +88,13 @@ const Navbar = () => {
           <div className="flex items-center gap-2">
             <Link
               to="/doniraj"
-              className="btn-donate px-5 py-2.5 text-sm relative"
+              className="btn-donate px-5 py-2.5 text-sm"
             >
               <Heart size={16} className="fill-current" />
-              <span>Doniraj</span>
+              <span>Doniraj sada</span>
             </Link>
             <button
-              className="lg:hidden p-2 text-primary-foreground rounded-full hover:bg-primary-foreground/10"
+              className="lg:hidden p-2 text-primary rounded-full hover:bg-accent"
               onClick={() => setOpen(!open)}
               aria-label="Toggle menu"
             >
