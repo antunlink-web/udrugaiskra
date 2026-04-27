@@ -10,7 +10,7 @@ export interface Article {
 export const articles: Article[] = [
   {
     slug: "pismo-predsjednice-travanj-2024",
-    title: "Pismo predsjednice travanj 2024. godine",
+    title: "Kako pomažemo našim korisnicima – poruka predsjednice",
     date: "24.04.2024.",
     category: "Novosti",
     excerpt: "Dragi prijatelji Udruge Iskra Svjetlosti, donosimo kratki pregled događanja i aktivnosti naših sudionika i prenosimo dio atmosfere gdje smo sve bili prethodnih nekoliko tjedana.",
@@ -29,7 +29,7 @@ export const articles: Article[] = [
   },
   {
     slug: "5-smjernica-za-zivot-s-osobama-s-invaliditetom",
-    title: "5 Smjernica za život s osobama s invaliditetom",
+    title: "5 ključnih smjernica za život s osobama s invaliditetom",
     date: "24.04.2024.",
     category: "Stručni kutak",
     excerpt: "Živimo u vremenu koje sve više prepoznaje važnost inkluzije i podrške osobama s invaliditetom. Inkluzija se definira kao proces uključivanja svih članova društva.",
@@ -51,7 +51,7 @@ export const articles: Article[] = [
   },
   {
     slug: "kako-je-solta-dobila-svoj-osmijeh-natrag",
-    title: "Kako je Šolta dobila svoj osmijeh natrag",
+    title: "Šolta dobiva osmijeh natrag – priča o nadi i zajedništvu",
     date: "26.02.2024.",
     category: "Udruge Hrvatske",
     excerpt: "Na dalmatinskom otoku Šolti, udaljenom svega 45 minuta plovidbe trajektom od Splita, rodila se inicijativa koja je donijela novu nadu zajednici.",
@@ -68,7 +68,7 @@ export const articles: Article[] = [
   },
   {
     slug: "josipove-stanice-cross-print",
-    title: "Josipove stanice – Cross Print",
+    title: "Josipove stanice: priča iza brenda Cross Print",
     date: "10.10.2024.",
     category: "Poduzetnički kutak",
     excerpt: "Ova priča počinje prije više od 15 godina, a traje sve do danas. Potpuno drugačija, ali s pogledom u istom smjeru — prema pomaganju drugima.",
@@ -83,7 +83,7 @@ export const articles: Article[] = [
   },
   {
     slug: "iskustvo-mame-djecaka-s-poremecajem-iz-spektra-autizma",
-    title: "Iskustvo mame dječaka s poremećajem iz spektra autizma",
+    title: "Mama dječaka s autizmom: Kako prepoznati i prihvatiti",
     date: "10.10.2024.",
     category: "Roditeljski kutak",
     excerpt: "Kako se suočiti s činjenicom da imate dijete iz spektra autizma? Kako na vrijeme otkriti i utvrditi da nešto nije u redu?",
@@ -104,7 +104,7 @@ export const articles: Article[] = [
   },
   {
     slug: "rana-intervencija-kao-prevencija-intelektualne-poteskoce",
-    title: "Rana intervencija kao prevencija – intelektualne poteškoće",
+    title: "Rana intervencija: zašto je svaki dan važan",
     date: "10.10.2024.",
     category: "Stručni kutak",
     excerpt: "Kako prepoznati simptome koji upućuju na poteškoće u razvoju vašeg ili nečijeg djeteta? Što ako ne ide sve po planu?",
