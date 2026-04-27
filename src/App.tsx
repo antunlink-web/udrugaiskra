@@ -10,6 +10,7 @@ import VoditeljiRadionica from "./pages/VoditeljiRadionica.tsx";
 import BlogPage from "./pages/BlogPage.tsx";
 import BlogArticle from "./pages/BlogArticle.tsx";
 import Doniraj from "./pages/Doniraj.tsx";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +20,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/josipove-stanice" element={<JosipoveStanice />} />
