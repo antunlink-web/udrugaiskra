@@ -13,103 +13,105 @@ const DonateSection = () => {
   const progress = Math.min(100, (RAISED / GOAL) * 100);
 
   return (
-    <section id="donate" className="py-20 md:py-28 bg-background">
+    <section id="donate" className="py-12 md:py-16 bg-background">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="relative max-w-6xl mx-auto rounded-[2.5rem] overflow-hidden bg-ocean p-8 md:p-14 text-primary-foreground"
-          style={{ boxShadow: "var(--shadow-soft)" }}
+          className="relative max-w-7xl mx-auto rounded-3xl overflow-hidden bg-hero-gradient p-7 md:p-10 text-white"
+          style={{ boxShadow: "var(--shadow-float)" }}
         >
-          <div className="absolute -top-20 -left-20 w-72 h-72 bg-primary-foreground/10 blob-shape blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-cta/30 blob-shape blur-3xl pointer-events-none" />
+          {/* sparkle decorations */}
+          <svg className="absolute top-6 right-8 text-white/30" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z" fill="currentColor"/>
+          </svg>
 
-          <div className="relative grid md:grid-cols-2 gap-10 md:gap-14 items-center">
-            {/* Left: copy */}
-            <div>
-              <div className="w-16 h-16 rounded-2xl bg-cta flex items-center justify-center mb-6">
-                <Heart className="text-cta-foreground fill-cta-foreground" size={28} />
+          <div className="relative grid lg:grid-cols-[1fr_1.2fr] gap-8 items-center">
+            {/* Left: title + copy */}
+            <div className="flex items-start gap-4">
+              <div className="w-14 h-14 shrink-0 rounded-2xl bg-cta flex items-center justify-center">
+                <Heart className="text-white fill-white" size={24} />
               </div>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-semibold mb-5 leading-[1.1]">
-                Pomozite nam širiti svjetlost
-              </h2>
-              <p className="text-primary-foreground/85 leading-relaxed text-lg">
-                Vaša donacija omogućuje radionice, terapije i svakodnevnu podršku
-                osobama kojima je to najpotrebnije.
-              </p>
+              <div>
+                <h2 className="text-2xl md:text-[1.85rem] font-heading font-extrabold leading-tight mb-2">
+                  Pomozite nam širiti svjetlost
+                </h2>
+                <p className="text-white/80 text-sm leading-relaxed">
+                  Vaša donacija omogućuje radionice, terapije, izlete i posebne programe
+                  koji mijenjaju živote djece i mladih.
+                </p>
+              </div>
             </div>
 
-            {/* Right: progress + amounts */}
-            <div className="bg-primary-foreground/[0.07] backdrop-blur rounded-3xl p-6 md:p-8 border border-primary-foreground/15">
-              <div className="flex items-baseline justify-between mb-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-primary-foreground/70">
+            {/* Right: progress + amounts + CTA */}
+            <div>
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-white/70">
                   Cilj ovog mjeseca
                 </span>
-                <span className="text-sm font-semibold text-primary-foreground/80">
-                  {Math.round(progress)}%
-                </span>
               </div>
-              <p className="text-2xl md:text-3xl font-heading font-bold mb-3">
+              <p className="text-2xl md:text-3xl font-heading font-extrabold mb-3">
                 €{RAISED.toLocaleString("hr-HR")}{" "}
-                <span className="text-primary-foreground/50 text-lg font-normal">
+                <span className="text-white/50 text-xl font-bold">
                   / €{GOAL.toLocaleString("hr-HR")}
                 </span>
               </p>
-              <div className="h-3 rounded-full bg-primary-foreground/10 overflow-hidden mb-6">
+              <div className="h-2.5 rounded-full bg-white/15 overflow-hidden mb-5">
                 <motion.div
                   initial={{ width: 0 }}
                   whileInView={{ width: `${progress}%` }}
                   viewport={{ once: true }}
                   transition={{ duration: 1.4, ease: "easeOut" }}
-                  className="h-full rounded-full bg-gradient-to-r from-cta to-amber-400"
+                  className="h-full rounded-full bg-progress-gradient"
                 />
               </div>
 
-              <div className="grid grid-cols-5 gap-2 mb-5">
-                {PRESETS.map((v) => (
-                  <button
-                    key={v}
-                    onClick={() => {
-                      setAmount(v);
-                      setCustomAmount("");
+              <div className="flex flex-wrap items-center gap-3">
+                <div className="flex flex-wrap gap-2 flex-1">
+                  {PRESETS.map((v) => (
+                    <button
+                      key={v}
+                      onClick={() => {
+                        setAmount(v);
+                        setCustomAmount("");
+                      }}
+                      className={`px-4 py-2.5 rounded-xl text-sm font-bold transition-all min-w-[60px] ${
+                        amount === v
+                          ? "bg-cta text-white shadow-md"
+                          : "bg-white text-primary hover:bg-white/90"
+                      }`}
+                    >
+                      {v}€
+                    </button>
+                  ))}
+                  <input
+                    type="number"
+                    min={1}
+                    placeholder="Drugi iznos"
+                    value={customAmount}
+                    onChange={(e) => {
+                      setCustomAmount(e.target.value);
+                      setAmount("custom");
                     }}
-                    className={`py-3 rounded-xl text-sm font-semibold transition-all ${
-                      amount === v
-                        ? "bg-cta text-cta-foreground shadow-md"
-                        : "bg-primary-foreground/10 text-primary-foreground hover:bg-primary-foreground/20"
+                    className={`px-4 py-2.5 rounded-xl text-sm font-semibold w-32 outline-none transition-all ${
+                      amount === "custom"
+                        ? "bg-cta text-white placeholder:text-white/70"
+                        : "bg-white text-primary placeholder:text-primary/50"
                     }`}
-                  >
-                    €{v}
-                  </button>
-                ))}
-                <input
-                  type="number"
-                  min={1}
-                  placeholder="€"
-                  value={customAmount}
-                  onChange={(e) => {
-                    setCustomAmount(e.target.value);
-                    setAmount("custom");
-                  }}
-                  className={`py-3 rounded-xl text-sm font-semibold text-center transition-all outline-none ${
-                    amount === "custom"
-                      ? "bg-cta text-cta-foreground placeholder:text-cta-foreground/60"
-                      : "bg-primary-foreground/10 text-primary-foreground placeholder:text-primary-foreground/50"
-                  }`}
-                />
+                  />
+                </div>
+                <Link
+                  to="/doniraj"
+                  className="btn-donate px-6 py-3.5 text-sm whitespace-nowrap"
+                >
+                  <Heart size={16} className="fill-current" />
+                  Doniraj sada
+                </Link>
               </div>
 
-              <Link
-                to="/doniraj"
-                className="btn-donate w-full justify-center px-8 py-4 text-base"
-              >
-                <Heart size={18} className="fill-current" />
-                Doniraj sada
-              </Link>
-
-              <div className="flex items-center justify-center gap-2 mt-4 text-xs text-primary-foreground/60">
+              <div className="flex items-center gap-2 mt-4 text-xs text-white/65">
                 <ShieldCheck size={14} />
                 Sigurno plaćanje
               </div>
