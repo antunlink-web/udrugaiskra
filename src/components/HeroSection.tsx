@@ -32,9 +32,8 @@ const HeroSection = () => {
               transition={{ duration: 0.7 }}
               className="text-5xl md:text-6xl lg:text-7xl font-heading font-extrabold mb-6 leading-[1.02] tracking-tight"
             >
-              Topao dom za<br/>
-              svaku iskru<br/>
-              svjetlosti
+              Udruga<br/>
+              Iskra Svjetlosti
             </motion.h1>
 
             <motion.p
@@ -43,8 +42,7 @@ const HeroSection = () => {
               transition={{ duration: 0.7, delay: 0.15 }}
               className="text-base md:text-lg text-white/85 max-w-xl mb-9 leading-relaxed"
             >
-              Pružamo podršku djeci i mladima s teškoćama u razvoju kroz radionice,
-              druženja i aktivnosti koje potiču razvoj, samopouzdanje i osjećaj pripadnosti.
+              Kreativne radionice namijenjene odraslim osobama s intelektualnim poteškoćama.
             </motion.p>
 
             <motion.div
