@@ -26,9 +26,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-10 mb-12">
           <div className="md:col-span-1">
             <Link to="/" className="flex items-center gap-2.5 mb-5">
-              <div className="bg-primary-foreground rounded-full p-1.5">
-                <img src={logoImg} alt="Iskra Svjetlosti" className="h-7 w-7" />
-              </div>
+              <img src={logoImg} alt="Iskra Svjetlosti" className="h-10 w-10 rounded-full" />
               <span className="font-heading text-lg font-bold text-primary-foreground">Iskra Svjetlosti</span>
             </Link>
             <p className="text-sm text-primary-foreground/70 leading-relaxed mb-5">
