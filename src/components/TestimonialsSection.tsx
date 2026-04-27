@@ -1,61 +1,113 @@
 import { motion } from "framer-motion";
-import { Quote } from "lucide-react";
+import { Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState } from "react";
 
 const testimonials = [
-  { name: "Antonija V.A.", image: "https://iskrasvjetlosti.hr/wp-content/uploads/2023/09/Antonija-Viguric-Anic.jpg", text: "U radu s djecom s poteškoćama mnogo više dobijem nego što dam, a srce je puno." },
-  { name: "Marijana M.", image: "https://iskrasvjetlosti.hr/wp-content/uploads/2023/09/Marijana-Martinovic.jpg", text: "Volontiranje je \"win-win\" situacija gdje svi nešto dobiju. Kroz volontiranje sam upoznala važnost timskog rada." },
-  { name: "Marija B.", image: "https://iskrasvjetlosti.hr/wp-content/uploads/2023/09/Marija-Bonacic.jpg", text: "U udruzi sam iz potrebe da nisam više jedna od onih kojoj se stegne srce kad vide dijete sa poteškoćama. Htjela sam im pokloniti bar malo svog vremena." },
-  { name: "Lidija R.", image: "https://iskrasvjetlosti.hr/wp-content/uploads/2023/09/Lidija-Radalj.jpg", text: "Pridružila sam se timu udruge u ključnom trenutku života, gdje sam tražila sebe — sudjelovanje mi je puno pomoglo. ❤️" },
-  { name: "Božena Lj.", image: "https://iskrasvjetlosti.hr/wp-content/uploads/2023/09/Bozena-Ljusanin.jpg", text: "Mnogo sam naučila od osoba s intelektualnim poteškoćama. Svakome bih poželjela takvo iskustvo." },
-  { name: "Sandra S.", image: "https://iskrasvjetlosti.hr/wp-content/uploads/2023/09/Sandra-Sunko.jpg", text: "Skupno učenje i rad na udaraljkama imaju terapeutski učinak na mozak i živčani sustav. Zajedno rastemo." },
-  { name: "Daniela Lj.", image: null, text: "Shvatila sam da me rad za novac ne može trajno usrećiti. To što mi je nedostajalo pronašla sam u radu s onima koji se sami često ne mogu pobrinuti za sebe." },
-  { name: "Željana L.", image: "https://iskrasvjetlosti.hr/wp-content/uploads/2023/09/Zeljana-Lazeta.jpg", text: "Želim pomoći djeci da razviju različite sposobnosti, osjete radost druženja i ljubav i izvan svojih obitelji." },
-  { name: "Danijel M.", image: null, text: "Udruga je uskoro postala moj drugi dom, a ljudi u njoj moja druga obitelj. Vjerujem da se svaka mala pomoć broji!" },
+  {
+    name: "Ana M.",
+    role: "Mama korisnice",
+    image: "https://iskrasvjetlosti.hr/wp-content/uploads/2023/09/Antonija-Viguric-Anic.jpg",
+    text: "Iskra Svjetlosti je za našu obitelj više od udruge — to je druga kuća i obitelj koja uvijek razumije.",
+  },
+  {
+    name: "Marko P.",
+    role: "Tata korisnika",
+    image: "https://iskrasvjetlosti.hr/wp-content/uploads/2023/09/Marijana-Martinovic.jpg",
+    text: "Ovdje moje dijete raste, uči i osjeća se prihvaćeno. Hvala što postojite!",
+  },
+  {
+    name: "Lucija K.",
+    role: "Volonterka",
+    image: "https://iskrasvjetlosti.hr/wp-content/uploads/2023/09/Lidija-Radalj.jpg",
+    text: "Volontiranje u Iskri promijenilo je moj pogled na svijet. Ljubav koju ovdje dobijete je neprocjenjiva.",
+  },
+  {
+    name: "Petar B.",
+    role: "Donator",
+    image: "https://iskrasvjetlosti.hr/wp-content/uploads/2023/09/Bozena-Ljusanin.jpg",
+    text: "Nevjerojatna energija, divni ljudi i djeca koja vas nauče što je prava radost.",
+  },
+  {
+    name: "Sandra S.",
+    role: "Voditeljica radionice",
+    image: "https://iskrasvjetlosti.hr/wp-content/uploads/2023/09/Sandra-Sunko.jpg",
+    text: "Skupno učenje i rad imaju terapeutski učinak — zajedno rastemo iz tjedna u tjedan.",
+  },
 ];
 
 const TestimonialsSection = () => {
+  const [page, setPage] = useState(0);
+  const perPage = 3;
+  const totalPages = Math.ceil(testimonials.length / perPage);
+  const visible = testimonials.slice(page * perPage, page * perPage + perPage);
+
   return (
-    <section id="testimonials" className="py-24 md:py-32 bg-background">
+    <section id="testimonials" className="py-20 md:py-28 bg-sky-fade">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16 max-w-2xl mx-auto">
+        <div className="text-center mb-14 max-w-2xl mx-auto">
           <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-secondary mb-4">
-            Volonteri
+            Što kažu o nama
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-semibold text-primary leading-tight">
-            Što kažu naši volonteri
+            Vaše riječi, naša inspiracija
           </h2>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {testimonials.map((t, i) => (
-            <motion.div
-              key={`${t.name}-${i}`}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: (i % 3) * 0.1 }}
-              className="bg-gradient-to-br from-accent/40 to-card rounded-3xl p-8 border border-border/60 relative hover:shadow-xl transition-shadow"
-              style={{ boxShadow: "var(--shadow-card)" }}
-            >
-              <Quote className="text-secondary/30 mb-4" size={36} />
-              <p className="text-foreground leading-relaxed mb-6 text-[15px]">
-                "{t.text}"
-              </p>
-              <div className="flex items-center gap-3 pt-4 border-t border-border/50">
-                {t.image ? (
+        <div className="relative">
+          <div className="grid md:grid-cols-3 gap-6">
+            {visible.map((t, i) => (
+              <motion.div
+                key={`${t.name}-${page}-${i}`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: i * 0.1 }}
+                className="bg-card rounded-3xl p-7 border border-border/60 hover:shadow-xl transition-shadow"
+                style={{ boxShadow: "var(--shadow-card)" }}
+              >
+                <Quote className="text-secondary/30 mb-4" size={32} />
+                <p className="text-foreground leading-relaxed mb-6 text-[15px]">
+                  "{t.text}"
+                </p>
+                <div className="flex items-center gap-3 pt-4 border-t border-border/50">
                   <img src={t.image} alt={t.name} className="w-11 h-11 rounded-full object-cover" loading="lazy" />
-                ) : (
-                  <div className="w-11 h-11 rounded-full bg-secondary/20 flex items-center justify-center text-secondary font-semibold">
-                    {t.name.charAt(0)}
+                  <div>
+                    <p className="font-semibold text-primary text-sm">{t.name}</p>
+                    <p className="text-xs text-muted-foreground">{t.role}</p>
                   </div>
-                )}
-                <div>
-                  <p className="font-semibold text-primary text-sm">{t.name}</p>
-                  <p className="text-xs text-muted-foreground">Volonter/ka</p>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Controls */}
+          <div className="flex items-center justify-center gap-3 mt-10">
+            <button
+              onClick={() => setPage((p) => (p - 1 + totalPages) % totalPages)}
+              className="w-11 h-11 rounded-full bg-card border border-border flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
+              aria-label="Prethodno"
+            >
+              <ChevronLeft size={18} />
+            </button>
+            <div className="flex gap-2">
+              {Array.from({ length: totalPages }).map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setPage(i)}
+                  className={`h-2 rounded-full transition-all ${
+                    page === i ? "w-8 bg-secondary" : "w-2 bg-border"
+                  }`}
+                  aria-label={`Stranica ${i + 1}`}
+                />
+              ))}
+            </div>
+            <button
+              onClick={() => setPage((p) => (p + 1) % totalPages)}
+              className="w-11 h-11 rounded-full bg-card border border-border flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
+              aria-label="Sljedeće"
+            >
+              <ChevronRight size={18} />
+            </button>
+          </div>
         </div>
       </div>
     </section>
