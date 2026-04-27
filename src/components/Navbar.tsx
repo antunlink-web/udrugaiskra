@@ -54,9 +54,7 @@ const Navbar = () => {
       >
         <div className="flex items-center justify-between py-2.5 pl-3 pr-2 md:pl-5 md:pr-3">
           <Link to="/" className="flex items-center gap-2.5 group">
-            <div className="bg-primary-foreground rounded-full p-1.5 shadow-sm">
-              <img src={logoImg} alt="Iskra Svjetlosti" className="h-7 w-7" />
-            </div>
+            <img src={logoImg} alt="Iskra Svjetlosti" className="h-10 w-10 rounded-full" />
             <span className="font-heading text-base md:text-lg font-bold text-primary-foreground tracking-tight">
               Iskra Svjetlosti
             </span>
