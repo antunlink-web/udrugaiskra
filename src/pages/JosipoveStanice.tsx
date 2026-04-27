@@ -49,23 +49,21 @@ const JosipoveStanice = () => {
   return (
     <PageLayout>
       {/* Hero */}
-      <section className="py-20 md:py-28 bg-muted/50">
-        <div className="container mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-          >
-            <span className="text-sm font-semibold uppercase tracking-widest text-primary mb-3 block">
+      <section className="bg-sky-fade py-20 md:py-28 relative overflow-hidden">
+        <div className="absolute -top-20 -right-20 w-96 h-96 bg-secondary/15 blob-shape blur-3xl pointer-events-none" />
+        <div className="container mx-auto px-4 text-center relative">
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+            <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-secondary mb-4">
               Josipove Stanice
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-semibold text-primary mb-6 leading-tight">
               Projekt koji povezuje zajednicu
             </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-              Josipove Stanice su projekt u kojem tvrtke, roditelji i udruge zajedno grade bolji svijet za osobe s intelektualnim poteškoćama.
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10">
+              Tvrtke, roditelji i udruge zajedno gradimo bolji svijet za osobe s intelektualnim
+              poteškoćama.
             </p>
-            <div className="aspect-video max-w-3xl mx-auto rounded-2xl overflow-hidden border border-border/50" style={{ boxShadow: "var(--shadow-card)" }}>
+            <div className="aspect-video max-w-3xl mx-auto rounded-[2rem] overflow-hidden border border-border/60" style={{ boxShadow: "var(--shadow-soft)" }}>
               <iframe
                 src="https://www.youtube.com/embed/RAg-YKtqWM4"
                 title="Josipove Stanice - Infografika"
@@ -81,7 +79,12 @@ const JosipoveStanice = () => {
       {/* Features */}
       <section className="py-20 md:py-28 bg-background">
         <div className="container mx-auto px-4">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <h2 className="text-3xl md:text-4xl font-heading font-semibold text-primary leading-tight">
+              Kako radimo zajedno
+            </h2>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((feature, i) => (
               <motion.div
                 key={feature.title}
@@ -89,13 +92,14 @@ const JosipoveStanice = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-card rounded-2xl p-8 border border-border/50"
+                whileHover={{ y: -4 }}
+                className="bg-card rounded-3xl p-8 border border-border/60 transition-shadow hover:shadow-xl"
                 style={{ boxShadow: "var(--shadow-card)" }}
               >
-                <div className="w-12 h-12 rounded-full bg-accent flex items-center justify-center mb-4">
-                  <feature.icon className="text-primary" size={22} />
+                <div className="w-14 h-14 rounded-2xl bg-accent flex items-center justify-center mb-5">
+                  <feature.icon className="text-secondary" size={24} />
                 </div>
-                <h3 className="font-heading font-bold text-lg text-foreground mb-2">{feature.title}</h3>
+                <h3 className="font-heading font-semibold text-xl text-primary mb-2">{feature.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
               </motion.div>
             ))}
@@ -104,11 +108,11 @@ const JosipoveStanice = () => {
       </section>
 
       {/* Sponsors */}
-      <section className="py-20 md:py-28 bg-muted/50">
+      <section className="py-20 md:py-28 bg-sky-fade">
         <div className="container mx-auto px-4">
           <div className="text-center mb-14">
-            <span className="text-sm font-semibold uppercase tracking-widest text-primary mb-3 block">Partneri</span>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground">
+            <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-secondary mb-4">Partneri</span>
+            <h2 className="text-3xl md:text-4xl font-heading font-semibold text-primary leading-tight">
               Tvrtke koje podržavaju projekt
             </h2>
           </div>
@@ -120,13 +124,13 @@ const JosipoveStanice = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="bg-card rounded-2xl p-6 border border-border/50 text-center"
+                className="bg-card rounded-3xl p-6 border border-border/60 text-center"
                 style={{ boxShadow: "var(--shadow-card)" }}
               >
-                <h3 className="font-heading font-bold text-foreground mb-1">{sponsor.name}</h3>
+                <h3 className="font-heading font-semibold text-primary mb-1">{sponsor.name}</h3>
                 <p className="text-xs text-muted-foreground">{sponsor.address}</p>
                 {sponsor.phone && (
-                  <a href={`tel:${sponsor.phone.replace(/\s/g, "")}`} className="text-xs text-primary hover:underline mt-1 block">
+                  <a href={`tel:${sponsor.phone.replace(/\s/g, "")}`} className="text-xs text-secondary hover:underline mt-2 inline-block">
                     {sponsor.phone}
                   </a>
                 )}
@@ -138,23 +142,25 @@ const JosipoveStanice = () => {
 
       {/* CTA */}
       <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 text-center">
+        <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            className="max-w-3xl mx-auto text-center bg-ocean rounded-[2rem] p-10 md:p-14 text-primary-foreground relative overflow-hidden"
+            style={{ boxShadow: "var(--shadow-soft)" }}
           >
-            <h2 className="text-3xl font-heading font-bold text-foreground mb-4">Želite podržati projekt?</h2>
-            <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-              Pridružite se kao sponzor, roditelj ili volonter i pomozite nam širiti priče koje mijenjaju živote.
-            </p>
-            <Link
-              to="/doniraj"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-opacity shadow-lg"
-            >
-              <Heart size={18} />
-              Podržite nas
-            </Link>
+            <div className="absolute -top-20 -right-20 w-64 h-64 bg-cta/20 blob-shape blur-3xl" />
+            <div className="relative">
+              <h2 className="text-3xl md:text-4xl font-heading font-semibold mb-4">Želite podržati projekt?</h2>
+              <p className="text-primary-foreground/80 mb-8 max-w-lg mx-auto">
+                Pridružite se kao sponzor, roditelj ili volonter i pomozite nam širiti priče koje mijenjaju živote.
+              </p>
+              <Link to="/doniraj" className="btn-donate px-8 py-4">
+                <Heart size={18} className="fill-current" />
+                Podržite nas
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>
