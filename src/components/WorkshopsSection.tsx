@@ -7,6 +7,7 @@ const workshops = [
     icon: Palette,
     title: "Slikanje",
     desc: "Kreativno izražavanje bez granica",
+    benefit: "Razvija kreativnost",
     image: "https://iskrasvjetlosti.hr/wp-content/uploads/2024/05/IMG_1699-scaled-e1714727578689.jpg",
     color: "bg-secondary",
   },
@@ -14,13 +15,15 @@ const workshops = [
     icon: Music,
     title: "Glazbena terapija",
     desc: "Zvuk koji smiruje i povezuje",
+    benefit: "Potiče izražavanje",
     image: "https://iskrasvjetlosti.hr/wp-content/uploads/2024/05/IMG_1742-1-scaled-e1716298283435.jpg",
     color: "bg-primary",
   },
   {
     icon: Puzzle,
     title: "Strateške igre",
-    desc: "Razvijamo fokus i logičko mišljenje",
+    desc: "Razvijamo fokus i logiku",
+    benefit: "Razvija logiku",
     image: "https://iskrasvjetlosti.hr/wp-content/uploads/2024/05/IMG_1699-scaled-e1714727578689.jpg",
     color: "bg-secondary",
   },
@@ -28,20 +31,23 @@ const workshops = [
     icon: Drum,
     title: "Samba grupa",
     desc: "Ritam, energija i zajedništvo",
+    benefit: "Razvija ritam i energiju",
     image: "https://iskrasvjetlosti.hr/wp-content/uploads/2024/05/IMG_1742-1-scaled-e1716298283435.jpg",
     color: "bg-cta",
   },
   {
     icon: Drama,
     title: "Drama & Sport",
-    desc: "Kretanje, gluma i igra za samopouzdanje",
+    desc: "Kretanje, gluma i igra",
+    benefit: "Jača samopouzdanje",
     image: "https://iskrasvjetlosti.hr/wp-content/uploads/2024/05/IMG_1699-scaled-e1714727578689.jpg",
     color: "bg-cta",
   },
   {
     icon: Heart,
     title: "Druženja",
-    desc: "Prijateljstva koja traju cijeli život",
+    desc: "Zajedništvo i povezanost",
+    benefit: "Gradi prijateljstva",
     image: "https://iskrasvjetlosti.hr/wp-content/uploads/2024/05/IMG_1742-1-scaled-e1716298283435.jpg",
     color: "bg-primary",
   },
@@ -75,24 +81,24 @@ const WorkshopsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.05 }}
-              whileHover={{ y: -6 }}
-              className="group bg-card rounded-2xl overflow-hidden transition-all duration-300"
+              whileHover={{ y: -8 }}
+              className="group bg-card rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl"
               style={{ boxShadow: "var(--shadow-card)" }}
             >
               <div className="relative aspect-square overflow-hidden bg-accent">
                 <img
                   src={w.image}
                   alt={w.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   loading="lazy"
                 />
-                <div className={`absolute -bottom-5 left-1/2 -translate-x-1/2 w-11 h-11 rounded-full ${w.color} border-4 border-card flex items-center justify-center shadow-md`}>
+                <div className={`absolute -bottom-5 left-1/2 -translate-x-1/2 w-11 h-11 rounded-full ${w.color} border-4 border-card flex items-center justify-center shadow-lg`}>
                   <w.icon className="text-white" size={18} />
                 </div>
               </div>
               <div className="pt-7 pb-5 px-3 text-center">
                 <h3 className="font-heading text-sm font-bold text-primary mb-1">{w.title}</h3>
-                <p className="text-[11px] text-muted-foreground leading-snug">{w.desc}</p>
+                <p className="text-[11px] text-secondary font-semibold leading-snug">{w.benefit}</p>
               </div>
             </motion.div>
           ))}
