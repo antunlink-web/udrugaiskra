@@ -42,14 +42,17 @@ const TestimonialsSection = () => {
   const visible = testimonials.slice(page * perPage, page * perPage + perPage);
 
   return (
-    <section id="testimonials" className="py-20 md:py-28 bg-sky-fade">
+    <section id="testimonials" className="py-16 md:py-20 bg-accent/40">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-14 max-w-2xl mx-auto">
-          <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-secondary mb-4">
-            Što kažu o nama
+        <div className="text-center mb-12 max-w-2xl mx-auto">
+          <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-secondary mb-3">
+            <span className="w-6 h-px bg-secondary" /> Što kažu o nama <span className="w-6 h-px bg-secondary" />
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-semibold text-primary leading-tight">
+          <h2 className="text-3xl md:text-4xl lg:text-[2.5rem] font-heading font-extrabold text-primary leading-tight relative inline-block">
             Vaše riječi, naša inspiracija
+            <svg className="absolute -right-12 -top-2 text-cta hidden md:block" width="36" height="36" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z" fill="currentColor"/>
+            </svg>
           </h2>
         </div>
 
