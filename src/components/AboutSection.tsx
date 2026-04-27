@@ -1,17 +1,15 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Play } from "lucide-react";
 
 const ABOUT_IMAGE = "https://iskrasvjetlosti.hr/wp-content/uploads/2024/05/IMG_1699-scaled-e1714727578689.jpg";
 
 const AboutSection = () => {
   return (
-    <section id="about" className="py-20 md:py-28 bg-background relative overflow-hidden">
-      <div className="absolute -top-32 -right-32 w-96 h-96 bg-accent blob-shape blur-3xl opacity-60 pointer-events-none" />
-
+    <section id="about" className="py-16 md:py-24 bg-background relative overflow-hidden">
       <div className="container mx-auto px-4 relative">
-        <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Image */}
+        <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Image with decorations */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -19,19 +17,32 @@ const AboutSection = () => {
             transition={{ duration: 0.7 }}
             className="relative"
           >
-            <img
-              src={ABOUT_IMAGE}
-              alt="Članovi udruge Iskra Svjetlosti"
-              className="rounded-[2rem] shadow-xl w-full object-cover aspect-[4/5]"
-              loading="lazy"
-            />
-            <div className="absolute -top-6 -left-6 bg-secondary text-secondary-foreground rounded-2xl px-4 py-3 shadow-lg flex items-center gap-2">
-              <Sparkles size={18} />
-              <span className="font-heading font-bold">Od 2005.</span>
+            {/* Yellow blob top-left */}
+            <div className="absolute -top-6 -left-6 w-20 h-20 rounded-full bg-cta z-0" />
+            {/* Blue dots pattern bottom-left */}
+            <div className="absolute -bottom-4 left-2 grid grid-cols-6 gap-1.5 z-0">
+              {Array.from({ length: 24 }).map((_, i) => (
+                <div key={i} className="w-1.5 h-1.5 rounded-full bg-secondary/40" />
+              ))}
             </div>
-            <div className="absolute -bottom-6 -right-6 bg-cta text-cta-foreground rounded-2xl px-5 py-4 shadow-xl">
-              <p className="text-2xl font-heading font-bold leading-none">19+</p>
-              <p className="text-xs font-medium mt-1">godina zajedno</p>
+
+            <div className="relative z-10">
+              <img
+                src={ABOUT_IMAGE}
+                alt="Članovi udruge Iskra Svjetlosti"
+                className="rounded-3xl shadow-xl w-full object-cover aspect-[5/4]"
+                loading="lazy"
+              />
+              {/* Video play badge */}
+              <div className="absolute -bottom-6 right-6 bg-card rounded-2xl px-4 py-3 shadow-xl flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+                  <Play className="text-white fill-white ml-0.5" size={16} />
+                </div>
+                <div className="leading-tight">
+                  <p className="text-xs font-bold text-primary">Pogledaj našu priču</p>
+                  <p className="text-[10px] text-muted-foreground">2:45 min</p>
+                </div>
+              </div>
             </div>
           </motion.div>
 
@@ -42,24 +53,28 @@ const AboutSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-secondary mb-4">
-              O nama
+            <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-secondary mb-4">
+              <span className="w-6 h-px bg-secondary" /> O nama
             </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-semibold text-primary mb-6 leading-[1.1]">
-              Bok! Mi smo Iskra Svjetlosti iz Splita.
+            <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-heading font-extrabold text-primary mb-6 leading-[1.1] relative inline-block">
+              Mi smo Iskra Svjetlosti<br/>iz Splita.
+              <svg className="absolute -right-10 top-2 text-cta" width="36" height="36" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12 Q 9 6, 14 10 T 22 8" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
+                <path d="M3 18 Q 7 14, 12 16" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
+              </svg>
             </h2>
-            <div className="space-y-4 text-muted-foreground leading-relaxed text-[17px]">
+            <div className="space-y-4 text-muted-foreground leading-relaxed text-[15px]">
               <p>
-                Okupili smo zajednicu u kojoj osobe s intelektualnim poteškoćama mogu
-                <span className="text-primary font-semibold"> rasti, učiti i osjećati se prihvaćeno</span>.
+                Od 2015. godine stvaramo sigurno, poticajno i uključivo okruženje za djecu
+                i mlade s teškoćama u razvoju i njihove obitelji.
               </p>
               <p>
-                Kroz kreativne, edukativne i društvene radionice razvijamo vještine,
-                potičemo samostalnost i gradimo prijateljstva koja traju.
+                Kroz kreativne, edukativne i sportske aktivnosti gradimo vještine,
+                samopouzdanje i prijateljstva koja traju.
               </p>
               <p>
-                Naš cilj je jednostavan — omogućiti svakom korisniku da
-                <span className="text-primary font-semibold"> razvije svoj puni potencijal</span>.
+                Naš cilj je jednostavan — omogućiti svakom djetetu da zablista
+                svojim punim potencijalom.
               </p>
             </div>
             <div className="flex flex-wrap gap-3 mt-8">
@@ -70,7 +85,10 @@ const AboutSection = () => {
                 Saznaj više o nama
                 <ArrowRight size={16} />
               </Link>
-              <Link to="/doniraj" className="btn-donate px-6 py-3 text-sm">
+              <Link
+                to="/doniraj"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-card border-2 border-primary text-primary font-semibold text-sm hover:bg-accent transition-colors"
+              >
                 Uključi se
               </Link>
             </div>
