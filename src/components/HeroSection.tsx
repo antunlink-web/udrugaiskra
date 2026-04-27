@@ -40,19 +40,23 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.15 }}
-              className="text-base md:text-lg text-white/85 max-w-xl mb-9 leading-relaxed"
+              className="text-base md:text-lg text-white/90 max-w-xl mb-9 leading-relaxed"
             >
-              Kreativne radionice namijenjene odraslim osobama s intelektualnim poteškoćama.
+              Pomažemo odraslim osobama s intelektualnim poteškoćama da razviju
+              samopouzdanje, vještine i osjećaj pripadnosti.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-3"
+              className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center"
             >
-              <Link to="/doniraj" className="btn-donate px-7 py-4 text-base">
-                <Heart size={18} className="fill-current" />
+              <Link
+                to="/doniraj"
+                className="btn-donate px-9 py-[1.15rem] text-lg hover:scale-[1.03] transition-transform"
+              >
+                <Heart size={20} className="fill-current" />
                 Doniraj sada
               </Link>
               <a
@@ -68,12 +72,23 @@ const HeroSection = () => {
               </a>
             </motion.div>
 
+            {/* Micro trust line */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.7, delay: 0.4 }}
+              className="text-sm text-white/85 mt-4 flex items-center gap-1.5"
+            >
+              <Heart size={13} className="fill-cta text-cta" />
+              Pridružite se <span className="font-semibold text-white">105+ donatora</span> koji već pomažu
+            </motion.p>
+
             {/* Trust row */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.45 }}
-              className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-8 text-sm text-white/80"
+              className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-6 text-sm text-white/80"
             >
               <div className="flex items-center gap-2">
                 <div className="flex -space-x-2">
@@ -81,7 +96,7 @@ const HeroSection = () => {
                     <div key={i} className="w-7 h-7 rounded-full bg-secondary border-2 border-primary" />
                   ))}
                 </div>
-                <span className="font-semibold text-white">700+ donatora</span>
+                <span className="font-semibold text-white">105+ donatora</span>
               </div>
               <span className="w-1 h-1 rounded-full bg-white/40" />
               <span>Split</span>
@@ -101,9 +116,11 @@ const HeroSection = () => {
               <img
                 src={HERO_BG}
                 alt="Članovi udruge Iskra Svjetlosti"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-center"
+                style={{ objectPosition: "center 30%" }}
               />
-              <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-primary/20" />
+              {/* Left-to-right gradient for readability */}
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/50 via-primary/10 to-transparent" />
             </div>
             {/* decorative star */}
             <svg className="absolute -bottom-6 -left-6 text-secondary" width="64" height="64" viewBox="0 0 24 24" fill="none">

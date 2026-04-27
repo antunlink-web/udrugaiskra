@@ -1,19 +1,30 @@
 import { motion } from "framer-motion";
-import { Heart, ShieldCheck } from "lucide-react";
+import { Heart, Lock } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-const PRESETS = [5, 10, 20, 50];
-const RAISED = 12540;
+const PRESETS = [
+  { v: 5, impact: "1 sat radionice" },
+  { v: 10, impact: "Tjedna podrška" },
+  { v: 20, impact: "Grupna aktivnost" },
+  { v: 50, impact: "Cijela radionica" },
+];
+const RAISED = 12846;
 const GOAL = 20000;
+const REMAINING = GOAL - RAISED;
 
 const DonateSection = () => {
-  const [amount, setAmount] = useState<number | "custom">(10);
+  const [amount, setAmount] = useState<number | "custom">(20);
   const [customAmount, setCustomAmount] = useState("");
   const progress = Math.min(100, (RAISED / GOAL) * 100);
 
+  const selectedImpact =
+    amount === "custom"
+      ? "Hvala na vašoj podršci"
+      : PRESETS.find((p) => p.v === amount)?.impact || "";
+
   return (
-    <section id="donate" className="py-12 md:py-16 bg-background">
+    <section id="donate" className="py-14 md:py-20 bg-background">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -23,7 +34,6 @@ const DonateSection = () => {
           className="relative max-w-7xl mx-auto rounded-3xl overflow-hidden bg-hero-gradient p-7 md:p-10 text-white"
           style={{ boxShadow: "var(--shadow-float)" }}
         >
-          {/* sparkle decorations */}
           <svg className="absolute top-6 right-8 text-white/30" width="24" height="24" viewBox="0 0 24 24" fill="none">
             <path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z" fill="currentColor"/>
           </svg>
@@ -38,10 +48,14 @@ const DonateSection = () => {
                 <h2 className="text-2xl md:text-[1.85rem] font-heading font-extrabold leading-tight mb-2">
                   Pomozite nam širiti svjetlost
                 </h2>
-                <p className="text-white/80 text-sm leading-relaxed">
+                <p className="text-white/85 text-sm leading-relaxed">
                   Vaša donacija omogućuje radionice, terapije, izlete i posebne programe
-                  koji mijenjaju živote djece i mladih.
+                  koji mijenjaju živote.
                 </p>
+                <div className="inline-flex items-center gap-2 mt-3 px-3 py-1.5 rounded-full bg-cta/20 border border-cta/40 text-xs font-semibold">
+                  <span className="w-1.5 h-1.5 rounded-full bg-cta animate-pulse" />
+                  Do cilja nedostaje još €{REMAINING.toLocaleString("hr-HR")}
+                </div>
               </div>
             </div>
 
@@ -50,6 +64,9 @@ const DonateSection = () => {
               <div className="flex items-center justify-between mb-2">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-white/70">
                   Cilj ovog mjeseca
+                </span>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-white/70">
+                  {Math.round(progress)}%
                 </span>
               </div>
               <p className="text-2xl md:text-3xl font-heading font-extrabold mb-3">
@@ -70,22 +87,26 @@ const DonateSection = () => {
 
               <div className="flex flex-wrap items-center gap-3">
                 <div className="flex flex-wrap gap-2 flex-1">
-                  {PRESETS.map((v) => (
-                    <button
-                      key={v}
-                      onClick={() => {
-                        setAmount(v);
-                        setCustomAmount("");
-                      }}
-                      className={`px-4 py-2.5 rounded-xl text-sm font-bold transition-all min-w-[60px] ${
-                        amount === v
-                          ? "bg-cta text-white shadow-md"
-                          : "bg-white text-primary hover:bg-white/90"
-                      }`}
-                    >
-                      {v}€
-                    </button>
-                  ))}
+                  {PRESETS.map((p) => {
+                    const selected = amount === p.v && !customAmount;
+                    return (
+                      <motion.button
+                        key={p.v}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => {
+                          setAmount(p.v);
+                          setCustomAmount("");
+                        }}
+                        className={`px-4 py-2.5 rounded-xl text-sm font-bold transition-all min-w-[60px] hover:-translate-y-0.5 hover:shadow-lg ${
+                          selected
+                            ? "bg-cta text-white shadow-lg ring-2 ring-cta/40 ring-offset-2 ring-offset-primary/40"
+                            : "bg-white text-primary hover:bg-white"
+                        }`}
+                      >
+                        {p.v}€
+                      </motion.button>
+                    );
+                  })}
                   <input
                     type="number"
                     min={1}
@@ -104,16 +125,29 @@ const DonateSection = () => {
                 </div>
                 <Link
                   to="/doniraj"
-                  className="btn-donate px-6 py-3.5 text-sm whitespace-nowrap"
+                  className="btn-donate px-6 py-3.5 text-sm whitespace-nowrap hover:scale-[1.03] transition-transform"
                 >
                   <Heart size={16} className="fill-current" />
                   Doniraj sada
                 </Link>
               </div>
 
-              <div className="flex items-center gap-2 mt-4 text-xs text-white/65">
-                <ShieldCheck size={14} />
-                Sigurno plaćanje
+              {/* Dynamic impact line */}
+              <motion.p
+                key={String(amount) + customAmount}
+                initial={{ opacity: 0, y: 4 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mt-3 text-sm text-white/90"
+              >
+                <span className="text-cta font-bold">
+                  {amount === "custom" ? `${customAmount || 0}€` : `${amount}€`}
+                </span>{" "}
+                = {selectedImpact}
+              </motion.p>
+
+              <div className="flex items-center gap-2 mt-3 text-xs text-white/65">
+                <Lock size={14} />
+                Sigurno plaćanje putem Stripe-a
               </div>
             </div>
           </div>

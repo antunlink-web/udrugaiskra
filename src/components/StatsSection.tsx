@@ -3,9 +3,9 @@ import { Users, Heart, HandHeart, Euro } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 const stats = [
-  { icon: Users, value: 3, label: "Centra u Splitu", suffix: "", prefix: "" },
-  { icon: Heart, value: 116, label: "Redovitih korisnika", suffix: "+", prefix: "" },
-  { icon: HandHeart, value: 700, label: "Donatora", suffix: "+", prefix: "" },
+  { icon: Users, value: 1, label: "Centar u Splitu", suffix: "", prefix: "" },
+  { icon: Heart, value: 116, label: "Aktivnih korisnika", suffix: "+", prefix: "" },
+  { icon: HandHeart, value: 105, label: "Donatora", suffix: "+", prefix: "" },
   { icon: Euro, value: 85640, label: "Prikupljenih sredstava", suffix: "+", prefix: "€" },
 ];
 
@@ -57,9 +57,13 @@ const StatsSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="text-center group"
+                whileHover={{ y: -4 }}
+                className="text-center group cursor-default rounded-2xl p-2 transition-shadow hover:shadow-lg"
               >
-                <div className="w-14 h-14 rounded-full bg-primary flex items-center justify-center mx-auto mb-4">
+                <div
+                  className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md group-hover:scale-105 transition-transform"
+                  style={{ background: "linear-gradient(135deg, hsl(220 75% 32%), hsl(210 95% 55%))" }}
+                >
                   <stat.icon className="text-white" size={22} />
                 </div>
                 <p className="text-3xl md:text-[2.4rem] font-heading font-extrabold text-primary leading-none">

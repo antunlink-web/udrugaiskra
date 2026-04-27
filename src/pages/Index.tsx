@@ -7,6 +7,7 @@ import BlogSection from "@/components/BlogSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import DonateSection from "@/components/DonateSection";
 import Footer from "@/components/Footer";
+import StickyDonate from "@/components/StickyDonate";
 
 const Index = () => {
   return (
@@ -20,6 +21,7 @@ const Index = () => {
       <TestimonialsSection />
       <DonateSection />
       <Footer />
+      <StickyDonate />
     </div>
   );
 };

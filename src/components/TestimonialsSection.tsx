@@ -7,31 +7,31 @@ const testimonials = [
     name: "Ana M.",
     role: "Mama korisnice",
     image: "https://iskrasvjetlosti.hr/wp-content/uploads/2023/09/Antonija-Viguric-Anic.jpg",
-    text: "Iskra Svjetlosti je za našu obitelj više od udruge — to je druga kuća i obitelj koja uvijek razumije.",
+    text: "Iskra Svjetlosti je za našu obitelj druga kuća.",
   },
   {
     name: "Marko P.",
     role: "Tata korisnika",
     image: "https://iskrasvjetlosti.hr/wp-content/uploads/2023/09/Marijana-Martinovic.jpg",
-    text: "Ovdje moje dijete raste, uči i osjeća se prihvaćeno. Hvala što postojite!",
+    text: "Ovdje moje dijete raste, uči i osjeća se prihvaćeno.",
   },
   {
     name: "Lucija K.",
     role: "Volonterka",
     image: "https://iskrasvjetlosti.hr/wp-content/uploads/2023/09/Lidija-Radalj.jpg",
-    text: "Volontiranje u Iskri promijenilo je moj pogled na svijet. Ljubav koju ovdje dobijete je neprocjenjiva.",
+    text: "Volontiranje u Iskri promijenilo je moj pogled na svijet.",
   },
   {
     name: "Petar B.",
     role: "Donator",
     image: "https://iskrasvjetlosti.hr/wp-content/uploads/2023/09/Bozena-Ljusanin.jpg",
-    text: "Nevjerojatna energija, divni ljudi i djeca koja vas nauče što je prava radost.",
+    text: "Nevjerojatna energija i ljudi koji vas nauče što je prava radost.",
   },
   {
     name: "Sandra S.",
     role: "Voditeljica radionice",
     image: "https://iskrasvjetlosti.hr/wp-content/uploads/2023/09/Sandra-Sunko.jpg",
-    text: "Skupno učenje i rad imaju terapeutski učinak — zajedno rastemo iz tjedna u tjedan.",
+    text: "Zajedno rastemo iz tjedna u tjedan — to je terapija za sve.",
   },
 ];
 
@@ -57,29 +57,35 @@ const TestimonialsSection = () => {
         </div>
 
         <div className="relative">
-          <div className="grid md:grid-cols-3 gap-6">
-            {visible.map((t, i) => (
-              <motion.div
-                key={`${t.name}-${page}-${i}`}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="bg-card rounded-3xl p-7 border border-border/60 hover:shadow-xl transition-shadow"
-                style={{ boxShadow: "var(--shadow-card)" }}
-              >
-                <Quote className="text-secondary/30 mb-4" size={32} />
-                <p className="text-foreground leading-relaxed mb-6 text-[15px]">
-                  "{t.text}"
-                </p>
-                <div className="flex items-center gap-3 pt-4 border-t border-border/50">
-                  <img src={t.image} alt={t.name} className="w-11 h-11 rounded-full object-cover" loading="lazy" />
-                  <div>
-                    <p className="font-semibold text-primary text-sm">{t.name}</p>
-                    <p className="text-xs text-muted-foreground">{t.role}</p>
+          <div className="grid md:grid-cols-3 gap-6 items-stretch">
+            {visible.map((t, i) => {
+              const featured = i === 1;
+              return (
+                <motion.div
+                  key={`${t.name}-${page}-${i}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: i * 0.1 }}
+                  whileHover={{ y: -6 }}
+                  className={`bg-card rounded-3xl p-7 md:p-8 border transition-all duration-300 hover:shadow-2xl ${
+                    featured ? "border-cta/40 md:scale-[1.04] md:-my-2 ring-1 ring-cta/20" : "border-border/60"
+                  }`}
+                  style={{ boxShadow: "var(--shadow-card)" }}
+                >
+                  <Quote className={`mb-4 ${featured ? "text-cta" : "text-secondary/30"}`} size={32} />
+                  <p className={`leading-relaxed mb-6 ${featured ? "text-foreground text-base md:text-lg font-medium" : "text-foreground text-[15px]"}`}>
+                    "{t.text}"
+                  </p>
+                  <div className="flex items-center gap-3 pt-4 border-t border-border/50">
+                    <img src={t.image} alt={t.name} className="w-14 h-14 rounded-full object-cover ring-2 ring-accent" loading="lazy" />
+                    <div>
+                      <p className="font-bold text-primary text-sm">{t.name}</p>
+                      <p className="text-xs text-muted-foreground">{t.role}</p>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+            })}
           </div>
 
           {/* Controls */}
