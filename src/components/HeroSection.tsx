@@ -1,13 +1,12 @@
 import { motion } from "framer-motion";
-import { Heart, ArrowRight } from "lucide-react";
+import { Heart, Play } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const HERO_BG = "https://iskrasvjetlosti.hr/wp-content/uploads/2024/05/IMG_1742-1-scaled-e1716298283435.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-sky-fade pt-28 pb-16">
-      {/* Decorative blobs */}
+    <section className="relative overflow-hidden bg-sky-fade pt-28 md:pt-32 pb-12">
       <div className="absolute -top-20 -left-20 w-[28rem] h-[28rem] bg-secondary/20 blob-shape blur-3xl pointer-events-none" />
       <div className="absolute -bottom-32 -right-20 w-[32rem] h-[32rem] bg-primary/15 blob-shape blur-3xl pointer-events-none" />
 
@@ -21,14 +20,14 @@ const HeroSection = () => {
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent text-accent-foreground text-xs font-semibold uppercase tracking-wider mb-6"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-cta animate-pulse" />
-              Udruga iz Splita
+              Zajedno stvaramo topliji svijet
             </motion.span>
 
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-heading font-semibold text-primary mb-6 leading-[1.05]"
+              className="text-4xl md:text-5xl lg:text-[3.75rem] font-heading font-semibold text-primary mb-5 leading-[1.05]"
             >
               Topao dom za <em className="text-gradient-ocean not-italic">svaku iskru</em> svjetlosti
             </motion.h1>
@@ -36,11 +35,20 @@ const HeroSection = () => {
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.15 }}
-              className="text-lg text-muted-foreground max-w-xl lg:max-w-lg mx-auto lg:mx-0 mb-10 leading-relaxed"
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="text-lg text-foreground/80 max-w-xl lg:max-w-lg mx-auto lg:mx-0 mb-3 font-medium"
             >
-              Kreativne radionice za odrasle osobe s intelektualnim poteškoćama.
-              Potičemo volonterstvo, kreativnost i smijeh — jer kad se udružimo, nema granica.
+              Kreativne radionice namijenjene odraslim osobama s intelektualnim poteškoćama.
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-base text-muted-foreground max-w-xl lg:max-w-lg mx-auto lg:mx-0 mb-9 leading-relaxed"
+            >
+              Već više od 19 godina stvaramo sigurno i poticajno okruženje kroz radionice,
+              druženje i aktivnosti koje grade samopouzdanje, vještine i osjećaj pripadnosti.
             </motion.p>
 
             <motion.div
@@ -54,20 +62,41 @@ const HeroSection = () => {
                 Doniraj sada
               </Link>
               <a
-                href="#about"
+                href="#workshops"
                 onClick={(e) => {
                   e.preventDefault();
-                  document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
+                  document.getElementById("workshops")?.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-card text-primary font-semibold text-base border border-border hover:border-primary/30 transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-card text-primary font-semibold text-base border border-border hover:border-primary/40 hover:bg-accent/40 transition-all"
               >
-                Saznajte više
-                <ArrowRight size={16} />
+                <Play size={16} className="fill-current" />
+                Pogledaj kako pomažemo
               </a>
+            </motion.div>
+
+            {/* Trust row */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.45 }}
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-x-5 gap-y-2 mt-8 text-sm text-muted-foreground"
+            >
+              <div className="flex items-center gap-2">
+                <div className="flex -space-x-2">
+                  {[1, 2, 3].map((i) => (
+                    <div key={i} className="w-7 h-7 rounded-full bg-secondary/30 border-2 border-background" />
+                  ))}
+                </div>
+                <span className="font-semibold text-primary">700+ donatora</span>
+              </div>
+              <span className="w-1 h-1 rounded-full bg-muted-foreground/40" />
+              <span>Split</span>
+              <span className="w-1 h-1 rounded-full bg-muted-foreground/40" />
+              <span>Aktivni od 2005.</span>
             </motion.div>
           </div>
 
-          {/* Image card */}
+          {/* Image */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -82,36 +111,6 @@ const HeroSection = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent" />
             </div>
-
-            {/* Floating donation card */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="absolute -bottom-6 -left-4 md:-left-10 bg-card rounded-3xl p-5 shadow-xl border border-border/50 max-w-xs"
-              style={{ boxShadow: "var(--shadow-soft)" }}
-            >
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-2xl bg-cta/10 flex items-center justify-center">
-                  <Heart className="text-cta fill-cta" size={20} />
-                </div>
-                <div>
-                  <p className="text-xs text-muted-foreground">Pridružite se</p>
-                  <p className="text-lg font-heading font-bold text-primary">700+ donatora</p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Floating stat */}
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 }}
-              className="absolute -top-4 -right-2 md:-right-8 bg-secondary text-secondary-foreground rounded-2xl px-5 py-3 shadow-xl"
-            >
-              <p className="text-xs uppercase tracking-wider opacity-90">Od 2016.</p>
-              <p className="text-xl font-heading font-bold">19 sudionika</p>
-            </motion.div>
           </motion.div>
         </div>
       </div>

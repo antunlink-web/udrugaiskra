@@ -6,12 +6,11 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import logoImg from "@/assets/iskra-logo.png";
 
 const navLinks = [
+  { label: "Početna", href: "/", anchor: undefined as string | undefined },
   { label: "O nama", href: "/#about", anchor: "about" },
-  { label: "Radionice", href: "/#workshops", anchor: "workshops" },
-  { label: "Josipove Stanice", href: "/josipove-stanice" },
-  { label: "Voditelji", href: "/voditelji-radionica" },
-  { label: "Blog", href: "/blog" },
-  { label: "Volonteri", href: "/#testimonials", anchor: "testimonials" },
+  { label: "Što radimo", href: "/#workshops", anchor: "workshops" },
+  { label: "Novosti", href: "/blog" },
+  { label: "Uključi se", href: "/doniraj" },
   { label: "Kontakt", href: "/#contact", anchor: "contact" },
 ];
 
