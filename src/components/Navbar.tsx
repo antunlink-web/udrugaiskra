@@ -88,7 +88,7 @@ const Navbar = () => {
           <div className="flex items-center gap-2">
             <Link
               to="/doniraj"
-              className="btn-donate px-5 py-2.5 text-sm hidden lg:inline-flex"
+              className="btn-donate !hidden px-5 py-2.5 text-sm lg:!inline-flex"
             >
               <Heart size={16} className="fill-current" />
               <span>Doniraj sada</span>
