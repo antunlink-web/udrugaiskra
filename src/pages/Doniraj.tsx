@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
+import CroatianPaymentBarcode from "@/components/CroatianPaymentBarcode";
 
 type Step = "amount" | "details" | "loading" | "success";
 type Frequency = "once" | "monthly";
@@ -258,6 +259,24 @@ const Doniraj = () => {
                     <Lock size={12} />
                     Sigurno plaćanje • SSL enkripcija
                   </div>
+                </motion.div>
+              )}
+
+              {step === "amount" && frequency === "once" && (
+                <motion.div
+                  key="barcode"
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.25, delay: 0.1 }}
+                >
+                  <div className="flex items-center gap-3 my-5">
+                    <span className="flex-1 h-px bg-white/30" />
+                    <span className="text-xs font-bold uppercase tracking-widest text-white/80">
+                      ili
+                    </span>
+                    <span className="flex-1 h-px bg-white/30" />
+                  </div>
+                  <CroatianPaymentBarcode amount={finalAmount} description={`Donacija ${finalAmount}€`} />
                 </motion.div>
               )}
 
