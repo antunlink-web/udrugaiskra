@@ -231,7 +231,7 @@ const Doniraj = () => {
                     </div>
                     <div>
                       <p className="text-sm font-bold text-primary">
-                        S {finalAmount || 0}€{frequency === "monthly" ? " mjesečno" : ""}
+                        Donacijom od {finalAmount || 0}€{frequency === "monthly" ? " mjesečno" : ""}
                       </p>
                       <p className="text-sm text-muted-foreground">
                         {getImpact(finalAmount)}
