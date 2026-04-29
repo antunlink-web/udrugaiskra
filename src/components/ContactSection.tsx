@@ -125,7 +125,7 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <div className="text-[11px] uppercase tracking-wider text-primary-foreground/60 font-semibold">Adresa</div>
-                    <div className="text-sm font-medium">Split, Hrvatska</div>
+                    <div className="text-sm font-medium">Put Iza Nove Bolnice 10c, 21000, Split</div>
                   </div>
                 </div>
               </div>
