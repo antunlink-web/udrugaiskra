@@ -67,7 +67,7 @@ const Footer = () => {
                 <MapPin size={13} className="mt-0.5 shrink-0" /> Put Iza Nove Bolnice 10c, 21000, Split
               </div>
               <p className="text-xs text-muted-foreground/80 mt-1">
-                <span className="font-semibold">OIB:</span> 12345678901
+                <span className="font-semibold">OIB:</span> 40118970568
               </p>
             </div>
           </div>
