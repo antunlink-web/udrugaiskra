@@ -3,26 +3,17 @@ import { useEffect, useRef, useState } from "react";
 import { PDF417, HUB3 } from "pdf417-generator";
 import { Copy, Check, QrCode } from "lucide-react";
 
-interface Props {
-  description?: string;
-}
+interface Props {}
 
 const RECEIVER = {
   name: "Udruga Iskra Svjetlosti",
-  street: "Put Iza Nove Bolnice 10c",
+  address: "Put Iza Nove Bolnice 10c",
   city: "21000 Split",
   iban: "HR5924070001100091899",
   model: "HR99",
-  reference: "",
 };
 
-const SENDER = {
-  name: "Donator",
-  street: "-",
-  city: "-",
-};
-
-const CroatianPaymentBarcode = ({ description = "Donacija Udruzi Iskra Svjetlosti" }: Props) => {
+const CroatianPaymentBarcode = ({}: Props) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [copied, setCopied] = useState<string | null>(null);
 
@@ -30,17 +21,24 @@ const CroatianPaymentBarcode = ({ description = "Donacija Udruzi Iskra Svjetlost
     if (!canvasRef.current) return;
     try {
       const code = HUB3.format({
-        amount: 0, // open amount – donator unosi sam
-        sender: SENDER,
-        receiver: RECEIVER,
-        purpose: "CHAR",
-        description,
+        amount: 0, // open amount – donator unosi sam u banci
+        payerName: "Donator",
+        payerAddress: "-",
+        payerCity: "-",
+        recipientName: RECEIVER.name,
+        recipientAddr: RECEIVER.address,
+        recipientCity: RECEIVER.city,
+        iban: RECEIVER.iban,
+        model: RECEIVER.model,
+        callNumber: "",
+        purposeCode: "CHAR",
+        description: "Donacija",
       });
       PDF417.draw(code, canvasRef.current, 3);
     } catch (e) {
-      console.error("Barcode generation failed", e);
+      console.error("HUB-3 barcode generation failed:", e);
     }
-  }, [description]);
+  }, []);
 
   const copy = (text: string, key: string) => {
     navigator.clipboard.writeText(text);
@@ -84,12 +82,6 @@ const CroatianPaymentBarcode = ({ description = "Donacija Udruzi Iskra Svjetlost
           mono
           onCopy={() => copy(RECEIVER.iban, "iban")}
           copied={copied === "iban"}
-        />
-        <DetailRow
-          label="Opis"
-          value={description}
-          onCopy={() => copy(description, "desc")}
-          copied={copied === "desc"}
         />
       </div>
 
