@@ -9,6 +9,7 @@ const navLinks = [
   { label: "Početna", href: "/", anchor: undefined as string | undefined },
   { label: "O nama", href: "/#about", anchor: "about" },
   { label: "Što radimo", href: "/#workshops", anchor: "workshops" },
+  { label: "Josipove stanice", href: "/josipove-stanice" },
   { label: "Novosti", href: "/blog" },
   { label: "Uključi se", href: "/doniraj" },
   { label: "Kontakt", href: "/#contact", anchor: "contact" },
