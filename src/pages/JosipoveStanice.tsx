@@ -158,8 +158,34 @@ const JosipoveStanice = () => {
                 </div>
                 <h3 className="font-heading font-semibold text-xl text-primary mb-2">{feature.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
+                {"cta" in feature && feature.cta && (
+                  <Link
+                    to={feature.cta.to}
+                    className="inline-flex items-center gap-1.5 mt-5 text-sm font-bold text-secondary hover:text-primary transition-colors"
+                  >
+                    {feature.cta.label}
+                    <ArrowRight size={14} />
+                  </Link>
+                )}
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Stories teaser */}
+      <section className="py-16 md:py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto rounded-[2rem] border border-border/60 bg-card p-8 md:p-12 text-center" style={{ boxShadow: "var(--shadow-card)" }}>
+            <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-secondary mb-3">Priče</span>
+            <h2 className="text-2xl md:text-3xl font-heading font-semibold text-primary mb-3">Priče naših donatora</h2>
+            <p className="text-sm md:text-base text-muted-foreground max-w-xl mx-auto mb-6">
+              Pogledajte istinite priče, intervjue i poduzetnički kutak — kako tvrtke i ljudi mijenjaju živote.
+            </p>
+            <Link to="/blog" className="btn-donate px-6 py-3 text-sm">
+              Posjeti Blog
+              <ArrowRight size={16} />
+            </Link>
           </div>
         </div>
       </section>
@@ -172,8 +198,11 @@ const JosipoveStanice = () => {
             <h2 className="text-3xl md:text-4xl font-heading font-semibold text-primary leading-tight">
               Tvrtke koje podržavaju projekt
             </h2>
+            <p className="text-sm text-muted-foreground mt-3 max-w-xl mx-auto">
+              Hvala svim sponzorima koji omogućuju da Josipove Stanice nastave rasti.
+            </p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {sponsors.map((sponsor, i) => (
               <motion.div
                 key={sponsor.name}
@@ -181,15 +210,47 @@ const JosipoveStanice = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="bg-card rounded-3xl p-6 border border-border/60 text-center"
+                whileHover={{ y: -3 }}
+                className="bg-card rounded-3xl p-6 border border-border/60 flex flex-col"
                 style={{ boxShadow: "var(--shadow-card)" }}
               >
-                <h3 className="font-heading font-semibold text-primary mb-1">{sponsor.name}</h3>
-                <p className="text-xs text-muted-foreground">{sponsor.address}</p>
-                {sponsor.phone && (
-                  <a href={`tel:${sponsor.phone.replace(/\s/g, "")}`} className="text-xs text-secondary hover:underline mt-2 inline-block">
-                    {sponsor.phone}
-                  </a>
+                <h3 className="font-heading font-semibold text-primary text-lg mb-3">{sponsor.name}</h3>
+                <div className="space-y-1.5 text-sm text-muted-foreground flex-1">
+                  <p className="flex items-start gap-2">
+                    <MapPin size={14} className="text-secondary mt-0.5 shrink-0" />
+                    <span>{sponsor.address}</span>
+                  </p>
+                  {sponsor.phone && (
+                    <a href={`tel:${sponsor.phone.replace(/\s/g, "")}`} className="flex items-center gap-2 hover:text-primary transition-colors">
+                      <Phone size={14} className="text-secondary shrink-0" />
+                      {sponsor.phone}
+                    </a>
+                  )}
+                  {sponsor.email && (
+                    <a href={`mailto:${sponsor.email}`} className="flex items-center gap-2 hover:text-primary transition-colors break-all">
+                      <Mail size={14} className="text-secondary shrink-0" />
+                      <span className="truncate">{sponsor.email}</span>
+                    </a>
+                  )}
+                </div>
+                {sponsor.links && sponsor.links.length > 0 && (
+                  <div className="flex items-center gap-2 mt-4 pt-4 border-t border-border/60">
+                    {sponsor.links.map((l) => {
+                      const Icon = linkIcon(l.type);
+                      return (
+                        <a
+                          key={l.href}
+                          href={l.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={l.type}
+                          className="w-9 h-9 rounded-full bg-accent text-secondary hover:bg-secondary hover:text-white flex items-center justify-center transition-colors"
+                        >
+                          <Icon size={15} />
+                        </a>
+                      );
+                    })}
+                  </div>
                 )}
               </motion.div>
             ))}
