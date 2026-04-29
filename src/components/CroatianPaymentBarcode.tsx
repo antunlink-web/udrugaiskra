@@ -88,6 +88,12 @@ const CroatianPaymentBarcode = ({}: Props) => {
           onCopy={() => copy(RECEIVER.iban, "iban")}
           copied={copied === "iban"}
         />
+        <DetailRow
+          label="Opis plaćanja"
+          value="Donacija udruzi Iskra Svjetlosti"
+          onCopy={() => copy("Donacija udruzi Iskra Svjetlosti", "desc")}
+          copied={copied === "desc"}
+        />
       </div>
 
       <p className="text-[11px] text-muted-foreground/80 text-center mt-4 leading-relaxed">
