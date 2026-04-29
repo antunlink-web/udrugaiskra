@@ -20,6 +20,7 @@ const CroatianPaymentBarcode = ({}: Props) => {
   useEffect(() => {
     if (!canvasRef.current) return;
     try {
+      const canvas = canvasRef.current;
       const code = HUB3.format({
         amount: 0, // open amount – donator unosi sam u banci
         payerName: "Donator",
@@ -32,9 +33,13 @@ const CroatianPaymentBarcode = ({}: Props) => {
         model: RECEIVER.model,
         callNumber: "",
         purposeCode: "CHAR",
-        description: "Donacija",
+        description: "Donacija udruzi Iskra Svjetlosti",
       });
-      PDF417.draw(code, canvasRef.current, 3);
+      // Render at high resolution for crisp scanning
+      PDF417.draw(code, canvas, 6, 8);
+      // Scale down via CSS for sharp display on retina screens
+      canvas.style.width = Math.round(canvas.width / 2) + "px";
+      canvas.style.height = "auto";
     } catch (e) {
       console.error("HUB-3 barcode generation failed:", e);
     }
@@ -82,6 +87,12 @@ const CroatianPaymentBarcode = ({}: Props) => {
           mono
           onCopy={() => copy(RECEIVER.iban, "iban")}
           copied={copied === "iban"}
+        />
+        <DetailRow
+          label="Opis plaćanja"
+          value="Donacija udruzi Iskra Svjetlosti"
+          onCopy={() => copy("Donacija udruzi Iskra Svjetlosti", "desc")}
+          copied={copied === "desc"}
         />
       </div>
 
