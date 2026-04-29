@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Heart, Play, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const HERO_BG = "https://iskrasvjetlosti.hr/wp-content/uploads/2024/05/IMG_1742-1-scaled-e1716298283435.jpg";
+const HERO_BG = "https://iskrasvjetlosti.hr/wp-content/uploads/2024/10/iskra-pozadina-1.jpg";
 
 const HeroSection = () => {
   return (

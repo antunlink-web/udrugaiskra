@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Play } from "lucide-react";
 
-const ABOUT_IMAGE = "https://iskrasvjetlosti.hr/wp-content/uploads/2024/05/IMG_1699-scaled-e1714727578689.jpg";
+const ABOUT_IMAGE = "https://iskrasvjetlosti.hr/wp-content/uploads/2024/02/BLOG_SLIKA_2-scaled.jpg";
 
 const AboutSection = () => {
   return (
