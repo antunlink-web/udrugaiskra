@@ -4,7 +4,6 @@ import { PDF417, HUB3 } from "pdf417-generator";
 import { Copy, Check, QrCode } from "lucide-react";
 
 interface Props {
-  amount: number; // in EUR
   description?: string;
 }
 
@@ -17,20 +16,22 @@ const RECEIVER = {
   reference: "",
 };
 
-const CroatianPaymentBarcode = ({ amount, description = "Donacija" }: Props) => {
+const SENDER = {
+  name: "Donator",
+  street: "-",
+  city: "-",
+};
+
+const CroatianPaymentBarcode = ({ description = "Donacija Udruzi Iskra Svjetlosti" }: Props) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [copied, setCopied] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!canvasRef.current || !amount || amount <= 0) return;
+    if (!canvasRef.current) return;
     try {
       const code = HUB3.format({
-        amount: Math.round(amount * 100), // cents
-        sender: {
-          name: "",
-          street: "",
-          city: "",
-        },
+        amount: 0, // open amount – donator unosi sam
+        sender: SENDER,
         receiver: RECEIVER,
         purpose: "CHAR",
         description,
@@ -39,15 +40,13 @@ const CroatianPaymentBarcode = ({ amount, description = "Donacija" }: Props) => 
     } catch (e) {
       console.error("Barcode generation failed", e);
     }
-  }, [amount, description]);
+  }, [description]);
 
   const copy = (text: string, key: string) => {
     navigator.clipboard.writeText(text);
     setCopied(key);
     setTimeout(() => setCopied(null), 1800);
   };
-
-  if (!amount || amount <= 0) return null;
 
   return (
     <div className="bg-card rounded-3xl p-6 md:p-8 mt-6" style={{ boxShadow: "var(--shadow-float)" }}>
@@ -68,7 +67,7 @@ const CroatianPaymentBarcode = ({ amount, description = "Donacija" }: Props) => 
       <div className="flex flex-col items-center bg-white rounded-2xl p-4 my-4 border border-border">
         <canvas ref={canvasRef} className="max-w-full h-auto" />
         <p className="text-xs text-muted-foreground mt-2">
-          Iznos: <span className="font-bold text-primary">{amount.toFixed(2)} €</span>
+          Iznos unosite sami u aplikaciji banke
         </p>
       </div>
 
@@ -85,12 +84,6 @@ const CroatianPaymentBarcode = ({ amount, description = "Donacija" }: Props) => 
           mono
           onCopy={() => copy(RECEIVER.iban, "iban")}
           copied={copied === "iban"}
-        />
-        <DetailRow
-          label="Iznos"
-          value={`${amount.toFixed(2)} €`}
-          onCopy={() => copy(amount.toFixed(2), "amount")}
-          copied={copied === "amount"}
         />
         <DetailRow
           label="Opis"
