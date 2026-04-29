@@ -64,7 +64,7 @@ const Footer = () => {
                 <Phone size={13} /> +385 97 665 3783
               </a>
               <div className="flex items-start gap-2 text-sm text-muted-foreground">
-                <MapPin size={13} className="mt-0.5 shrink-0" /> Split, Hrvatska
+                <MapPin size={13} className="mt-0.5 shrink-0" /> Put Iza Nove Bolnice 10c, 21000, Split
               </div>
               <p className="text-xs text-muted-foreground/80 mt-1">
                 <span className="font-semibold">OIB:</span> 12345678901
