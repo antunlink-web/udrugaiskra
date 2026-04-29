@@ -110,13 +110,13 @@ const ContactSection = () => {
                     <div className="text-sm font-medium">info@iskrasvjetlosti.hr</div>
                   </div>
                 </a>
-                <a href="tel:+385911234567" className="flex items-start gap-3 group">
+                <a href="tel:+385976653783" className="flex items-start gap-3 group">
                   <div className="shrink-0 w-10 h-10 rounded-full bg-primary-foreground/15 flex items-center justify-center group-hover:bg-primary-foreground/25 transition-colors">
                     <Phone size={16} />
                   </div>
                   <div>
                     <div className="text-[11px] uppercase tracking-wider text-primary-foreground/60 font-semibold">Telefon</div>
-                    <div className="text-sm font-medium">+385 91 123 4567</div>
+                    <div className="text-sm font-medium">+385 97 665 3783</div>
                   </div>
                 </a>
                 <div className="flex items-start gap-3">

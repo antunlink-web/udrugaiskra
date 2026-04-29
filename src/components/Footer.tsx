@@ -60,8 +60,8 @@ const Footer = () => {
               <a href="mailto:info@iskrasvjetlosti.hr" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
                 <Mail size={13} /> info@iskrasvjetlosti.hr
               </a>
-              <a href="tel:+385911234567" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
-                <Phone size={13} /> +385 91 123 4567
+              <a href="tel:+385976653783" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Phone size={13} /> +385 97 665 3783
               </a>
               <div className="flex items-start gap-2 text-sm text-muted-foreground">
                 <MapPin size={13} className="mt-0.5 shrink-0" /> Split, Hrvatska
