@@ -88,7 +88,7 @@ const Navbar = () => {
           <div className="flex items-center gap-2">
             <Link
               to="/doniraj"
-              className="btn-donate px-5 py-2.5 text-sm"
+              className="btn-donate px-5 py-2.5 text-sm hidden lg:inline-flex"
             >
               <Heart size={16} className="fill-current" />
               <span>Doniraj sada</span>
@@ -134,6 +134,14 @@ const Navbar = () => {
                   </Link>
                 )
               )}
+              <Link
+                to="/doniraj"
+                onClick={() => setOpen(false)}
+                className="btn-donate mt-3 px-5 py-3 text-base"
+              >
+                <Heart size={18} className="fill-current" />
+                <span>Doniraj sada</span>
+              </Link>
             </div>
           </motion.div>
         )}
