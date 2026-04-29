@@ -25,7 +25,7 @@ const StickyDonate = () => {
 
   return (
     <div
-      className={`fixed z-40 transition-all duration-300 bottom-5 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-6 md:bottom-6 ${
+      className={`hidden lg:block fixed z-40 transition-all duration-300 lg:right-6 lg:bottom-6 ${
         visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6 pointer-events-none"
       }`}
     >
