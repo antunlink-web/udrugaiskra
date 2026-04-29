@@ -79,7 +79,6 @@ const CroatianPaymentBarcode = ({}: Props) => {
         <DetailRow
           label="IBAN"
           value={RECEIVER.iban}
-          mono
           onCopy={() => copy(RECEIVER.iban, "iban")}
           copied={copied === "iban"}
         />
