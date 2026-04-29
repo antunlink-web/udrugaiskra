@@ -142,15 +142,6 @@ const Navbar = () => {
                 <Heart size={18} className="fill-current" />
                 <span>Doniraj sada</span>
               </Link>
-                    key={link.href}
-                    to={link.href}
-                    onClick={() => setOpen(false)}
-                    className="px-4 py-3 text-base font-medium text-foreground hover:bg-accent rounded-xl transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                )
-              )}
             </div>
           </motion.div>
         )}
