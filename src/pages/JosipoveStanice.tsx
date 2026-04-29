@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Users, Building2, Heart, Handshake, BookOpen, MessageCircle } from "lucide-react";
+import { Users, Building2, Heart, Handshake, BookOpen, MessageCircle, Globe, Facebook, Instagram, Mail, Phone, MapPin, ArrowRight } from "lucide-react";
 import PageLayout from "@/components/PageLayout";
 import { Link } from "react-router-dom";
 
@@ -8,16 +8,19 @@ const features = [
     icon: Users,
     title: "Roditelji",
     description: "Prvi roditeljski portal na kojem dijelimo priče i iskustva života s osobama s intelektualnim teškoćama odrasle dobi. Podijelite s nama svoju priču i zajedno podignimo svijest.",
+    cta: { label: "Roditelj ste? Javite nam se", to: "/#contact" },
   },
   {
     icon: Heart,
     title: "Iskra Svjetlosti",
-    description: "Udruga osnovana 2016. godine okuplja osobe s intelektualnim teškoćama odrasle dobi (stariji od 21 godinu). Podržite projekt u kojem tvrtke omogućuju roditeljima djece da ispričaju priču.",
+    description: "Udruga osnovana 2016. godine okuplja osobe s intelektualnim teškoćama odrasle dobi (stariji od 21 godinu). Podržite projekt u kojem tvrtke omogućuju roditeljima djece da ispričaju priču, a mi podijelimo s drugima.",
+    cta: { label: "Pridružite nam se", to: "/#contact" },
   },
   {
     icon: Building2,
     title: "Firme",
     description: "Svaka tvrtka u RH može donirati do 5% ukupnih prihoda ostvarenih u prošloj godini humanitarnoj organizaciji neoporezivo.",
+    cta: { label: "Postanite tvrtka donator", to: "/doniraj" },
   },
   {
     icon: BookOpen,
@@ -36,14 +39,68 @@ const features = [
   },
 ];
 
-const sponsors = [
-  { name: "Motus Natura", address: "Krležina 14, Split", phone: "097 746 5317" },
+type SponsorLink = { type: "web" | "facebook" | "instagram" | "email"; href: string };
+type Sponsor = {
+  name: string;
+  address: string;
+  phone?: string;
+  email?: string;
+  links?: SponsorLink[];
+};
+
+const sponsors: Sponsor[] = [
+  {
+    name: "Motus Natura",
+    address: "Krležina 14, Split",
+    phone: "097 746 5317",
+    links: [{ type: "instagram", href: "https://www.instagram.com/motusnatura/" }],
+  },
   { name: "Pasta Laura d.o.o.", address: "Radunica 39, Split" },
-  { name: "Porticus d.o.o.", address: "Matice Hrvatske 22, Split", phone: "+385 95 815 4783" },
-  { name: "Jako d.o.o.", address: "Bajani 65, Kijevo", phone: "097 746 5317" },
-  { name: "F-TOURS INTERNATIONAL d.o.o.", address: "Put Supavla 1, Split" },
-  { name: "Dječji Vrtić Bili Tići", address: "Poljička cesta 20b, Split", phone: "099 52 99 777" },
+  {
+    name: "Porticus d.o.o.",
+    address: "Matice Hrvatske 22, Split",
+    phone: "+385 95 815 4783",
+    email: "porticus@st.t-com.hr",
+    links: [
+      { type: "web", href: "https://www.porticus.com.hr/" },
+      { type: "facebook", href: "https://www.facebook.com/damir.rako.5" },
+    ],
+  },
+  {
+    name: "Jako d.o.o.",
+    address: "Bajani 65, Kijevo",
+    phone: "097 746 5317",
+    links: [
+      { type: "web", href: "https://jako.hr/" },
+      { type: "facebook", href: "https://www.facebook.com/JakoHrvatska/" },
+      { type: "instagram", href: "https://www.instagram.com/jakohrvatska/" },
+    ],
+  },
+  {
+    name: "F-TOURS INTERNATIONAL d.o.o.",
+    address: "Put Supavla 1, Split",
+    links: [
+      { type: "web", href: "https://f-tours.hr/" },
+      { type: "facebook", href: "https://www.facebook.com/ftours/" },
+      { type: "instagram", href: "https://www.instagram.com/ftours_split/" },
+    ],
+  },
+  {
+    name: "Dječji Vrtić Bili Tići",
+    address: "Poljička cesta 20b, Split",
+    phone: "099 52 99 777",
+    email: "info@dv-bilitici.com",
+  },
 ];
+
+const linkIcon = (type: SponsorLink["type"]) => {
+  switch (type) {
+    case "web": return Globe;
+    case "facebook": return Facebook;
+    case "instagram": return Instagram;
+    case "email": return Mail;
+  }
+};
 
 const JosipoveStanice = () => {
   return (
