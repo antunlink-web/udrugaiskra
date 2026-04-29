@@ -276,7 +276,7 @@ const Doniraj = () => {
                     </span>
                     <span className="flex-1 h-px bg-white/30" />
                   </div>
-                  <CroatianPaymentBarcode description="Donacija Udruzi Iskra Svjetlosti" />
+                  <CroatianPaymentBarcode />
                 </motion.div>
               )}
 
