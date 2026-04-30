@@ -121,7 +121,7 @@
     background: var(--gradient-progress);
   }
   .bg-soft {
-    background: #f8f9fb;
+    background: hsl(var(--primary-soft));
   }
 
   /* Donate CTA — orange, pill, glowing */
