@@ -42,9 +42,9 @@
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 30% 90%;
-    --input: 210 30% 90%;
-    --ring: 210 95% 55%;
+    --border: 237 30% 90%;
+    --input: 237 30% 90%;
+    --ring: 237 68% 20%;
 
     --radius: 1rem;
 
@@ -55,19 +55,20 @@
     --sidebar-accent: 240 4.8% 95.9%;
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-ring: 237 68% 20%;
 
     --font-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
     --font-body: 'Inter', system-ui, sans-serif;
 
-    --gradient-hero: linear-gradient(135deg, hsl(220 80% 48%) 0%, hsl(215 85% 58%) 50%, hsl(205 95% 70%) 100%);
+    /* Hero gradient anchored on logo navy, fading to a lighter shade of the same hue */
+    --gradient-hero: linear-gradient(135deg, hsl(237 68% 18%) 0%, hsl(237 60% 28%) 55%, hsl(237 55% 45%) 100%);
     --gradient-cta: linear-gradient(135deg, hsl(14 90% 62%), hsl(10 95% 55%));
     --gradient-progress: linear-gradient(90deg, hsl(14 90% 60%), hsl(35 100% 60%));
 
-    --shadow-soft: 0 12px 40px -12px hsla(220 50% 25% / 0.15);
-    --shadow-card: 0 8px 30px -10px hsla(220 40% 25% / 0.10);
+    --shadow-soft: 0 12px 40px -12px hsla(237 68% 20% / 0.18);
+    --shadow-card: 0 8px 30px -10px hsla(237 68% 20% / 0.12);
     --shadow-cta: 0 12px 30px -8px hsla(14 90% 55% / 0.45);
-    --shadow-float: 0 24px 60px -20px hsla(220 60% 25% / 0.25);
+    --shadow-float: 0 24px 60px -20px hsla(237 68% 20% / 0.30);
   }
 
   .dark {
