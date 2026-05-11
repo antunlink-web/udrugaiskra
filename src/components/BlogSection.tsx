@@ -47,7 +47,7 @@ const BlogSection = () => {
                 >
                   <div className="relative w-36 sm:w-48 shrink-0 bg-accent overflow-hidden">
                     <img
-                      src="https://iskrasvjetlosti.hr/wp-content/uploads/2024/05/IMG_1742-1-scaled-e1716298283435.jpg"
+                      src="/wp/2024/05/IMG_1742-1-scaled-e1716298283435.jpg"
                       alt={article.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       loading="lazy"

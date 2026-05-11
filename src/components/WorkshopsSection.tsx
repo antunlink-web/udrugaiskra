@@ -8,7 +8,7 @@ const workshops = [
     title: "Slikanje",
     desc: "Kreativno izražavanje bez granica",
     benefit: "Razvija kreativnost",
-    image: "https://iskrasvjetlosti.hr/wp-content/uploads/2024/02/SLIKA-ZA-BLOG-1.jpg",
+    image: "/wp/2024/02/SLIKA-ZA-BLOG-1.jpg",
     color: "bg-secondary",
   },
   {
@@ -16,7 +16,7 @@ const workshops = [
     title: "Glazbena terapija",
     desc: "Zvuk koji smiruje i povezuje",
     benefit: "Potiče izražavanje",
-    image: "https://iskrasvjetlosti.hr/wp-content/uploads/2024/02/SLIKA-ZA-BLOG-2.jpg",
+    image: "/wp/2024/02/SLIKA-ZA-BLOG-2.jpg",
     color: "bg-primary",
   },
   {
@@ -24,7 +24,7 @@ const workshops = [
     title: "Strateške igre",
     desc: "Razvijamo fokus i logiku",
     benefit: "Razvija logiku",
-    image: "https://iskrasvjetlosti.hr/wp-content/uploads/2024/02/SLIKA-ZA-BLOG-3.jpg",
+    image: "/wp/2024/02/SLIKA-ZA-BLOG-3.jpg",
     color: "bg-secondary",
   },
   {
@@ -32,7 +32,7 @@ const workshops = [
     title: "Samba grupa",
     desc: "Ritam, energija i zajedništvo",
     benefit: "Razvija ritam i energiju",
-    image: "https://iskrasvjetlosti.hr/wp-content/uploads/2024/05/viber_image_2024-05-25_14-42-02-730.jpg",
+    image: "/wp/2024/05/viber_image_2024-05-25_14-42-02-730.jpg",
     color: "bg-cta",
   },
   {
@@ -40,7 +40,7 @@ const workshops = [
     title: "Drama & Sport",
     desc: "Kretanje, gluma i igra",
     benefit: "Jača samopouzdanje",
-    image: "https://iskrasvjetlosti.hr/wp-content/uploads/2024/02/BLOG_SLIKA_1-scaled.jpg",
+    image: "/wp/2024/02/BLOG_SLIKA_1-scaled.jpg",
     color: "bg-cta",
   },
   {
@@ -48,7 +48,7 @@ const workshops = [
     title: "Druženja",
     desc: "Zajedništvo i povezanost",
     benefit: "Gradi prijateljstva",
-    image: "https://iskrasvjetlosti.hr/wp-content/uploads/2024/05/IMG_5868.jpg",
+    image: "/wp/2024/05/IMG_5868.jpg",
     color: "bg-primary",
   },
 ];
