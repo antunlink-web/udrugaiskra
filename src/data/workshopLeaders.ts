@@ -10,19 +10,19 @@ export const workshopLeaders: WorkshopLeader[] = [
     name: "Daniela Ljušanin",
     role: "Osnivačica udruge",
     description: "Osnivačica udruge Iskra Svjetlosti s komunikacijskim i voditeljskim vještinama okuplja 20+ sudionika na inkluzivnim radionicama.",
-    image: "https://iskrasvjetlosti.hr/wp-content/uploads/2024/05/IMG_9350-e1716298533250.jpg",
+    image: "/wp/2024/05/IMG_9350-e1716298533250.jpg",
   },
   {
     name: "Božena Ljušanin",
     role: "Suradnica za digitalni marketing",
     description: "Osnivačica 'Bo solutio', stručnjakinja za 'ghostwriting', pomaže drugima u uspješnom online predstavljanju s naglaskom na suosjećanju.",
-    image: "https://iskrasvjetlosti.hr/wp-content/uploads/2023/09/Bozena-Ljusanin.jpg",
+    image: "/wp/2023/09/Bozena-Ljusanin.jpg",
   },
   {
     name: "Marijana Martinović",
     role: "Anđeli",
     description: "Strastvena zaljubljenica u modu. Nakon što je pobijedila leukemiju postaje voditeljica radionice Lemi Wings. Tim anđeoskim projektom, Marijana inspirira i pomaže drugima.",
-    image: "https://iskrasvjetlosti.hr/wp-content/uploads/2023/09/Marijana-Martinovic.jpg",
+    image: "/wp/2023/09/Marijana-Martinovic.jpg",
   },
   {
     name: "Damir Znaor",

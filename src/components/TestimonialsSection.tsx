@@ -6,31 +6,31 @@ const testimonials = [
   {
     name: "Ana M.",
     role: "Mama korisnice",
-    image: "https://iskrasvjetlosti.hr/wp-content/uploads/2023/09/Antonija-Viguric-Anic.jpg",
+    image: "/wp/2023/09/Antonija-Viguric-Anic.jpg",
     text: "Iskra Svjetlosti je za našu obitelj druga kuća.",
   },
   {
     name: "Marko P.",
     role: "Tata korisnika",
-    image: "https://iskrasvjetlosti.hr/wp-content/uploads/2023/09/Marijana-Martinovic.jpg",
+    image: "/wp/2023/09/Marijana-Martinovic.jpg",
     text: "Ovdje moje dijete raste, uči i osjeća se prihvaćeno.",
   },
   {
     name: "Lucija K.",
     role: "Volonterka",
-    image: "https://iskrasvjetlosti.hr/wp-content/uploads/2023/09/Lidija-Radalj.jpg",
+    image: "/wp/2023/09/Lidija-Radalj.jpg",
     text: "Volontiranje u Iskri promijenilo je moj pogled na svijet.",
   },
   {
     name: "Petar B.",
     role: "Donator",
-    image: "https://iskrasvjetlosti.hr/wp-content/uploads/2023/09/Bozena-Ljusanin.jpg",
+    image: "/wp/2023/09/Bozena-Ljusanin.jpg",
     text: "Nevjerojatna energija i ljudi koji vas nauče što je prava radost.",
   },
   {
     name: "Sandra S.",
     role: "Voditeljica radionice",
-    image: "https://iskrasvjetlosti.hr/wp-content/uploads/2023/09/Sandra-Sunko.jpg",
+    image: "/wp/2023/09/Sandra-Sunko.jpg",
     text: "Zajedno rastemo iz tjedna u tjedan — to je terapija za sve.",
   },
 ];
