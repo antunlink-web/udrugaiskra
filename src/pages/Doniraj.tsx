@@ -48,7 +48,7 @@ const Doniraj = () => {
   const [step, setStep] = useState<Step>("amount");
   const [amount, setAmount] = useState<number>(20);
   const [customAmount, setCustomAmount] = useState<string>("");
-  const [frequency, setFrequency] = useState<Frequency>("once");
+  const [frequency, setFrequency] = useState<Frequency>("monthly");
 
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
