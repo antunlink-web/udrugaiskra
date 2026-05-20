@@ -262,7 +262,7 @@ const Doniraj = () => {
                 </motion.div>
               )}
 
-              {step === "amount" && frequency === "once" && (
+              {step === "amount" && (
                 <motion.div
                   key="barcode"
                   initial={{ opacity: 0, y: 12 }}
