@@ -142,16 +142,6 @@ const Doniraj = () => {
                   {/* Frequency toggle */}
                   <div className="flex p-1 bg-accent rounded-full mb-6 relative">
                     <button
-                      onClick={() => setFrequency("once")}
-                      className={`flex-1 py-2.5 text-sm font-semibold rounded-full transition-colors relative z-10 ${
-                        frequency === "once"
-                          ? "text-primary"
-                          : "text-muted-foreground hover:text-primary"
-                      }`}
-                    >
-                      Jednokratno
-                    </button>
-                    <button
                       onClick={() => setFrequency("monthly")}
                       className={`flex-1 py-2.5 text-sm font-semibold rounded-full transition-colors relative z-10 inline-flex items-center justify-center gap-1.5 ${
                         frequency === "monthly"
@@ -167,12 +157,22 @@ const Doniraj = () => {
                         }
                       />
                     </button>
+                    <button
+                      onClick={() => setFrequency("once")}
+                      className={`flex-1 py-2.5 text-sm font-semibold rounded-full transition-colors relative z-10 ${
+                        frequency === "once"
+                          ? "text-primary"
+                          : "text-muted-foreground hover:text-primary"
+                      }`}
+                    >
+                      Jednokratno
+                    </button>
                     <motion.div
                       layout
                       transition={{ type: "spring", stiffness: 400, damping: 32 }}
                       className="absolute top-1 bottom-1 w-[calc(50%-0.25rem)] bg-card rounded-full shadow-sm"
                       style={{
-                        left: frequency === "once" ? "0.25rem" : "calc(50%)",
+                        left: frequency === "monthly" ? "0.25rem" : "calc(50%)",
                       }}
                     />
                   </div>
