@@ -45,11 +45,12 @@ const Footer = () => {
             <h4 className="font-heading text-sm font-extrabold text-primary mb-4">Brzi linkovi</h4>
             <div className="flex flex-col gap-2">
               <Link to="/" className="text-sm text-muted-foreground hover:text-primary transition-colors">Početna</Link>
-              <Link to="/voditelji-radionica" className="text-sm text-muted-foreground hover:text-primary transition-colors">O nama</Link>
-              <Link to="/josipove-stanice" className="text-sm text-muted-foreground hover:text-primary transition-colors">Što radimo</Link>
-              <Link to="/blog" className="text-sm text-muted-foreground hover:text-primary transition-colors">Novosti</Link>
-              <Link to="/doniraj" className="text-sm text-muted-foreground hover:text-primary transition-colors">Uključi se</Link>
-              <a href="#contact" className="text-sm text-muted-foreground hover:text-primary transition-colors">Kontakt</a>
+              <Link to="/o-nama" className="text-sm text-muted-foreground hover:text-primary transition-colors">O nama</Link>
+              <Link to="/radionice" className="text-sm text-muted-foreground hover:text-primary transition-colors">Kreativne radionice</Link>
+              <Link to="/sto-radimo" className="text-sm text-muted-foreground hover:text-primary transition-colors">Što radimo</Link>
+              <Link to="/novosti" className="text-sm text-muted-foreground hover:text-primary transition-colors">Novosti</Link>
+              <Link to="/volontiraj" className="text-sm text-muted-foreground hover:text-primary transition-colors">Volontiraj</Link>
+              <Link to="/doniraj" className="text-sm text-muted-foreground hover:text-primary transition-colors">Doniraj</Link>
             </div>
           </div>
 
