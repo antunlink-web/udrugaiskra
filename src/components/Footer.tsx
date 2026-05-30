@@ -101,7 +101,7 @@ const Footer = () => {
               />
               <button
                 type="submit"
-                className="w-9 h-9 shrink-0 rounded-full bg-cta text-white flex items-center justify-center hover:brightness-110 transition-all"
+                className="w-9 h-9 shrink-0 rounded-full bg-cta text-cta-foreground flex items-center justify-center hover:brightness-105 transition-all"
                 aria-label="Prijavi se"
               >
                 <ArrowRight size={14} />
