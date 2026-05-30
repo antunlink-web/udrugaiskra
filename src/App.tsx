@@ -9,8 +9,16 @@ import JosipoveStanice from "./pages/JosipoveStanice.tsx";
 import VoditeljiRadionica from "./pages/VoditeljiRadionica.tsx";
 import BlogPage from "./pages/BlogPage.tsx";
 import BlogArticle from "./pages/BlogArticle.tsx";
-import Doniraj from "./pages/Doniraj.tsx";
 import ScrollToTop from "./components/ScrollToTop";
+import { useEffect } from "react";
+
+const ExternalRedirect = ({ to }: { to: string }) => {
+  useEffect(() => {
+    window.location.replace(to);
+  }, [to]);
+  return null;
+};
+
 
 const queryClient = new QueryClient();
 
