@@ -51,7 +51,11 @@ const WorkshopRegistrationForm = ({
     await submitWorkshopRegistration({
       workshopSlug,
       workshopTitle,
-      ...result.data,
+      firstName: result.data.firstName,
+      lastName: result.data.lastName,
+      email: result.data.email,
+      phone: result.data.phone,
+      note: result.data.note,
     });
     setStatus("success");
     toast.success("Prijava zaprimljena! Javit ćemo vam se uskoro.");
