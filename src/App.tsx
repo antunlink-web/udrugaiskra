@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { useEffect } from "react";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ONama from "./pages/ONama.tsx";
@@ -11,10 +12,16 @@ import Novosti from "./pages/Novosti.tsx";
 import Volontiraj from "./pages/Volontiraj.tsx";
 import Radionice from "./pages/Radionice.tsx";
 import RadionicaDetail from "./pages/RadionicaDetail.tsx";
-import Doniraj from "./pages/Doniraj.tsx";
 import JosipoveStanice from "./pages/JosipoveStanice.tsx";
 import BlogArticle from "./pages/BlogArticle.tsx";
 import ScrollToTop from "./components/ScrollToTop";
+
+const ExternalRedirect = ({ to }: { to: string }) => {
+  useEffect(() => {
+    window.location.href = to;
+  }, [to]);
+  return null;
+};
 
 const queryClient = new QueryClient();
 
@@ -34,7 +41,7 @@ const App = () => (
           <Route path="/novosti" element={<Novosti />} />
           <Route path="/novosti/:slug" element={<BlogArticle />} />
           <Route path="/volontiraj" element={<Volontiraj />} />
-          <Route path="/doniraj" element={<Doniraj />} />
+          <Route path="/doniraj" element={<ExternalRedirect to="https://iskrasvjetlosti.com/doniraj" />} />
           <Route path="/josipove-stanice" element={<JosipoveStanice />} />
           {/* Legacy redirects */}
           <Route path="/blog" element={<Navigate to="/novosti" replace />} />
