@@ -12,6 +12,7 @@ import {
   ArrowUpRight,
   type LucideIcon,
 } from "lucide-react";
+import logoImg from "@/assets/iskra-logo.png";
 
 interface PortalCard {
   title: string;
@@ -75,17 +76,36 @@ const cards: PortalCard[] = [
 
 const PortalGrid = () => {
   return (
-    <section id="portal" className="py-16 md:py-24 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-accent text-accent-foreground text-xs font-bold uppercase tracking-widest mb-4">
-            Istražite
-          </span>
-          <h2 className="text-3xl md:text-4xl font-heading font-extrabold text-ink mb-3">
-            Kamo želite krenuti?
-          </h2>
-          <p className="text-base text-muted-foreground">
-            Odaberite područje i otkrijte sve što udruga Iskra Svjetlosti nudi.
+    <section
+      id="portal"
+      className="relative overflow-hidden bg-hero-gradient pt-28 md:pt-32 pb-16 md:pb-24"
+    >
+      {/* Subtle lighthouse logo watermark behind the card grid */}
+      <img
+        src={logoImg}
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none select-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[560px] max-w-[120vw] opacity-[0.05]"
+      />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-background" />
+
+      <div className="relative z-10 container mx-auto px-4">
+        {/* Compact intro header */}
+        <div className="text-center max-w-2xl mx-auto mb-10 md:mb-12">
+          <motion.img
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            src={logoImg}
+            alt="Udruga Iskra Svjetlosti"
+            className="w-16 h-16 rounded-full mx-auto mb-4 drop-shadow"
+          />
+          <h1 className="text-2xl md:text-3xl font-heading font-extrabold text-ink mb-2">
+            Udruga Iskra Svjetlosti
+          </h1>
+          <p className="text-sm md:text-base text-muted-foreground">
+            Kreativne radionice namijenjene odraslim osobama s intelektualnim
+            poteškoćama.
           </p>
         </div>
 
