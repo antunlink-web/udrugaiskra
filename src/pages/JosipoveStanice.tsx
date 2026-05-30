@@ -182,7 +182,7 @@ const JosipoveStanice = () => {
             <p className="text-sm md:text-base text-muted-foreground max-w-xl mx-auto mb-6">
               Pogledajte istinite priče, intervjue i poduzetnički kutak — kako tvrtke i ljudi mijenjaju živote.
             </p>
-            <Link to="/blog" className="btn-donate px-6 py-3 text-sm">
+            <Link to="/novosti" className="btn-donate px-6 py-3 text-sm">
               Posjeti Blog
               <ArrowRight size={16} />
             </Link>

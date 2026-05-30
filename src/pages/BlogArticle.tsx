@@ -13,7 +13,7 @@ const BlogArticle = () => {
       <PageLayout>
         <div className="py-32 text-center">
           <h1 className="text-3xl font-heading font-bold text-foreground mb-4">Članak nije pronađen</h1>
-          <Link to="/blog" className="text-primary font-semibold hover:underline">
+          <Link to="/novosti" className="text-primary font-semibold hover:underline">
             ← Povratak na blog
           </Link>
         </div>
@@ -32,7 +32,7 @@ const BlogArticle = () => {
             className="max-w-3xl mx-auto"
           >
             <Link
-              to="/blog"
+              to="/novosti"
               className="inline-flex items-center gap-2 text-sm font-semibold text-secondary hover:text-primary transition-colors mb-8"
             >
               <ArrowLeft size={16} />
@@ -91,7 +91,7 @@ const BlogArticle = () => {
 
             <div className="mt-12 flex flex-wrap gap-3">
               <Link
-                to="/blog"
+                to="/novosti"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-primary text-primary font-semibold text-sm hover:bg-primary hover:text-primary-foreground transition-colors"
               >
                 <ArrowLeft size={16} />

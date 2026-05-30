@@ -1,28 +1,8 @@
 import { motion } from "framer-motion";
 import { Heart, Lock } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-
-const PRESETS = [
-  { v: 5, impact: "1 sat radionice" },
-  { v: 10, impact: "Tjedna podrška" },
-  { v: 20, impact: "Grupna aktivnost" },
-  { v: 50, impact: "Cijela radionica" },
-];
-const RAISED = 12846;
-const GOAL = 20000;
-const REMAINING = GOAL - RAISED;
 
 const DonateSection = () => {
-  const [amount, setAmount] = useState<number | "custom">(20);
-  const [customAmount, setCustomAmount] = useState("");
-  const progress = Math.min(100, (RAISED / GOAL) * 100);
-
-  const selectedImpact =
-    amount === "custom"
-      ? "Hvala na vašoj podršci"
-      : PRESETS.find((p) => p.v === amount)?.impact || "";
-
   return (
     <section id="donate" className="py-14 md:py-20 bg-background">
       <div className="container mx-auto px-4">
@@ -31,124 +11,31 @@ const DonateSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="relative max-w-7xl mx-auto rounded-3xl overflow-hidden bg-hero-gradient p-7 md:p-10 text-white"
+          className="relative max-w-5xl mx-auto rounded-[2rem] overflow-hidden bg-ocean p-8 md:p-14 text-white text-center"
           style={{ boxShadow: "var(--shadow-float)" }}
         >
-          <svg className="absolute top-6 right-8 text-white/30" width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z" fill="currentColor"/>
-          </svg>
-
-          <div className="relative grid lg:grid-cols-[1fr_1.2fr] gap-8 items-center">
-            {/* Left: title + copy */}
-            <div className="flex items-start gap-4">
-              <div className="w-14 h-14 shrink-0 rounded-2xl bg-cta flex items-center justify-center">
-                <Heart className="text-white fill-white" size={24} />
-              </div>
-              <div>
-                <h2 className="text-2xl md:text-[1.85rem] font-heading font-extrabold leading-tight mb-2">
-                  Pomozite nam širiti svjetlost
-                </h2>
-                <p className="text-white/85 text-sm leading-relaxed">
-                  Vaša donacija omogućuje radionice, terapije, izlete i posebne programe
-                  koji mijenjaju živote.
-                </p>
-                <div className="inline-flex items-center gap-2 mt-3 px-3 py-1.5 rounded-full bg-cta/20 border border-cta/40 text-xs font-semibold">
-                  <span className="w-1.5 h-1.5 rounded-full bg-cta animate-pulse" />
-                  Do cilja nedostaje još €{REMAINING.toLocaleString("hr-HR")}
-                </div>
-              </div>
+          <div className="absolute -top-16 -right-16 w-56 h-56 bg-cta/25 blob-shape blur-3xl" />
+          <div className="relative">
+            <div className="w-16 h-16 mx-auto rounded-2xl bg-cta flex items-center justify-center mb-6">
+              <Heart className="text-cta-foreground fill-cta-foreground" size={28} />
             </div>
-
-            {/* Right: progress + amounts + CTA */}
-            <div>
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-white/70">
-                  Cilj ovog mjeseca
-                </span>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-white/70">
-                  {Math.round(progress)}%
-                </span>
-              </div>
-              <p className="text-2xl md:text-3xl font-heading font-extrabold mb-3">
-                €{RAISED.toLocaleString("hr-HR")}{" "}
-                <span className="text-white/50 text-xl font-bold">
-                  / €{GOAL.toLocaleString("hr-HR")}
-                </span>
-              </p>
-              <div className="h-2.5 rounded-full bg-white/15 overflow-hidden mb-5">
-                <motion.div
-                  initial={{ width: 0 }}
-                  whileInView={{ width: `${progress}%` }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1.4, ease: "easeOut" }}
-                  className="h-full rounded-full bg-progress-gradient"
-                />
-              </div>
-
-              <div className="flex flex-wrap items-center gap-3">
-                <div className="flex flex-wrap gap-2 flex-1">
-                  {PRESETS.map((p) => {
-                    const selected = amount === p.v && !customAmount;
-                    return (
-                      <motion.button
-                        key={p.v}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={() => {
-                          setAmount(p.v);
-                          setCustomAmount("");
-                        }}
-                        className={`px-4 py-2.5 rounded-xl text-sm font-bold transition-all min-w-[60px] hover:-translate-y-0.5 hover:shadow-lg ${
-                          selected
-                            ? "bg-cta text-white shadow-lg ring-2 ring-cta/40 ring-offset-2 ring-offset-primary/40"
-                            : "bg-white text-primary hover:bg-white"
-                        }`}
-                      >
-                        {p.v}€
-                      </motion.button>
-                    );
-                  })}
-                  <input
-                    type="number"
-                    min={1}
-                    placeholder="Drugi iznos"
-                    value={customAmount}
-                    onChange={(e) => {
-                      setCustomAmount(e.target.value);
-                      setAmount("custom");
-                    }}
-                    className={`px-4 py-2.5 rounded-xl text-sm font-semibold w-32 outline-none transition-all ${
-                      amount === "custom"
-                        ? "bg-cta text-white placeholder:text-white/70"
-                        : "bg-white text-primary placeholder:text-primary/50"
-                    }`}
-                  />
-                </div>
-                <Link
-                  to="/doniraj"
-                  className="btn-donate px-6 py-3.5 text-sm whitespace-nowrap hover:scale-[1.03] transition-transform"
-                >
-                  <Heart size={16} className="fill-current" />
-                  Doniraj sada
-                </Link>
-              </div>
-
-              {/* Dynamic impact line */}
-              <motion.p
-                key={String(amount) + customAmount}
-                initial={{ opacity: 0, y: 4 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="mt-3 text-sm text-white/90"
-              >
-                <span className="text-cta font-bold">
-                  {amount === "custom" ? `${customAmount || 0}€` : `${amount}€`}
-                </span>{" "}
-                = {selectedImpact}
-              </motion.p>
-
-              <div className="flex items-center gap-2 mt-3 text-xs text-white/65">
-                <Lock size={14} />
-                Sigurno plaćanje putem Stripe-a
-              </div>
+            <h2 className="text-3xl md:text-4xl font-heading font-extrabold leading-tight mb-4">
+              Pomozite nam širiti svjetlost
+            </h2>
+            <p className="text-white/85 text-base md:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+              Vaša donacija omogućuje radionice, terapije, izlete i posebne programe
+              koji mijenjaju živote naših sudionika.
+            </p>
+            <Link
+              to="/doniraj"
+              className="btn-donate px-9 py-4 text-lg hover:scale-[1.03] transition-transform"
+            >
+              <Heart size={20} className="fill-current" />
+              Doniraj sada
+            </Link>
+            <div className="flex items-center justify-center gap-2 mt-5 text-xs text-white/70">
+              <Lock size={14} />
+              Sigurno plaćanje putem Stripe-a
             </div>
           </div>
         </motion.div>

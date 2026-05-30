@@ -8,7 +8,7 @@ const Footer = () => {
   const [email, setEmail] = useState("");
 
   return (
-    <footer id="contact" className="bg-card border-t border-border pt-14 pb-6">
+    <footer className="bg-card border-t border-border pt-14 pb-6">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-10 mb-10">
           {/* Brand */}
@@ -45,11 +45,12 @@ const Footer = () => {
             <h4 className="font-heading text-sm font-extrabold text-primary mb-4">Brzi linkovi</h4>
             <div className="flex flex-col gap-2">
               <Link to="/" className="text-sm text-muted-foreground hover:text-primary transition-colors">Početna</Link>
-              <Link to="/voditelji-radionica" className="text-sm text-muted-foreground hover:text-primary transition-colors">O nama</Link>
-              <Link to="/josipove-stanice" className="text-sm text-muted-foreground hover:text-primary transition-colors">Što radimo</Link>
-              <Link to="/blog" className="text-sm text-muted-foreground hover:text-primary transition-colors">Novosti</Link>
-              <Link to="/doniraj" className="text-sm text-muted-foreground hover:text-primary transition-colors">Uključi se</Link>
-              <a href="#contact" className="text-sm text-muted-foreground hover:text-primary transition-colors">Kontakt</a>
+              <Link to="/o-nama" className="text-sm text-muted-foreground hover:text-primary transition-colors">O nama</Link>
+              <Link to="/radionice" className="text-sm text-muted-foreground hover:text-primary transition-colors">Kreativne radionice</Link>
+              <Link to="/sto-radimo" className="text-sm text-muted-foreground hover:text-primary transition-colors">Što radimo</Link>
+              <Link to="/novosti" className="text-sm text-muted-foreground hover:text-primary transition-colors">Novosti</Link>
+              <Link to="/volontiraj" className="text-sm text-muted-foreground hover:text-primary transition-colors">Volontiraj</Link>
+              <Link to="/doniraj" className="text-sm text-muted-foreground hover:text-primary transition-colors">Doniraj</Link>
             </div>
           </div>
 
@@ -100,7 +101,7 @@ const Footer = () => {
               />
               <button
                 type="submit"
-                className="w-9 h-9 shrink-0 rounded-full bg-cta text-white flex items-center justify-center hover:brightness-110 transition-all"
+                className="w-9 h-9 shrink-0 rounded-full bg-cta text-cta-foreground flex items-center justify-center hover:brightness-105 transition-all"
                 aria-label="Prijavi se"
               >
                 <ArrowRight size={14} />
