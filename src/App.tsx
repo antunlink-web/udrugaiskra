@@ -41,7 +41,7 @@ const App = () => (
           <Route path="/novosti" element={<Novosti />} />
           <Route path="/novosti/:slug" element={<BlogArticle />} />
           <Route path="/volontiraj" element={<Volontiraj />} />
-          <Route path="/doniraj" element={<Doniraj />} />
+          <Route path="/doniraj" element={<ExternalRedirect to="https://iskrasvjetlosti.com/doniraj" />} />
           <Route path="/josipove-stanice" element={<JosipoveStanice />} />
           {/* Legacy redirects */}
           <Route path="/blog" element={<Navigate to="/novosti" replace />} />
