@@ -1,5 +1,4 @@
 import Navbar from "@/components/Navbar";
-import HeroSection from "@/components/HeroSection";
 import PortalGrid from "@/components/PortalGrid";
 import DonateSection from "@/components/DonateSection";
 import ContactSection from "@/components/ContactSection";
@@ -10,7 +9,6 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <HeroSection />
       <PortalGrid />
       <DonateSection />
       <ContactSection />
