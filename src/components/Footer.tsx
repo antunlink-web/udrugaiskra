@@ -8,7 +8,7 @@ const Footer = () => {
   const [email, setEmail] = useState("");
 
   return (
-    <footer id="contact" className="bg-card border-t border-border pt-14 pb-6">
+    <footer className="bg-card border-t border-border pt-14 pb-6">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-10 mb-10">
           {/* Brand */}
