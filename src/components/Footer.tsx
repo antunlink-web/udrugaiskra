@@ -113,6 +113,17 @@ const Footer = () => {
           <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} Iskra Svjetlosti. Sva prava pridržana.
           </p>
+          <p className="text-[11px] text-muted-foreground">
+            Izradio{" "}
+            <a
+              href="https://primelink.hr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-primary hover:underline"
+            >
+              Primelink d.o.o.
+            </a>
+          </p>
           <div className="flex items-center gap-5">
             <a href="#" className="text-xs text-muted-foreground hover:text-primary transition-colors">Politika privatnosti</a>
             <a href="#" className="text-xs text-muted-foreground hover:text-primary transition-colors">Uvjeti korištenja</a>
