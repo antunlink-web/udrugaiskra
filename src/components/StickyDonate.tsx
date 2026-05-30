@@ -32,10 +32,10 @@ const StickyDonate = () => {
       <Link
         to="/doniraj"
         aria-label="Doniraj sada"
-        className={`relative inline-flex items-center gap-2 px-6 py-4 rounded-full bg-cta text-white font-bold text-base shadow-2xl hover:scale-[1.05] transition-transform ${
+        className={`relative inline-flex items-center gap-2 px-6 py-4 rounded-full bg-cta text-cta-foreground font-bold text-base shadow-2xl hover:scale-[1.05] transition-transform ${
           pulse ? "animate-pulse-ring" : ""
         }`}
-        style={{ boxShadow: "0 16px 40px -8px hsla(14 90% 50% / 0.55)" }}
+        style={{ boxShadow: "0 16px 40px -8px hsla(48 100% 45% / 0.55)" }}
       >
         <Heart size={18} className="fill-current" />
         Doniraj
