@@ -35,7 +35,7 @@ const App = () => (
           <Route path="/voditelji-radionica" element={<VoditeljiRadionica />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/:slug" element={<BlogArticle />} />
-          <Route path="/doniraj" element={<Doniraj />} />
+          <Route path="/doniraj" element={<ExternalRedirect to="https://iskrasvjetlosti.com/doniraj" />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
