@@ -1,27 +1,28 @@
 import {
-  Palette,
-  Music,
   Drama,
-  Camera,
-  Sparkles,
+  Languages,
+  Music,
   Dumbbell,
+  Sparkles,
+  Compass,
   Heart,
-  Brush,
-  Sprout,
+  BookOpen,
   Theater,
+  Mic,
+  Guitar,
+  ChefHat,
+  Sprout,
+  Flower2,
+  Shovel,
   type LucideIcon,
 } from "lucide-react";
 
-export type WorkshopCategory = "radionica" | "kazaliste" | "eden";
+export type WorkshopCategory = "redovne" | "kazaliste" | "eden";
 
 export interface YearlyPlanEntry {
-  /** Human readable date e.g. "14.12.2022." */
   date: string;
-  /** Short theme title of the session */
   title: string;
-  /** Bullet list of activities / exercises */
   activities: string[];
-  /** Learning goal for the session */
   goal?: string;
 }
 
@@ -36,9 +37,10 @@ export interface WorkshopNewsItem {
 export interface WorkshopMedia {
   type: "image" | "video";
   src: string;
-  /** Optional poster/thumbnail for videos */
   thumb?: string;
   caption?: string;
+  alt?: string;
+  order?: number;
 }
 
 export interface Workshop {
@@ -46,30 +48,40 @@ export interface Workshop {
   title: string;
   category: WorkshopCategory;
   icon: LucideIcon;
+  /** Category-themed gradient class used for card & hero when no photo exists */
+  accent: string;
   shortDescription: string;
+  /** Optional longer body; empty array => placeholder message rendered */
   description: string[];
-  goal: string;
-  leader: string;
-  location: string;
-  schedule: string;
-  days: string;
-  time: string;
-  /** Legacy: primary photo used for card thumbnail */
+  goal?: string;
+  leader?: string;
+  location?: string;
+  schedule?: string;
+  days?: string;
+  time?: string;
+  /** Optional photos — cards fall back to the themed accent when empty */
   images: string[];
   yearlyPlan: YearlyPlanEntry[];
   news: WorkshopNewsItem[];
   media: WorkshopMedia[];
 }
 
-const FALLBACK = "/wp/2024/10/iskra-pozadina-1.jpg";
-const DEFAULT_LOCATION = "Put Iza Nove Bolnice 10c, Split";
+const DEFAULT_LOCATION = "Put Iza Nove Bolnice 10c, 21000 Split";
 const DEFAULT_SCHEDULE = "Tijekom cijele školske godine (rujan – lipanj)";
 
-/**
- * Yearly plan for the Drama workshop – transcribed from the association's
- * official PLAN_RADA document. Each entry groups the exercises done in one
- * session along with the pedagogical goal.
- */
+const ACCENTS = {
+  drama: "from-rose-400/25 via-primary/15 to-cta/20",
+  jezik: "from-sky-400/25 via-primary/15 to-primary/20",
+  glazba: "from-violet-400/25 via-primary/15 to-cta/20",
+  tijelo: "from-emerald-400/25 via-primary/15 to-primary/20",
+  ljepota: "from-pink-400/25 via-cta/15 to-primary/20",
+  istrazivanje: "from-amber-400/25 via-cta/20 to-primary/20",
+  duhovnost: "from-indigo-400/25 via-primary/20 to-cta/20",
+  scena: "from-fuchsia-400/25 via-primary/15 to-cta/25",
+  eden: "from-lime-400/25 via-emerald-400/20 to-primary/20",
+};
+
+/** Drama yearly plan – preserved verbatim from the association's PLAN_RADA document. */
 const dramaYearlyPlan: YearlyPlanEntry[] = [
   {
     date: "14.12.2022.",
@@ -265,243 +277,315 @@ const dramaYearlyPlan: YearlyPlanEntry[] = [
   },
 ];
 
-const asMedia = (paths: string[]): WorkshopMedia[] =>
-  paths.map((src) => ({ type: "image", src }));
-
 export const workshops: Workshop[] = [
+  // ── Redovne radionice ─────────────────────────────────────────────────
   {
-    slug: "slikanje",
-    title: "Likovna radionica",
-    category: "radionica",
-    icon: Palette,
-    shortDescription: "Slikanje, crtanje i kreativno izražavanje bojama.",
-    description: [
-      "Likovna radionica prostor je u kojem naši sudionici kroz boju, liniju i oblik otkrivaju vlastiti način izražavanja.",
-      "Radimo s različitim tehnikama — od akrila i akvarela do kolaža — a svaki susret završava ponosom na zajedničko djelo.",
-    ],
-    goal: "Razvoj fine motorike, koncentracije i samopouzdanja kroz likovni izraz.",
-    leader: "Katarina Sokol",
-    location: DEFAULT_LOCATION,
-    schedule: DEFAULT_SCHEDULE,
-    days: "Ponedjeljkom",
-    time: "10:00 – 12:00",
-    images: ["/wp/2024/02/SLIKA-ZA-BLOG-1.jpg", "/wp/2024/02/SLIKA-ZA-BLOG-2.jpg"],
-    yearlyPlan: [],
-    news: [],
-    media: asMedia(["/wp/2024/02/SLIKA-ZA-BLOG-1.jpg", "/wp/2024/02/SLIKA-ZA-BLOG-2.jpg"]),
-  },
-  {
-    slug: "glazbena-terapija",
-    title: "Glazbena terapija",
-    category: "radionica",
-    icon: Music,
-    shortDescription: "Ritam, pjevanje i glazba kao terapija i radost.",
-    description: [
-      "Glazbena radionica spaja ritam, pjevanje i sviranje u zajedničko iskustvo koje opušta i povezuje.",
-      "Kroz glazbu potičemo komunikaciju, emocionalno izražavanje i osjećaj zajedništva. Naš zbor redovito nastupa na događanjima udruge.",
-    ],
-    goal: "Poticanje komunikacije, emocionalnog izražavanja i osjećaja zajedništva kroz glazbu.",
-    leader: "Sandra Sunko i Jelena Laća Mrdeža",
-    location: DEFAULT_LOCATION,
-    schedule: DEFAULT_SCHEDULE,
-    days: "Srijedom",
-    time: "10:00 – 12:00",
-    images: ["/wp/2023/09/Sandra-Sunko.jpg"],
-    yearlyPlan: [],
-    news: [],
-    media: asMedia(["/wp/2023/09/Sandra-Sunko.jpg"]),
-  },
-  {
-    slug: "drama",
-    title: "Dramska radionica",
-    category: "radionica",
+    slug: "dramske-igre-i-vjezbe",
+    title: "Dramske igre i vježbe",
+    category: "redovne",
     icon: Drama,
-    shortDescription: "Gluma, scena i predstava „7 darova Duha Svetoga“.",
+    accent: ACCENTS.drama,
+    shortDescription:
+      "Kroz mimiku, pokret i improvizaciju otkrivamo snagu scenskog izraza.",
     description: [
-      "Dramska radionica mjesto je gdje sudionici otkrivaju snagu izraza, geste i riječi.",
-      "Naša predstava „7 darova Duha Svetoga“ izvedena je u brojnim gradovima Hrvatske i Bosne i Hercegovine. Kroz dramu jačamo samopouzdanje, pamćenje i timski rad.",
+      "Dramska radionica prostor je u kojem sudionici otkrivaju vlastiti glas kroz igru, gestu i riječ.",
+      "Vježbe obuhvaćaju rad na koncentraciji, ritmu, mašti i suradnji, a rezultat je zajedničko scensko iskustvo koje jača samopouzdanje.",
     ],
     goal: "Jačanje samopouzdanja, pamćenja i timskog rada kroz scenski izraz.",
     leader: "Željana Lažeta",
     location: DEFAULT_LOCATION,
-    schedule: "Tijekom cijele školske godine, s pojačanim probama prije nastupa",
-    days: "Petkom",
-    time: "11:00 – 13:00",
-    images: ["/wp/2024/02/BLOG_SLIKA_1-scaled.jpg"],
-    yearlyPlan: dramaYearlyPlan,
-    news: [],
-    media: asMedia(["/wp/2024/02/BLOG_SLIKA_1-scaled.jpg"]),
-  },
-  {
-    slug: "samba",
-    title: "Ples i samba",
-    category: "radionica",
-    icon: Sparkles,
-    shortDescription: "Pokret, ples i samba za energiju i zajedništvo.",
-    description: [
-      "Plesna radionica donosi energiju, ritam i osmijeh kroz pokret.",
-      "Učimo jednostavne koreografije i samba korake koji potiču koordinaciju, kondiciju i radost zajedničkog plesa.",
-    ],
-    goal: "Razvoj koordinacije, kondicije i zajedništva kroz ples.",
-    leader: "Katarina Bogdanović",
-    location: DEFAULT_LOCATION,
-    schedule: DEFAULT_SCHEDULE,
-    days: "Utorkom",
-    time: "10:00 – 11:30",
-    images: ["/wp/2024/02/BLOG_SLIKA_2-scaled.jpg"],
-    yearlyPlan: [],
-    news: [],
-    media: asMedia(["/wp/2024/02/BLOG_SLIKA_2-scaled.jpg"]),
-  },
-  {
-    slug: "sport",
-    title: "Sport i rehabilitacija",
-    category: "radionica",
-    icon: Dumbbell,
-    shortDescription: "Tjelesna aktivnost i psiho-motorički razvoj.",
-    description: [
-      "Sportska radionica održava se u suradnji sa Sportsko-rehabilitacijskim centrom Motus Natura.",
-      "Svakom sudioniku pristupa se individualno, uz vježbe koje potiču psiho-motorički razvoj, snagu i opće zdravlje.",
-    ],
-    goal: "Individualan psiho-motorički razvoj i jačanje općeg zdravlja.",
-    leader: "Damir Znaor",
-    location: "Motus Natura, Krležina 14, Split",
-    schedule: DEFAULT_SCHEDULE,
-    days: "Petkom",
-    time: "09:00 – 10:30",
-    images: [FALLBACK],
-    yearlyPlan: [],
-    news: [],
-    media: asMedia([FALLBACK]),
-  },
-  {
-    slug: "fotografija",
-    title: "Fotografska radionica",
-    category: "radionica",
-    icon: Camera,
-    shortDescription: "Bilježimo emocije i trenutke kroz objektiv.",
-    description: [
-      "Fotografska radionica uči sudionike kako kroz objektiv uhvatiti emociju i trenutak.",
-      "Razvijamo pažnju na detalje, kreativnost i osjećaj za kompoziciju, a najljepše fotografije postaju dio priče udruge.",
-    ],
-    goal: "Razvoj pažnje na detalje, kreativnosti i osjećaja za kompoziciju.",
-    leader: "Gabrijel Barnjak",
-    location: DEFAULT_LOCATION,
-    schedule: "Mjesečne radionice tijekom školske godine",
-    days: "Prema rasporedu",
-    time: "Po dogovoru",
-    images: ["/wp/2024/05/IMG_5868.jpg"],
-    yearlyPlan: [],
-    news: [],
-    media: asMedia(["/wp/2024/05/IMG_5868.jpg"]),
-  },
-  {
-    slug: "decoupage",
-    title: "Decoupage radionica",
-    category: "radionica",
-    icon: Brush,
-    shortDescription: "Ukrašavanje predmeta tehnikom dekupaža.",
-    description: [
-      "Dekupaž radionica spaja strpljenje, preciznost i kreativnost u izradi jedinstvenih ukrasnih predmeta.",
-      "Sudionici razvijaju finu motoriku i ponos na vlastite rukotvorine koje često postaju pokloni i prodajni predmeti udruge.",
-    ],
-    goal: "Razvoj fine motorike, strpljenja i ponosa na vlastite rukotvorine.",
-    leader: "Antonija Vigurić Anić",
-    location: DEFAULT_LOCATION,
     schedule: DEFAULT_SCHEDULE,
     days: "Srijedom",
-    time: "12:00 – 13:30",
-    images: ["/wp/2023/09/Antonija-Viguric-Anic.jpg"],
-    yearlyPlan: [],
+    time: "11:00 – 13:00",
+    images: [],
+    yearlyPlan: dramaYearlyPlan,
     news: [],
-    media: asMedia(["/wp/2023/09/Antonija-Viguric-Anic.jpg"]),
+    media: [],
   },
   {
-    slug: "sminkanje",
-    title: "Radionica šminkanja",
-    category: "radionica",
-    icon: Sparkles,
-    shortDescription: "Briga o sebi, ljepota i samopouzdanje.",
-    description: [
-      "Radionica šminkanja njeguje samopouzdanje i brigu o sebi kroz igru bojama i njegom.",
-      "Sudionice uče osnove njege kože i šminkanja u opuštenoj, podržavajućoj atmosferi.",
-    ],
-    goal: "Njegovanje samopouzdanja i brige o sebi.",
-    leader: "Marija Bonačić",
-    location: DEFAULT_LOCATION,
-    schedule: "Mjesečne radionice tijekom školske godine",
-    days: "Prema rasporedu",
-    time: "Po dogovoru",
-    images: ["/wp/2023/09/Marijana-Martinovic.jpg"],
+    slug: "engleski-jezik",
+    title: "Radionica engleskog jezika",
+    category: "redovne",
+    icon: Languages,
+    accent: ACCENTS.jezik,
+    shortDescription: "Učenje engleskog kroz igru, pjesmu i svakodnevne situacije.",
+    description: [],
+    leader: "Ana Periš",
+    images: [],
     yearlyPlan: [],
     news: [],
-    media: asMedia(["/wp/2023/09/Marijana-Martinovic.jpg"]),
+    media: [],
   },
   {
-    slug: "krunica",
-    title: "Izrada krunica",
-    category: "radionica",
-    icon: Heart,
-    shortDescription: "Duhovna radionica izrade krunica.",
-    description: [
-      "Radionica izrade krunica spaja kreativnost i duhovnost u mirnom, posvećenom ozračju.",
-      "Kroz izradu krunica sudionici razvijaju strpljenje, finu motoriku i osjećaj smirenosti.",
-    ],
-    goal: "Razvoj strpljenja, fine motorike i unutarnjeg mira.",
-    leader: "Lidija Radalj",
-    location: DEFAULT_LOCATION,
-    schedule: DEFAULT_SCHEDULE,
+    slug: "glazbena-radionica",
+    title: "Glazbena radionica",
+    category: "redovne",
+    icon: Music,
+    accent: ACCENTS.glazba,
+    shortDescription: "Pjevanje, ritam i zajedničko muziciranje.",
+    description: [],
+    leader: "Sandra Sunko",
+    images: [],
+    yearlyPlan: [],
+    news: [],
+    media: [],
+  },
+  {
+    slug: "tjelesna-cetvrtak",
+    title: "Tjelesna radionica (četvrtak)",
+    category: "redovne",
+    icon: Dumbbell,
+    accent: ACCENTS.tijelo,
+    shortDescription: "Vježbe pokreta, koordinacije i opće kondicije.",
+    description: [],
+    leader: "Marija Stamaković",
+    days: "Četvrtkom",
+    images: [],
+    yearlyPlan: [],
+    news: [],
+    media: [],
+  },
+  {
+    slug: "tjelesna-ponedjeljak",
+    title: "Tjelesna radionica (ponedjeljak)",
+    category: "redovne",
+    icon: Dumbbell,
+    accent: ACCENTS.tijelo,
+    shortDescription: "Tjelovježba prilagođena sposobnostima svakog sudionika.",
+    description: [],
+    leader: "Gabriela",
     days: "Ponedjeljkom",
-    time: "12:00 – 13:30",
-    images: ["/wp/2023/09/Lidija-Radalj.jpg"],
+    images: [],
     yearlyPlan: [],
     news: [],
-    media: asMedia(["/wp/2023/09/Lidija-Radalj.jpg"]),
+    media: [],
   },
-  // ── Kazališne predstave ────────────────────────────────────────────────
   {
-    slug: "predstava-7-darova",
-    title: "Predstava „7 darova Duha Svetoga“",
+    slug: "talijanski-jezik",
+    title: "Radionica talijanskog jezika",
+    category: "redovne",
+    icon: Languages,
+    accent: ACCENTS.jezik,
+    shortDescription: "Osnove talijanskog jezika kroz pjesmu, film i razgovor.",
+    description: [],
+    leader: "Kristina Marušić",
+    images: [],
+    yearlyPlan: [],
+    news: [],
+    media: [],
+  },
+  {
+    slug: "sminkanje-i-njega-lica",
+    title: "Radionica šminkanja i njege lica",
+    category: "redovne",
+    icon: Sparkles,
+    accent: ACCENTS.ljepota,
+    shortDescription: "Briga o sebi, njega kože i osnove šminkanja.",
+    description: [],
+    leader: "Marija Bonačić",
+    images: [],
+    yearlyPlan: [],
+    news: [],
+    media: [],
+  },
+  {
+    slug: "posebni-istrazivaci",
+    title: "Posebni istraživači",
+    category: "redovne",
+    icon: Compass,
+    accent: ACCENTS.istrazivanje,
+    shortDescription: "Otkrivanje svijeta oko nas kroz istraživačke aktivnosti.",
+    description: [],
+    leader: "Tamara Podrug",
+    images: [],
+    yearlyPlan: [],
+    news: [],
+    media: [],
+  },
+  {
+    slug: "izrada-krunica",
+    title: "Radionica izrade krunica",
+    category: "redovne",
+    icon: Heart,
+    accent: ACCENTS.duhovnost,
+    shortDescription: "Duhovna radionica izrade krunica u mirnom ozračju.",
+    description: [],
+    leader: "Lidija Radalj",
+    images: [],
+    yearlyPlan: [],
+    news: [],
+    media: [],
+  },
+  {
+    slug: "mali-bend-iskra-svjetlosti",
+    title: "Glazbena radionica – Mali bend Iskra Svjetlosti",
+    category: "redovne",
+    icon: Guitar,
+    accent: ACCENTS.glazba,
+    shortDescription: "Zajedničko sviranje i pripreme nastupa Malog benda.",
+    description: [],
+    leader: "Boris Blažević",
+    images: [],
+    yearlyPlan: [],
+    news: [],
+    media: [],
+  },
+  {
+    slug: "biblijska-didaktika",
+    title: "Biblijska didaktika",
+    category: "redovne",
+    icon: BookOpen,
+    accent: ACCENTS.duhovnost,
+    shortDescription: "Upoznavanje biblijskih tema kroz igru i razgovor.",
+    description: [],
+    leader: "Daniela Raić, Željana Lažeta i Tamara Podrug",
+    images: [],
+    yearlyPlan: [],
+    news: [],
+    media: [],
+  },
+  {
+    slug: "mjuzikl-klupko",
+    title: "Mjuzikl „Klupko“",
+    category: "redovne",
+    icon: Theater,
+    accent: ACCENTS.scena,
+    shortDescription: "Zajednički rad na autorskom mjuziklu „Klupko“.",
+    description: [],
+    leader: "Željana Lažeta, Sandra Sunko i Daniela Raić",
+    images: [],
+    yearlyPlan: [],
+    news: [],
+    media: [],
+  },
+  {
+    slug: "igrokaz-iskra-svjetlosti",
+    title: "Igrokaz Iskra Svjetlosti",
+    category: "redovne",
+    icon: Drama,
+    accent: ACCENTS.scena,
+    shortDescription: "Priprema i uvježbavanje igrokaza udruge.",
+    description: [],
+    images: [],
+    yearlyPlan: [],
+    news: [],
+    media: [],
+  },
+  {
+    slug: "hrvatski-jezik-i-govorna-kultura",
+    title: "Radionica hrvatskog jezika i govorne kulture",
+    category: "redovne",
+    icon: BookOpen,
+    accent: ACCENTS.jezik,
+    shortDescription: "Njegovanje pravilnog govora i bogatstva materinskog jezika.",
+    description: [],
+    leader: "prof. Nada Babić",
+    images: [],
+    yearlyPlan: [],
+    news: [],
+    media: [],
+  },
+  {
+    slug: "vokalne-tehnike",
+    title: "Glazbena radionica – vokalne tehnike",
+    category: "redovne",
+    icon: Mic,
+    accent: ACCENTS.glazba,
+    shortDescription: "Rad na disanju, intonaciji i pjevačkim tehnikama.",
+    description: [],
+    leader: "Sandra Sunko",
+    images: [],
+    yearlyPlan: [],
+    news: [],
+    media: [],
+  },
+
+  // ── Kazališne predstave Udruge Iskra Svjetlosti ───────────────────────
+  {
+    slug: "predstava-7-darova-duha-svetoga",
+    title: "7 darova Duha Svetoga",
     category: "kazaliste",
     icon: Theater,
+    accent: ACCENTS.scena,
     shortDescription:
       "Autorska predstava izvedena u brojnim gradovima Hrvatske i BiH.",
     description: [
-      "Predstava „7 darova Duha Svetoga“ krunski je projekt naše dramske radionice.",
+      "Predstava „7 darova Duha Svetoga“ krunski je scenski projekt udruge.",
       "Kroz sedam prizora sudionici predstavljaju darove mudrosti, razuma, savjeta, jakosti, znanja, pobožnosti i straha Božjeg.",
     ],
     goal: "Prenošenje duhovne poruke i afirmacija sposobnosti osoba s intelektualnim poteškoćama na sceni.",
     leader: "Željana Lažeta",
-    location: "Gostovanja diljem Hrvatske i BiH",
-    schedule: "Prema rasporedu gostovanja",
-    days: "Po pozivu",
-    time: "Po dogovoru",
-    images: ["/wp/2024/02/BLOG_SLIKA_1-scaled.jpg"],
+    images: [],
     yearlyPlan: [],
     news: [],
-    media: asMedia(["/wp/2024/02/BLOG_SLIKA_1-scaled.jpg"]),
+    media: [],
   },
-  // ── EDEN radionice ─────────────────────────────────────────────────────
   {
-    slug: "eden-vrt",
-    title: "EDEN – vrtlarska radionica",
+    slug: "predstava-biraj",
+    title: "Biraj",
+    category: "kazaliste",
+    icon: Theater,
+    accent: ACCENTS.scena,
+    shortDescription: "Nova autorska predstava Udruge Iskra Svjetlosti.",
+    description: [],
+    images: [],
+    yearlyPlan: [],
+    news: [],
+    media: [],
+  },
+
+  // ── EDEN radionice ────────────────────────────────────────────────────
+  {
+    slug: "eden-kuhanje",
+    title: "Radionica kuhanja",
+    category: "eden",
+    icon: ChefHat,
+    accent: ACCENTS.eden,
+    shortDescription: "Zajedničko pripremanje jednostavnih i zdravih obroka.",
+    description: [],
+    images: [],
+    yearlyPlan: [],
+    news: [],
+    media: [],
+  },
+  {
+    slug: "eden-vrtlarenje",
+    title: "Radionica vrtlarenja",
     category: "eden",
     icon: Sprout,
-    shortDescription: "Rad u vrtu, sadnja i briga o biljkama.",
-    description: [
-      "EDEN program okuplja sudionike u zajedničkom radu u vrtu udruge.",
-      "Kroz sadnju, brigu o biljkama i berbu učimo o strpljenju, ciklusima prirode i vrijednosti zajedničkog rada.",
-    ],
-    goal: "Poticanje odgovornosti, strpljenja i povezanosti s prirodom.",
-    leader: "Tim EDEN-a",
-    location: DEFAULT_LOCATION,
-    schedule: "Sezonski, tijekom vegetacijske sezone",
-    days: "Prema rasporedu",
-    time: "Po dogovoru",
-    images: [FALLBACK],
+    accent: ACCENTS.eden,
+    shortDescription: "Briga o vrtu udruge kroz cijelu vegetacijsku sezonu.",
+    description: [],
+    images: [],
     yearlyPlan: [],
     news: [],
-    media: asMedia([FALLBACK]),
+    media: [],
+  },
+  {
+    slug: "eden-pikiranje",
+    title: "Radionica pikiranja",
+    category: "eden",
+    icon: Flower2,
+    accent: ACCENTS.eden,
+    shortDescription: "Pikiranje sadnica i priprema biljaka za daljnji rast.",
+    description: [],
+    images: [],
+    yearlyPlan: [],
+    news: [],
+    media: [],
+  },
+  {
+    slug: "eden-sadnja",
+    title: "Radionica sadnje",
+    category: "eden",
+    icon: Shovel,
+    accent: ACCENTS.eden,
+    shortDescription: "Sadnja povrća, začinskog i ukrasnog bilja u vrtu udruge.",
+    description: [],
+    images: [],
+    yearlyPlan: [],
+    news: [],
+    media: [],
   },
 ];
 
@@ -509,22 +593,31 @@ export const workshopCategoryMeta: Record<
   WorkshopCategory,
   { title: string; description: string }
 > = {
-  radionica: {
-    title: "Radionice",
+  redovne: {
+    title: "Redovne radionice",
     description:
       "Redovite tjedne radionice u kojima naši sudionici razvijaju vještine i grade prijateljstva.",
   },
   kazaliste: {
-    title: "Kazališne predstave",
+    title: "Kazališne predstave Udruge Iskra Svjetlosti",
     description:
-      "Autorske predstave koje nastaju u sklopu dramske radionice i gostuju diljem regije.",
+      "Autorske predstave koje nastaju u sklopu naših dramskih i glazbenih programa.",
   },
   eden: {
     title: "EDEN radionice",
     description:
-      "Programi u prirodi i vrtu koji potiču odgovornost, strpljenje i povezanost sa zajednicom.",
+      "Programi u vrtu udruge koji potiču odgovornost, strpljenje i povezanost s prirodom.",
   },
 };
+
+export const PLACEHOLDER = {
+  description: "Detaljan opis radionice bit će uskoro objavljen.",
+  yearlyPlan:
+    "Godišnji plan rada bit će objavljen nakon potvrde voditelja radionice.",
+  schedule: "Termin i lokacija bit će uskoro objavljeni.",
+  gallery: "Fotografije i videozapisi bit će dodani nakon održanih aktivnosti.",
+  news: "Trenutačno nema objavljenih novosti za ovu radionicu.",
+} as const;
 
 export const getWorkshopBySlug = (slug: string): Workshop | undefined =>
   workshops.find((w) => w.slug === slug);
