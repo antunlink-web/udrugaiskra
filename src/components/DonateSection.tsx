@@ -19,12 +19,11 @@ const DonateSection = () => {
             <div className="w-11 h-11 mx-auto rounded-xl bg-cta flex items-center justify-center mb-4">
               <Heart className="text-cta-foreground fill-cta-foreground" size={20} />
             </div>
-            <h2 className="text-2xl md:text-3xl font-heading font-extrabold leading-tight mb-3">
-              Pomozite nam širiti svjetlost
+            <h2 className="text-xl md:text-2xl font-heading font-extrabold leading-snug mb-2 italic">
+              „Ne možemo svi činiti velika djela, ali možemo činiti mala djela s velikom ljubavlju."
             </h2>
-            <p className="text-white/85 text-sm md:text-base max-w-xl mx-auto mb-6 leading-relaxed">
-              Vaša donacija omogućuje radionice, terapije, izlete i posebne programe
-              koji mijenjaju živote naših sudionika.
+            <p className="text-white/80 text-xs md:text-sm max-w-xl mx-auto mb-6">
+              — Sveta Majka Terezija
             </p>
             <Link
               to="/doniraj"
