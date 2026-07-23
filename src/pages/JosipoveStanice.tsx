@@ -180,7 +180,7 @@ const JosipoveStanice = () => {
             <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-secondary mb-3">Priče</span>
             <h2 className="text-2xl md:text-3xl font-heading font-semibold text-primary mb-3">Priče naših donatora</h2>
             <p className="text-sm md:text-base text-muted-foreground max-w-xl mx-auto mb-6">
-              Pogledajte istinite priče, intervjue i poduzetnički kutak — kako tvrtke i ljudi mijenjaju živote.
+              Pogledajte istinite priče, intervjue i poduzetnički kutak - kako tvrtke i ljudi mijenjaju živote.
             </p>
             <Link to="/novosti" className="btn-donate px-6 py-3 text-sm">
               Posjeti Blog

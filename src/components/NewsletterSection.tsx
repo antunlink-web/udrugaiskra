@@ -41,7 +41,7 @@ const NewsletterSection = () => {
             Prijava na Newsletter
           </h2>
           <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-            Pratite priče naših korisnika, radionice i događanja —
+            Pratite priče naših korisnika, radionice i događanja -
             jednom mjesečno u vašem sandučiću.
           </p>
 

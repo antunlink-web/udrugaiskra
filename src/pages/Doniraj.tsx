@@ -48,7 +48,7 @@ const Doniraj = () => {
             </div>
             <h2 className="font-heading text-2xl font-extrabold mb-2">Doniraj karticom</h2>
             <p className="text-white/85 text-sm mb-6 max-w-md mx-auto">
-              Brza i sigurna donacija putem Stripe-a — jednokratno ili mjesečno.
+              Brza i sigurna donacija putem Stripe-a - jednokratno ili mjesečno.
             </p>
             <a href="https://iskrasvjetlosti.com/doniraj" target="_blank" rel="noopener noreferrer" className="btn-donate px-8 py-3.5 text-base">
               <Heart size={18} className="fill-current" /> Doniraj putem Stripe-a

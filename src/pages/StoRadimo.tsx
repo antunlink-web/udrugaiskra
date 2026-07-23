@@ -8,7 +8,7 @@ const programs = [
     id: "radionice",
     icon: Palette,
     title: "Kreativne radionice",
-    text: "Slikanje, glazba, drama, ples, fotografija i još mnogo toga — srce našeg rada.",
+    text: "Slikanje, glazba, drama, ples, fotografija i još mnogo toga - srce našeg rada.",
     to: "/radionice",
     cta: "Pogledaj radionice",
   },

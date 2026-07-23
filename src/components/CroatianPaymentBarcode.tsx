@@ -91,7 +91,7 @@ const CroatianPaymentBarcode = ({}: Props) => {
       </div>
 
       <p className="text-[11px] text-muted-foreground/80 text-center mt-4 leading-relaxed">
-        Jednokratna donacija — bez naknade za uplatitelja. Hvala na podršci ❤️
+        Jednokratna donacija - bez naknade za uplatitelja. Hvala na podršci ❤️
       </p>
     </div>
   );
