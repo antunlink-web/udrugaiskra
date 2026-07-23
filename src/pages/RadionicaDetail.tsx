@@ -1,5 +1,6 @@
+import { useState, useRef, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowLeft,
   MapPin,
@@ -8,6 +9,12 @@ import {
   CalendarRange,
   User,
   Target,
+  BookOpen,
+  Newspaper,
+  Images,
+  UserPlus,
+  ListChecks,
+  ChevronDown,
 } from "lucide-react";
 import PageLayout from "@/components/PageLayout";
 import WorkshopRegistrationForm from "@/components/WorkshopRegistrationForm";
@@ -20,21 +27,35 @@ import {
   PLACEHOLDER,
 } from "@/data/workshops";
 
-const SectionTitle = ({ children }: { children: React.ReactNode }) => (
-  <h2 className="font-heading text-2xl font-extrabold text-ink mb-4">
-    {children}
-  </h2>
-);
-
 const Placeholder = ({ children }: { children: React.ReactNode }) => (
   <div className="rounded-2xl bg-soft border border-border/60 p-5 text-sm text-muted-foreground">
     {children}
   </div>
 );
 
+type SectionKey =
+  | "about"
+  | "goal"
+  | "leader"
+  | "schedule"
+  | "plan"
+  | "news"
+  | "gallery"
+  | "register";
+
 const RadionicaDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const workshop = slug ? getWorkshopBySlug(slug) : undefined;
+  const [openKey, setOpenKey] = useState<SectionKey | null>(null);
+  const refs = useRef<Record<string, HTMLDivElement | null>>({});
+
+  useEffect(() => {
+    if (openKey && refs.current[openKey]) {
+      const el = refs.current[openKey]!;
+      const y = el.getBoundingClientRect().top + window.scrollY - 100;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  }, [openKey]);
 
   if (!workshop) {
     return (
@@ -64,18 +85,138 @@ const RadionicaDetail = () => {
 
   const scheduleRows = [
     workshop.location && { icon: MapPin, label: "Lokacija", value: workshop.location },
-    workshop.schedule && {
-      icon: CalendarRange,
-      label: "Godišnji raspored",
-      value: workshop.schedule,
-    },
+    workshop.schedule && { icon: CalendarRange, label: "Godišnji raspored", value: workshop.schedule },
     workshop.days && { icon: CalendarDays, label: "Dan održavanja", value: workshop.days },
     workshop.time && { icon: Clock, label: "Vrijeme", value: workshop.time },
   ].filter(Boolean) as { icon: typeof MapPin; label: string; value: string }[];
 
+  const sections: {
+    key: SectionKey;
+    title: string;
+    summary?: string;
+    icon: typeof BookOpen;
+    render: () => React.ReactNode;
+  }[] = [
+    {
+      key: "about",
+      title: "O radionici",
+      summary: workshop.shortDescription,
+      icon: BookOpen,
+      render: () =>
+        workshop.description.length > 0 ? (
+          <div className="space-y-3 text-foreground/80 leading-relaxed">
+            {workshop.description.map((p, i) => <p key={i}>{p}</p>)}
+          </div>
+        ) : (
+          <Placeholder>{PLACEHOLDER.description}</Placeholder>
+        ),
+    },
+    {
+      key: "goal",
+      title: "Cilj radionice",
+      icon: Target,
+      render: () =>
+        workshop.goal ? (
+          <div className="flex items-start gap-3 p-4 rounded-2xl bg-cta/10 border border-cta/30">
+            <Target className="text-cta-foreground/80 mt-0.5 shrink-0" size={18} />
+            <p className="text-sm font-semibold text-ink leading-relaxed">{workshop.goal}</p>
+          </div>
+        ) : (
+          <Placeholder>Cilj radionice uskoro će biti objavljen.</Placeholder>
+        ),
+    },
+    {
+      key: "leader",
+      title: "Voditelj radionice",
+      summary: workshop.leader,
+      icon: User,
+      render: () =>
+        workshop.leader ? (
+          <div className="flex items-start gap-3 p-4 rounded-2xl bg-soft">
+            <User className="text-primary mt-0.5 shrink-0" size={18} />
+            <div>
+              <div className="text-[11px] uppercase tracking-wider text-muted-foreground font-bold">Voditelj</div>
+              <div className="text-sm font-semibold text-ink break-words">{workshop.leader}</div>
+            </div>
+          </div>
+        ) : (
+          <Placeholder>Informacije o voditelju uskoro će biti objavljene.</Placeholder>
+        ),
+    },
+    {
+      key: "schedule",
+      title: "Raspored",
+      summary: workshop.days || workshop.time,
+      icon: CalendarDays,
+      render: () =>
+        scheduleRows.length > 0 ? (
+          <div className="grid sm:grid-cols-2 gap-3">
+            {scheduleRows.map((d) => (
+              <div key={d.label} className="flex items-start gap-3 p-4 rounded-2xl bg-soft">
+                <d.icon className="text-primary mt-0.5 shrink-0" size={18} />
+                <div>
+                  <div className="text-[11px] uppercase tracking-wider text-muted-foreground font-bold">{d.label}</div>
+                  <div className="text-sm font-semibold text-ink">{d.value}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <Placeholder>{PLACEHOLDER.schedule}</Placeholder>
+        ),
+    },
+    {
+      key: "plan",
+      title: "Godišnji plan rada",
+      summary: workshop.yearlyPlan.length > 0 ? `${workshop.yearlyPlan.length} susreta` : undefined,
+      icon: ListChecks,
+      render: () =>
+        workshop.yearlyPlan.length > 0 ? (
+          <WorkshopYearlyPlan entries={workshop.yearlyPlan} />
+        ) : (
+          <Placeholder>{PLACEHOLDER.yearlyPlan}</Placeholder>
+        ),
+    },
+    {
+      key: "news",
+      title: "Novosti i događanja",
+      icon: Newspaper,
+      render: () =>
+        workshop.news.length > 0 ? (
+          <WorkshopNews items={workshop.news} />
+        ) : (
+          <Placeholder>{PLACEHOLDER.news}</Placeholder>
+        ),
+    },
+    {
+      key: "gallery",
+      title: "Video i fotogalerija",
+      summary: workshop.media.length > 0 ? `${workshop.media.length} zapisa` : undefined,
+      icon: Images,
+      render: () =>
+        workshop.media.length > 0 ? (
+          <WorkshopGallery media={workshop.media} title={workshop.title} />
+        ) : (
+          <Placeholder>{PLACEHOLDER.gallery}</Placeholder>
+        ),
+    },
+    {
+      key: "register",
+      title: "Prijava na radionicu",
+      summary: "Ispunite obrazac i javit ćemo vam se",
+      icon: UserPlus,
+      render: () => (
+        <WorkshopRegistrationForm
+          workshopSlug={workshop.slug}
+          workshopTitle={workshop.title}
+        />
+      ),
+    },
+  ];
+
   return (
     <PageLayout>
-      {/* 1. Naziv + 2. Kratki uvod */}
+      {/* Hero */}
       <section className={`py-12 md:py-16 bg-gradient-to-br ${workshop.accent}`}>
         <div className="container mx-auto px-4 max-w-5xl">
           <Link
@@ -103,149 +244,91 @@ const RadionicaDetail = () => {
               <p className="text-base md:text-lg text-foreground/75 mt-2 max-w-2xl">
                 {workshop.shortDescription}
               </p>
+              {workshop.leader && (
+                <p className="text-sm text-foreground/70 mt-2">
+                  <span className="font-semibold text-ink">Voditelj:</span> {workshop.leader}
+                </p>
+              )}
             </div>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-12 md:py-16 bg-background">
-        <div className="container mx-auto px-4 max-w-5xl grid lg:grid-cols-[1.4fr_1fr] gap-10">
-          <div className="space-y-12">
-            {/* 3. O radionici */}
-            <div>
-              <SectionTitle>O radionici</SectionTitle>
-              {workshop.description.length > 0 ? (
-                <div className="space-y-3 text-foreground/80 leading-relaxed">
-                  {workshop.description.map((p, i) => (
-                    <p key={i}>{p}</p>
-                  ))}
-                </div>
-              ) : (
-                <Placeholder>{PLACEHOLDER.description}</Placeholder>
-              )}
-            </div>
-
-            {/* 4. Cilj radionice */}
-            {workshop.goal && (
-              <div>
-                <SectionTitle>Cilj radionice</SectionTitle>
-                <div className="flex items-start gap-3 p-4 rounded-2xl bg-cta/10 border border-cta/30">
-                  <Target className="text-cta-foreground/80 mt-0.5 shrink-0" size={18} />
-                  <p className="text-sm font-semibold text-ink leading-relaxed">
-                    {workshop.goal}
-                  </p>
-                </div>
-              </div>
-            )}
-
-            {/* 5. Voditelj radionice */}
-            {workshop.leader && (
-              <div>
-                <SectionTitle>Voditelj radionice</SectionTitle>
-                <div className="flex items-start gap-3 p-4 rounded-2xl bg-soft">
-                  <User className="text-primary mt-0.5 shrink-0" size={18} />
-                  <div>
-                    <div className="text-[11px] uppercase tracking-wider text-muted-foreground font-bold">
-                      Voditelj
+      {/* Section cards */}
+      <section className="py-10 md:py-14 bg-background">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <p className="text-sm text-muted-foreground mb-6 text-center">
+            Odaberite temu koja vas zanima i otvorite je za više informacija.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {sections.map((s) => {
+              const open = openKey === s.key;
+              const SIcon = s.icon;
+              return (
+                <div
+                  key={s.key}
+                  ref={(el) => (refs.current[s.key] = el)}
+                  className={`sm:col-span-1 ${open ? "sm:col-span-2" : ""}`}
+                >
+                  <button
+                    type="button"
+                    onClick={() => setOpenKey(open ? null : s.key)}
+                    aria-expanded={open}
+                    aria-controls={`section-${s.key}`}
+                    className={`w-full text-left bg-card rounded-3xl border-2 p-5 md:p-6 flex items-start gap-4 transition-all focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/30 ${
+                      open
+                        ? "border-cta shadow-lg"
+                        : "border-border/60 hover:border-primary/40 hover:-translate-y-0.5 hover:shadow-md"
+                    }`}
+                    style={!open ? { boxShadow: "var(--shadow-card)" } : undefined}
+                  >
+                    <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 ${open ? "bg-cta text-cta-foreground" : "bg-primary/10 text-primary"}`}>
+                      <SIcon size={22} />
                     </div>
-                    <div className="text-sm font-semibold text-ink break-words">
-                      {workshop.leader}
+                    <div className="flex-1 min-w-0">
+                      <h2 className="font-heading text-lg md:text-xl font-extrabold text-ink leading-tight">
+                        {s.title}
+                      </h2>
+                      {s.summary && (
+                        <p className="text-sm text-muted-foreground mt-1 line-clamp-2">
+                          {s.summary}
+                        </p>
+                      )}
                     </div>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* 6. Raspored */}
-            <div>
-              <SectionTitle>Raspored</SectionTitle>
-              {scheduleRows.length > 0 ? (
-                <div className="grid sm:grid-cols-2 gap-3">
-                  {scheduleRows.map((d) => (
-                    <div key={d.label} className="flex items-start gap-3 p-4 rounded-2xl bg-soft">
-                      <d.icon className="text-primary mt-0.5 shrink-0" size={18} />
-                      <div>
-                        <div className="text-[11px] uppercase tracking-wider text-muted-foreground font-bold">
-                          {d.label}
+                    <ChevronDown
+                      size={20}
+                      className={`text-muted-foreground shrink-0 mt-2 transition-transform ${open ? "rotate-180" : ""}`}
+                    />
+                  </button>
+                  <AnimatePresence initial={false}>
+                    {open && (
+                      <motion.div
+                        id={`section-${s.key}`}
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="p-5 md:p-6 mt-3 rounded-3xl bg-card border border-border/60" style={{ boxShadow: "var(--shadow-card)" }}>
+                          {s.render()}
+                          <div className="mt-5 pt-4 border-t border-border/60 flex justify-end">
+                            <button
+                              type="button"
+                              onClick={() => setOpenKey(null)}
+                              className="text-sm font-semibold text-primary hover:underline"
+                            >
+                              Zatvori sekciju
+                            </button>
+                          </div>
                         </div>
-                        <div className="text-sm font-semibold text-ink">{d.value}</div>
-                      </div>
-                    </div>
-                  ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
-              ) : (
-                <Placeholder>{PLACEHOLDER.schedule}</Placeholder>
-              )}
-            </div>
-
-            {/* 7. Godišnji plan rada */}
-            <div>
-              <SectionTitle>Godišnji plan rada</SectionTitle>
-              {workshop.yearlyPlan.length > 0 ? (
-                <WorkshopYearlyPlan entries={workshop.yearlyPlan} />
-              ) : (
-                <Placeholder>{PLACEHOLDER.yearlyPlan}</Placeholder>
-              )}
-            </div>
-
-            {/* 8. Novosti i događanja */}
-            <div>
-              <SectionTitle>Novosti i događanja</SectionTitle>
-              {workshop.news.length > 0 ? (
-                <WorkshopNews items={workshop.news} />
-              ) : (
-                <Placeholder>{PLACEHOLDER.news}</Placeholder>
-              )}
-            </div>
-
-            {/* 9. Video i fotogalerija */}
-            <div>
-              <SectionTitle>Video i fotogalerija</SectionTitle>
-              {workshop.media.length > 0 ? (
-                <WorkshopGallery media={workshop.media} title={workshop.title} />
-              ) : (
-                <Placeholder>{PLACEHOLDER.gallery}</Placeholder>
-              )}
-            </div>
-
-            {/* 10. Prijava – mobile only (full width, near the end) */}
-            <div className="lg:hidden">
-              <SectionTitle>Prijava na radionicu</SectionTitle>
-              <div
-                className="bg-card rounded-3xl p-6 border border-border/70"
-                style={{ boxShadow: "var(--shadow-float)" }}
-              >
-                <p className="text-sm text-muted-foreground mb-5">
-                  Ispunite obrazac i kontaktirat ćemo vas radi dogovora o
-                  sudjelovanju.
-                </p>
-                <WorkshopRegistrationForm
-                  workshopSlug={workshop.slug}
-                  workshopTitle={workshop.title}
-                />
-              </div>
-            </div>
+              );
+            })}
           </div>
-
-          {/* 10. Prijava – desktop sticky sidebar */}
-          <aside className="hidden lg:block">
-            <div
-              className="sticky top-28 bg-card rounded-3xl p-6 md:p-7 border border-border/70"
-              style={{ boxShadow: "var(--shadow-float)" }}
-            >
-              <h2 className="font-heading text-xl font-extrabold text-ink mb-1">
-                Prijava na radionicu
-              </h2>
-              <p className="text-sm text-muted-foreground mb-5">
-                Ispunite obrazac i kontaktirat ćemo vas radi dogovora o
-                sudjelovanju.
-              </p>
-              <WorkshopRegistrationForm
-                workshopSlug={workshop.slug}
-                workshopTitle={workshop.title}
-              />
-            </div>
-          </aside>
         </div>
       </section>
     </PageLayout>
