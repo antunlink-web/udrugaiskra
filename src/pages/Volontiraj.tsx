@@ -8,7 +8,7 @@ const reasons = [
   { icon: Heart, title: "Mijenjajte živote", text: "Vaše vrijeme i pažnja izravno pomažu našim sudionicima da rastu i blistaju." },
   { icon: Users, title: "Postanite dio zajednice", text: "Pridružite se toploj ekipi volontera, voditelja i roditelja." },
   { icon: Sparkles, title: "Razvijajte se", text: "Steknite nova iskustva, vještine i prijateljstva za cijeli život." },
-  { icon: Clock, title: "Fleksibilno", text: "Uključite se prema svojim mogućnostima — svaki sat pomaže." },
+  { icon: Clock, title: "Fleksibilno", text: "Uključite se prema svojim mogućnostima - svaki sat pomaže." },
 ];
 
 const Volontiraj = () => {

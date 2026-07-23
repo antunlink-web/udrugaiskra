@@ -59,7 +59,7 @@ export interface Workshop {
   schedule?: string;
   days?: string;
   time?: string;
-  /** Optional photos — cards fall back to the themed accent when empty */
+  /** Optional photos - cards fall back to the themed accent when empty */
   images: string[];
   yearlyPlan: YearlyPlanEntry[];
   news: WorkshopNewsItem[];

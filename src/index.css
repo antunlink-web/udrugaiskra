@@ -16,17 +16,17 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 18%;
 
-    /* Primary — lighter sky blue (was deep navy) */
+    /* Primary - lighter sky blue (was deep navy) */
     --primary: 205 88% 47%;
     --primary-foreground: 0 0% 100%;
     --primary-hover: 205 88% 40%;
     --primary-light: 200 90% 62%;
     --primary-soft: 205 100% 95%;
 
-    /* Deep navy from the logo — used sparingly for strong headings/contrast */
+    /* Deep navy from the logo - used sparingly for strong headings/contrast */
     --ink: 237 68% 20%;
 
-    /* Secondary — bright cyan-blue */
+    /* Secondary - bright cyan-blue */
     --secondary: 198 90% 52%;
     --secondary-foreground: 0 0% 100%;
 
@@ -36,7 +36,7 @@
     --accent: 205 100% 95%;
     --accent-foreground: 205 88% 35%;
 
-    /* CTA — the warm yellow from the logo (light beam) */
+    /* CTA - the warm yellow from the logo (light beam) */
     --cta: 48 100% 58%;
     --cta-foreground: 222 60% 16%;
     --cta-hover: 45 100% 52%;
@@ -62,7 +62,7 @@
     --font-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
     --font-body: 'Inter', system-ui, sans-serif;
 
-    /* Light, optimistic hero — sky blue fading to a hint of logo yellow */
+    /* Light, optimistic hero - sky blue fading to a hint of logo yellow */
     --gradient-hero: linear-gradient(135deg, hsl(205 100% 97%) 0%, hsl(200 92% 90%) 55%, hsl(48 100% 90%) 100%);
     --gradient-ocean: linear-gradient(135deg, hsl(205 88% 46%), hsl(198 90% 56%));
     --gradient-cta: linear-gradient(135deg, hsl(48 100% 60%), hsl(43 100% 53%));
@@ -138,7 +138,7 @@
     color: hsl(var(--ink));
   }
 
-  /* Donate / primary CTA — warm logo yellow with deep navy text */
+  /* Donate / primary CTA - warm logo yellow with deep navy text */
   .btn-donate {
     @apply inline-flex items-center justify-center gap-2 rounded-full font-bold transition-all duration-300;
     background: var(--gradient-cta);

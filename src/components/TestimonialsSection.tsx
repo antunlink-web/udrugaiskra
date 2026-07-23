@@ -31,7 +31,7 @@ const testimonials = [
     name: "Sandra S.",
     role: "Voditeljica radionice",
     image: "/wp/2023/09/Sandra-Sunko.jpg",
-    text: "Zajedno rastemo iz tjedna u tjedan — to je terapija za sve.",
+    text: "Zajedno rastemo iz tjedna u tjedan - to je terapija za sve.",
   },
 ];
 

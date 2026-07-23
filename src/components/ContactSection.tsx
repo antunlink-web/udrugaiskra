@@ -81,7 +81,7 @@ const ContactSection = () => {
             Razgovarajmo
           </h2>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-            Imate pitanje, ideju za suradnju ili se želite uključiti? Pišite nam — javljamo se brzo.
+            Imate pitanje, ideju za suradnju ili se želite uključiti? Pišite nam - javljamo se brzo.
           </p>
         </motion.div>
 
@@ -97,7 +97,7 @@ const ContactSection = () => {
             <div>
               <h3 className="font-heading text-2xl font-bold mb-3">Iskra Svjetlosti</h3>
               <p className="text-sm text-primary-foreground/80 leading-relaxed mb-8">
-                Tu smo za vas — donatore, volontere, roditelje i sve koji žele biti dio naše priče.
+                Tu smo za vas - donatore, volontere, roditelje i sve koji žele biti dio naše priče.
               </p>
 
               <div className="space-y-5">

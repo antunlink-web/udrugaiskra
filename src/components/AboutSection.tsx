@@ -73,7 +73,7 @@ const AboutSection = () => {
                 samopouzdanje i prijateljstva koja traju.
               </p>
               <p className="text-primary font-bold text-base leading-relaxed">
-                Naš cilj je jednostavan — omogućiti svakom korisniku da razvije
+                Naš cilj je jednostavan - omogućiti svakom korisniku da razvije
                 svoj puni potencijal.
               </p>
             </div>

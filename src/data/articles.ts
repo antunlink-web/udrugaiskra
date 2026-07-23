@@ -71,7 +71,7 @@ export const articles: Article[] = [
     title: "Josipove stanice: priča iza brenda Cross Print",
     date: "10.10.2024.",
     category: "Poduzetnički kutak",
-    excerpt: "Ova priča počinje prije više od 15 godina, a traje sve do danas. Potpuno drugačija, ali s pogledom u istom smjeru — prema pomaganju drugima.",
+    excerpt: "Ova priča počinje prije više od 15 godina, a traje sve do danas. Potpuno drugačija, ali s pogledom u istom smjeru - prema pomaganju drugima.",
     content: [
       "Ova priča počinje prije više od 15 godina, a traje sve do danas. Potpuno drugačija, ali s pogledom u istom smjeru. Preko umjetničke škole, prvog zaposlenja, a nedugo kasnije i vođenja pogona, sve do današnjeg studija u kojem je moguće stvoriti i ostvariti svoju digitalnu priču skriva se maleni studio u kojem se nalazi gotovo sve ono što je jednom sanjaru potrebno da bi svoju ideju preslikao na komad papira, folije, plakata, zidne tapete…",
       "**Naziv \"Cross Design\"** medalja je s dvije strane, u ovom slučaju, obje zlatne. Od rečenice \"…svi mi nosimo svoj križ…\" koja doslovno može prenijeti emociju i zbilju svega onog s čim se čovjek svakodnevno susreće, rodila se ideja o tom imenu.",
@@ -96,7 +96,7 @@ export const articles: Article[] = [
       "> Majka je slutila, ali nije bila dovoljno sigurna u to da s dječakom možda nešto nije kako treba.",
       "U vrijeme kad bi dijete trebalo izgovarati 10-20 riječi, maleni L. izgovarao je samo Tata i Mama. S time da su i te riječi vremenom isčezle.",
       "U drugoj godini djetetovog života, dječak je postao hiperaktivan i dalje odbija jesti krutu hranu. Nakon razgovora s tetama u vrtiću i defektologicom, uslijedio je pregled kod stručnjaka.",
-      "24.11.2015. majka opisuje kao najgori dan života. Nakon nekoliko sati pregleda, utvrđeno je kako se radi o poremećaju socijalne komunikacije — blagom obliku autizma.",
+      "24.11.2015. majka opisuje kao najgori dan života. Nakon nekoliko sati pregleda, utvrđeno je kako se radi o poremećaju socijalne komunikacije - blagom obliku autizma.",
       "> Danas smatra da je prihvaćanje situacije i hvatanje u koštac s autizmom najvažniji korak koji svaki roditelj mora napraviti.",
       "Danas, maleni L ima 7 godina i mnogo je napredovao. Najbolji prijatelj mu je Nikola Tesla, kojega redovito posjećuje u Tehničkom muzeju u Zagrebu. Pohađa redovnu nastavu bez asistenta i voli druženje s drugom djecom. Od dječaka koji je govorio 0 riječi, došao je do toga da izgovara cijele rečenice.",
       "Majka kaže kako je on blagoslov i kako je sretna što ga ima. Važno je reći kako rad roditelja s takvom djecom ima veliku važnost i kako put, usprkos tome što nije nimalo jednostavan, svejedno može imati sretan ishod.",

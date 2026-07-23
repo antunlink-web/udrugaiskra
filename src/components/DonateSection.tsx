@@ -23,7 +23,7 @@ const DonateSection = () => {
               „Ne možemo svi činiti velika djela, ali možemo činiti mala djela s velikom ljubavlju."
             </h2>
             <p className="text-white/80 text-xs md:text-sm max-w-xl mx-auto mb-6">
-              — Sveta Majka Terezija
+              - Sveta Majka Terezija
             </p>
             <Link
               to="/doniraj"
